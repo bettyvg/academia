@@ -117,8 +117,8 @@ Route::get('nuevoregistro', 'NuevoUsuariosController@registro' )->name('nuevoreg
 Route::post('nuevoregistro', 'NuevoUsuariosController@registro' )->name('nuevoregistro');
 
 /*Registro WEB*/
-Route::get('registroweb', 'registrowebController@index' )->name('registroweb');
-Route::post('registroweb', 'registrowebController@create' )->name('registroweb');
+Route::get('nuevoregistro2', 'registrowebController@index' )->name('nuevoregistro2');
+Route::post('nuevoregistro2', 'registrowebController@create' )->name('nuevoregistro2');
 Route::post('get_colonia/{id}', 'registrowebController@get_colonia');
 Route::post('get_municipio/{id}', 'registrowebController@get_municipio');
 Route::post('get_cp/{id}', 'registrowebController@get_cp');

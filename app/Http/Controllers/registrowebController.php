@@ -19,11 +19,6 @@ class registrowebController extends Controller
 {
     public function index()
     {
-
-        $usuario_session = Session::get('usuario');
-        if (!$usuario_session) {
-            return Redirect::route('login');
-        }
         $cat_entidades = Cat_entidades::all();
         $cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
         $cat_codigospostales = Cat_codigospostales::select('d_estado')->groupBy('d_estado')->get();
@@ -45,7 +40,7 @@ class registrowebController extends Controller
         //dd($detalle_registrop);
 
 
-        return View::make('usuarios.registroweb', array(
+        return View::make('usuarios.nuevoregistro2', array(
             'cat_entidades' => $cat_entidades,
             'sectores' => $sectores,
             'subsectores' => $subsectores,

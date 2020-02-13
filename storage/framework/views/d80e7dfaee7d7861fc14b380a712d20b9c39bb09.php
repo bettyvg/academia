@@ -14,7 +14,6 @@
                 </div>
                 <?php endif; ?>
         <form action="<?php echo e(route('registroplatica')); ?>" method="post" class="form-horizontal">
-
              <div class="single-pro-review-area mt-t-30 mg-b-15" style="margin: 40px 0px 0px 0px">
              <div class="container-fluid ">
                 <div class="row">
@@ -23,7 +22,6 @@
                             <ul id="myTabedu1" class="tab-review-design">
                                 <li class="active"><a href="#registroplatica">Resgistrate</a></li>
                             </ul>
-
                             <div id="myTabContent" class="tab-content custom-product-edit">
                                 <div class="product-tab-list tab-pane fade active in" id="registroplatica">
                                     <div class="row">
@@ -208,6 +206,7 @@
                                                         <div class="form-group col-md-4">
                                                             <input name="cp" id="cp" type="text"
                                                                    required="true"
+                                                                   placeholder="Código Postal"
                                                                    class="form-control">
                                                         </div>
                                                         <div class="form-group col-md-4">

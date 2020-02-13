@@ -48,7 +48,6 @@
                        placeholder="Fecha nacimiento" required>
             </div>
 
-
         <div class="form-group">
             <select name="municipio_usuario" id="municipio_usuario"
                     class="form-control" required>

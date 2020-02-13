@@ -1,0 +1,118 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', 'HomeController@inicio')->name('inicio');
+Route::get('inicio2', 'HomeController@inicio2')->name('inicio2');
+
+Route::get('alumnos', 'HomeController@alumnos')->name('alumnos');
+//Route::post('usuarios', 'HomeController@usuarios')->name('usuarios');
+//Route::get('usuarios', 'HomeController@usuarios')->name('usuarios');
+Route::get('registroplatica', 'RegistroController@vinculacion')->name('registroplatica');
+Route::post('registroplatica', 'RegistroController@registro')->name('registroplatica');
+Route::get('testubica', 'HomeController@testubica')->name('testubica');
+Route::get('calendario', 'HomeController@calendario')->name('calendario');
+Route::get('cursos', 'HomeController@cursos')->name('cursos');
+Route::get('cognos.reporte_cognos', 'HomeController@reportecognos')->name('reportecognos');
+
+Route::resource('evaluacionejecutivos', 'evaluacionejecutivosv1Controller');
+Route::resource('cursodetalle', 'cursoDetalleController');
+
+//*******Catalagos del sistema****//
+
+//Cat_Temas
+Route::post('temas', 'temasController@registrotemas')->name('temas');
+Route::get('temas', 'temasController@temas')->name('temas');
+Route::get('editar_tema/{id}', 'temasController@edit')->name('editar_tema');
+Route::patch('editar_tema/{id}', 'temasController@update')->name('editar_tema.update');
+Route::patch('delete_tema/{id}', 'temasController@delete')->name('delete_tema');
+
+
+//Cat_capacitadores
+Route::get('capacitores', 'HomeController@capacitadores')->name('capacitores');
+Route::resource('cat_capacitadores', 'CapacitadoresController');
+Route::PATCH('delete_capacitador/{id}', 'CapacitadoresController@delete_capacitador')->name('delete_capacitador');
+
+
+
+//Cat_perfil
+Route::resource('perfiles', 'PerfilesController');
+Route::PATCH('delete_perfiles/{id}', 'PerfilesController@delete')->name('perfiles.delete');
+
+//Cat_puestos personal
+Route::get('puestos', 'PuestosController@puestos')->name('puestos');
+
+//Cat_Ejecutivos
+Route::get('ejecutivos', 'EjecutivosController@ejecutivos')->name('ejecutivos');
+Route::post('crear_ejecutivos', 'EjecutivosController@ejecutivoscreate')->name('crear_ejecutivos');
+Route::get('editar_ejecutivo/{id}', 'EjecutivosController@edit')->name('editar_ejecutivos');
+Route::post('editar_ejecutivo/{id}', 'EjecutivosController@update')->name('editar_ejecutivos.update');
+Route::PATCH('delete_ejecutivos/{id}', 'EjecutivosController@delete_ejecutivos')->name('delete_ejecutivos');
+//Route::patch('delete/{id}', 'CapacitadoresController@delete')->name('delete_capacitadores');
+
+//Route::get('perfiles', 'PerfilesController@perfiles')->name('perfiles');
+
+//******* FIN Catalagos del sistema****//
+
+Route::get('evaluacionplaticainfo', 'EvaluacionController@evaluacionplatica')->name('evaluacionplaticainfo');
+Route::post('evaluacionplaticainfo', 'EvaluacionController@evaluacionplatica')->name('evaluacionplaticainfo');
+//Route::post('evaluacionplaticainfo', 'EvaluacionController@evaluacion')->name('evaluacionplaticainfo');
+
+Route::post('EvaluacionCapacitadores', 'EvalCapacitadorController@EvaluacionCapacitadores')->name('EvaluacionCapacitadores');
+Route::get('EvaluacionCapacitadores', 'EvalCapacitadorController@inicioevaluacion')->name('EvaluacionCapacitadores');
+Route::get('BuscarEvaCapacitadores', 'BuscarEvalCapacitadorController@Capacitadorbusqueda')->name('BuscarEvaCapacitadores');
+Route::post('BuscarEvaCapacitadores', 'BuscarEvalCapacitadorController@Capacitadorbusqueda')->name('BuscarEvaCapacitadores');
+
+
+/** Rutas para modulo de usuarios **/
+Route::get('login', 'UsuariosController@login' )->name('login');
+Route::post('login', 'UsuariosController@login');
+Route::post('usuarios', 'UsuariosController@registro')->name('usuarios');
+Route::get('usuarios', 'UsuariosController@detalle_registrousuarios')->name('usuarios');
+
+Route::get('modificaUsuarios', 'UsuariosController@modifusuarios')->name('modificaUsuarios');
+Route::post('modificaUsuarios', 'UsuariosController@modifusuarios')->name('modificaUsuarios');
+Route::get('edit_user/{id}', 'UsuariosController@edit')->name('edit_user');
+Route::PATCH('delete_user/{id}', 'UsuariosController@delete_user')->name('delete_user');
+
+
+
+Route::post('get_puesto/{id}', 'UsuariosController@get_puesto');
+Route::get('signout', 'UsuariosController@signout' )->name('signout');
+Route::get('registro', 'UsuariosController@registro' )->name('registro');
+
+/*Route::get('nuevoregistro', 'NuevoUsuariosController@registro' )->name('nuevoregistro');
+Route::post('nuevoregistro', 'NuevoUsuariosController@registro' )->name('nuevoregistro');
+Route::post('nuevoregistro', 'NuevoUsuariosController@login' )->name('nuevoregistro');*/
+
+Route::get('nuevoregistro', 'NuevoUsuariosController@registro' )->name('nuevoregistro');
+Route::post('nuevoregistro', 'NuevoUsuariosController@registro' )->name('nuevoregistro');
+
+
+Route::post('registro', 'UsuariosController@registro' )->name('registro_post');
+Route::get('mostrar-usuarios', 'UsuariosController@mostrar_usuarios' )->name('mostrar-usuarios');
+Route::get('test', 'HomeController@test' )->name('test');
+
+
+/** Cursos **/
+
+Route::post('cursos', 'CursosController@cursos' )->name('cursos');
+Route::get('/get_curso/{id}', 'CursosController@get_curso' )->name('get_cursos');
+
+
+
+Route::get('cursos_online', 'HomeController@cursos_online')->name('cursos_online');
+Route::post('cursos_online', 'CursosOnlineController@cursos_online' )->name('cursos_online');
+Route::post('guardar_minuto', 'CursosOnlineController@guardar_minuto' );
+Route::post('guardar_inscripcion', 'CursosOnlineController@guardar_inscripcion');
+Route::get('/get_cursoonline/{id}', 'CursosOnlineController@get_cursoonline' )->name('get_cursoonline');
+

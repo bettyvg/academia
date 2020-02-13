@@ -1,0 +1,84 @@
+html{
+    /*background: url("../img/background.jpg") no-repeat;
+	background-size: cover;
+    min-height: 100%;*/
+	background-color: #555;
+}
+
+body{
+	background-color: transparent;
+}
+
+#registration-form{
+	max-width: 1100px;
+	margin: 20px auto;
+	align-content: center;
+}
+
+/*#registration-form .image{
+	float:left;
+	background-image: url("../img/desk.jpg");
+	height: 500px;
+	width: 50%;
+	background-color: #fa4238;
+	background-size: cover;
+	background-position: 25%;
+}*/
+
+#registration-form .frm2{
+	height: 700px;
+    width: 50%;
+    min-width: 250px;
+    padding: 0 35px;
+
+	margin: inherit;
+
+    background-size: 100% 100%;
+    background-color: white;
+}
+
+#registration-form h1{
+	margin-top: 10px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+#registration-form .form-control{
+	width: 100%;
+	padding: 12px 20px;
+	height: auto;
+}
+
+@media screen and (max-width: 700px){
+	/*#registration-form .image{
+		width: 30%;
+	    background-position: 60%;
+	}*/
+
+	#registration-form .frm2{
+		width: 100%;
+	}
+
+	#registration-form .form-control{
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 500px){
+	/*#registration-form .image{
+		display: none;
+	}*/
+
+	#registration-form .frm2{
+		width: 100%;
+	}
+
+	#registration-form h1{
+		text-align: center;
+	}
+
+	#registration-form .btn{
+		width: 100%;
+		margin-top: 20px;
+	}
+}

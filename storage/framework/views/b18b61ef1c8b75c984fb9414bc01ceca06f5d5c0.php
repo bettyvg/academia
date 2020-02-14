@@ -58,6 +58,13 @@
                                                    required="true"
                                                    value="<?php echo e(old('fecha_nacimiento')); ?>">
                                         </div>
+                                        <div class="form-group">
+                                            <input name="edad" id="edad" type="text"
+                                                   required="true"
+                                                   class="form-control"
+                                                   placeholder="Edad"
+                                                   value="<?php echo e(old('edad')); ?>">
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group " required="true">
@@ -67,13 +74,7 @@
                                                 <option value="Femenino" <?php if(old('genero')=='Femenino'): ?> selected="selected"<?php endif; ?>>Femenino</option>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <input name="edad" id="edad" type="text"
-                                                   required="true"
-                                                   class="form-control"
-                                                   placeholder="Edad"
-                                                   value="<?php echo e(old('edad')); ?>">
-                                        </div>
+
                                         <div class="form-group">
                                             <input name="rfc" id="rfc" type="text"
                                                    required="true"
@@ -81,7 +82,25 @@
                                                    placeholder="RFC"
                                                    value="<?php echo e(old('rfc')); ?>">
                                         </div>
-
+                                        <div class="form-group">
+                                            <input name="domicilio" id="domicilio" type="text"
+                                                   required="true"
+                                                   class="form-control"
+                                                   placeholder="Domicilio"
+                                                   value="<?php echo e(old('domicilio')); ?>">
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <input name="num_ext" id="num_ext" type="text"
+                                                   class="form-control"
+                                                   required="true" placeholder="Numero Ext."
+                                                   value="<?php echo e(old('num_ext')); ?>">
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <input name="num_int" id="num_int" type="text"
+                                                   class="form-control"
+                                                   required="true" placeholder="Numero Int."
+                                                   value="<?php echo e(old('correo')); ?>">
+                                        </div>
                                         <div class="form-group">
                                             <input name="correo" id="correo" type="email"
                                                    class="form-control"
@@ -91,27 +110,76 @@
 
                                     </div>
                                 </div>
-                                <br><br><br>
+                                <br>
                                 <H3>Datos de la empresa</H3>
                                 <br>
                                 <div class="row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <br>
-                                        <input name="nom_rep_legal" id="nom_rep_legal" type="text"
+                                        <input name="rfc_empresa" id="rfc_empresa" type="text"
                                                required="true"
                                                class="form-control"
-                                               placeholder="Nombre de Representate legal"
+                                               placeholder="RFC"
+                                               value="<?php echo e(old('rfc')); ?>">
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <br>
+                                        <input name="nombre_empresa" id="nombre_empresa" type="text"
+                                               required="true"
+                                               class="form-control"
+                                               placeholder="Nombre de la empresa"
+                                               value="<?php echo e(old('nombre_empresa')); ?>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <br>
+                                        <input name="calle" id="calle" type="text"
+                                               required="true"
+                                               class="form-control"
+                                               placeholder="Calle"
                                                value="<?php echo e(old('calle')); ?>">
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <br>
-                                        <input name="rfc_rep_legal" id="rfc_rep_legal" type="text"
+                                        <input name="no_ext" id="no_ext" type="text"
                                                required="true"
                                                class="form-control"
-                                               placeholder="RFC Representante legal"
+                                               placeholder="Numero Exterior."
                                                value="<?php echo e(old('no_ext')); ?>">
                                     </div>
-
+                                    <div class="form-group col-md-4">
+                                        <br>
+                                        <input name="no_int" id="no_int" type="text"
+                                               required="true"
+                                               class="form-control"
+                                               placeholder="Numero interior."
+                                               value="<?php echo e(old('no_int')); ?>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input name="cp" id="cp" type="text"
+                                               required="true"
+                                               placeholder="Código Postal"
+                                               class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select required='true' class="form-control select2"  name="colonia" id="colonia" value="<?php echo e('colonia'); ?>">
+                                            <option value="none" selected="" disabled="">Seleccionar colonia..</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4" >
+                                        <select required='true' class="form-control select2"  name="estado" id="estado" value="<?php echo e(old('cve_ent')); ?>">
+                                            <option value="none" selected="" disabled="">Selecionar municipio..</option>
+                                            <?php $__currentLoopData = $cat_municipios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $municipios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option <?php if($municipios->cve_ent <='9'): ?> value="<?php echo e("0".$municipios->cve_ent); ?>"
+                                                        <?php if(old('cve_ent')=="0".$municipios->cve_ent): ?>selected="selected" <?php endif; ?>
+                                                        <?php else: ?> value="<?php echo e($municipios->cve_ent); ?>" <?php if(old('d_estado')==($municipios->cve_ent)): ?>selected="selected"<?php endif; ?>
+                                                        <?php endif; ?>><?php echo e(($municipios->D_mnpio)); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
@@ -161,72 +229,11 @@
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
-                                        <br>
-                                        <input name="edad" id="edad" type="text"
-                                               required="true"
-                                               class="form-control"
-                                               placeholder="Tamaño de la empresa"
-                                               value="<?php echo e(old('edad')); ?>">
-                                    </div>
                                 </div>
+
+
                                 <div class="row">
-                                    <div class="form-group col-md-4">
-                                        <br>
-                                        <input name="calle" id="calle" type="text"
-                                               required="true"
-                                               class="form-control"
-                                               placeholder="Calle"
-                                               value="<?php echo e(old('calle')); ?>">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <br>
-                                        <input name="no_ext" id="no_ext" type="text"
-                                               required="true"
-                                               class="form-control"
-                                               placeholder="Numero Exterior."
-                                               value="<?php echo e(old('no_ext')); ?>">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <br>
-                                        <input name="no_int" id="no_int" type="text"
-                                               required="true"
-                                               class="form-control"
-                                               placeholder="Numero interior."
-                                               value="<?php echo e(old('no_int')); ?>">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4" >
-                                        <select required='true' class="form-control select2"  name="estado" id="estado" value="<?php echo e(old('cve_ent')); ?>">
-                                            <option value="none" selected="" disabled="">Selecionar estado..</option>
-                                            <?php $__currentLoopData = $cat_entidades; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $entidades): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option <?php if($entidades->cve_ent <='9'): ?> value="<?php echo e("0".$entidades->cve_ent); ?>"
-                                                        <?php if(old('cve_ent')=="0".$entidades->cve_ent): ?>selected="selected" <?php endif; ?>
-                                                        <?php else: ?> value="<?php echo e($entidades->cve_ent); ?>" <?php if(old('d_estado')==($entidades->cve_ent)): ?>selected="selected"<?php endif; ?>
-                                                        <?php endif; ?>><?php echo e(($entidades->nom_ent)); ?></option>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4" >
-                                        <select required='true' class="form-control select2"  name="municipio" id="municipio" value="<?php echo e(old('cve_ent')); ?>">
-                                            <option value="none" selected="" disabled="">Selecionar municipio..</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <select required='true' class="form-control select2"  name="colonia" id="colonia" value="<?php echo e('colonia'); ?>">
-                                            <option value="none" selected="" disabled="">Seleccionar colonia..</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <br>
-                                        <input name="cp" id="cp" type="text"
-                                               required="true"
-                                               placeholder="Código Postal"
-                                               class="form-control">
-                                    </div>
+
                                     <div class="col-md-4">
                                         <br>
                                         <input name="telefono" id="telefono" type="text"

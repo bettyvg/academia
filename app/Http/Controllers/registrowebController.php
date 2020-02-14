@@ -20,7 +20,8 @@ class registrowebController extends Controller
     public function index()
     {
         $cat_entidades = Cat_entidades::all();
-        $cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
+        //$cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
+        $cat_municipios = Cat_codigospostales::select('d_estado','c_estado','D_mnpio')->where('c_estado', '14')->groupBy('d_estado','c_estado','D_mnpio')->get();
         $cat_codigospostales = Cat_codigospostales::select('d_estado')->groupBy('d_estado')->get();
         $cat_codigospostales2 = Cat_codigospostales::all();
         $cat_escolaridad = Cat_escolaridad::select('id_escolaridad','nivel', 'estatus')->orderBy('id_escolaridad', 'ASC')->get();

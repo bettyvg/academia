@@ -86,14 +86,12 @@
                                                                            placeholder="RFC"
                                                                            value="{{old('rfc')}}">
                                                                 </div>
-
                                                                 <div class="form-group">
                                                                     <input name="correo" id="correo" type="email"
                                                                            class="form-control"
                                                                            required="true" placeholder="Correo"
                                                                            value="{{old('correo')}}">
                                                                 </div>
-
                                                             </div>
                                                         </div>
                                                         <br><br><br>
@@ -195,7 +193,6 @@
                                                                 <option value="none" selected="" disabled="">Selecionar municipio..</option>
                                                             </select>
                                                         </div>
-
                                                         <div class="form-group col-md-4">
                                                             <select required='true' class="form-control select2"  name="colonia" id="colonia" value="{{'colonia'}}">
                                                                 <option value="none" selected="" disabled="">Seleccionar colonia..</option>

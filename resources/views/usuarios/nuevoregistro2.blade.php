@@ -57,6 +57,13 @@
                                                    required="true"
                                                    value="{{old('fecha_nacimiento')}}">
                                         </div>
+                                        <div class="form-group">
+                                            <input name="edad" id="edad" type="text"
+                                                   required="true"
+                                                   class="form-control"
+                                                   placeholder="Edad"
+                                                   value="{{old('edad')}}">
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group " required="true">
@@ -66,13 +73,7 @@
                                                 <option value="Femenino" @if(old('genero')=='Femenino') selected="selected"@endif>Femenino</option>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <input name="edad" id="edad" type="text"
-                                                   required="true"
-                                                   class="form-control"
-                                                   placeholder="Edad"
-                                                   value="{{old('edad')}}">
-                                        </div>
+
                                         <div class="form-group">
                                             <input name="rfc" id="rfc" type="text"
                                                    required="true"
@@ -80,7 +81,25 @@
                                                    placeholder="RFC"
                                                    value="{{old('rfc')}}">
                                         </div>
-
+                                        <div class="form-group">
+                                            <input name="domicilio" id="domicilio" type="text"
+                                                   required="true"
+                                                   class="form-control"
+                                                   placeholder="Domicilio"
+                                                   value="{{old('domicilio')}}">
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <input name="num_ext" id="num_ext" type="text"
+                                                   class="form-control"
+                                                   required="true" placeholder="Numero Ext."
+                                                   value="{{old('num_ext')}}">
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <input name="num_int" id="num_int" type="text"
+                                                   class="form-control"
+                                                   required="true" placeholder="Numero Int."
+                                                   value="{{old('correo')}}">
+                                        </div>
                                         <div class="form-group">
                                             <input name="correo" id="correo" type="email"
                                                    class="form-control"
@@ -90,27 +109,76 @@
 
                                     </div>
                                 </div>
-                                <br><br><br>
+                                <br>
                                 <H3>Datos de la empresa</H3>
                                 <br>
                                 <div class="row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <br>
-                                        <input name="nom_rep_legal" id="nom_rep_legal" type="text"
+                                        <input name="rfc_empresa" id="rfc_empresa" type="text"
                                                required="true"
                                                class="form-control"
-                                               placeholder="Nombre de Representate legal"
+                                               placeholder="RFC"
+                                               value="{{old('rfc')}}">
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <br>
+                                        <input name="nombre_empresa" id="nombre_empresa" type="text"
+                                               required="true"
+                                               class="form-control"
+                                               placeholder="Nombre de la empresa"
+                                               value="{{old('nombre_empresa')}}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <br>
+                                        <input name="calle" id="calle" type="text"
+                                               required="true"
+                                               class="form-control"
+                                               placeholder="Calle"
                                                value="{{old('calle')}}">
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <br>
-                                        <input name="rfc_rep_legal" id="rfc_rep_legal" type="text"
+                                        <input name="no_ext" id="no_ext" type="text"
                                                required="true"
                                                class="form-control"
-                                               placeholder="RFC Representante legal"
+                                               placeholder="Numero Exterior."
                                                value="{{old('no_ext')}}">
                                     </div>
-
+                                    <div class="form-group col-md-4">
+                                        <br>
+                                        <input name="no_int" id="no_int" type="text"
+                                               required="true"
+                                               class="form-control"
+                                               placeholder="Numero interior."
+                                               value="{{old('no_int')}}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input name="cp" id="cp" type="text"
+                                               required="true"
+                                               placeholder="Código Postal"
+                                               class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select required='true' class="form-control select2"  name="colonia" id="colonia" value="{{'colonia'}}">
+                                            <option value="none" selected="" disabled="">Seleccionar colonia..</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4" >
+                                        <select required='true' class="form-control select2"  name="estado" id="estado" value="{{old('cve_ent')}}">
+                                            <option value="none" selected="" disabled="">Selecionar municipio..</option>
+                                            @foreach($cat_municipios as $municipios)
+                                                <option @if($municipios->cve_ent <='9') value="{{"0".$municipios->cve_ent}}"
+                                                        @if(old('cve_ent')=="0".$municipios->cve_ent)selected="selected" @endif
+                                                        @else value="{{$municipios->cve_ent}}" @if(old('d_estado')==($municipios->cve_ent))selected="selected"@endif
+                                                        @endif>{{($municipios->D_mnpio)}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
@@ -160,72 +228,11 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
-                                        <br>
-                                        <input name="edad" id="edad" type="text"
-                                               required="true"
-                                               class="form-control"
-                                               placeholder="Tamaño de la empresa"
-                                               value="{{old('edad')}}">
-                                    </div>
                                 </div>
+
+
                                 <div class="row">
-                                    <div class="form-group col-md-4">
-                                        <br>
-                                        <input name="calle" id="calle" type="text"
-                                               required="true"
-                                               class="form-control"
-                                               placeholder="Calle"
-                                               value="{{old('calle')}}">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <br>
-                                        <input name="no_ext" id="no_ext" type="text"
-                                               required="true"
-                                               class="form-control"
-                                               placeholder="Numero Exterior."
-                                               value="{{old('no_ext')}}">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <br>
-                                        <input name="no_int" id="no_int" type="text"
-                                               required="true"
-                                               class="form-control"
-                                               placeholder="Numero interior."
-                                               value="{{old('no_int')}}">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4" >
-                                        <select required='true' class="form-control select2"  name="estado" id="estado" value="{{old('cve_ent')}}">
-                                            <option value="none" selected="" disabled="">Selecionar estado..</option>
-                                            @foreach($cat_entidades as $entidades)
-                                                <option @if($entidades->cve_ent <='9') value="{{"0".$entidades->cve_ent}}"
-                                                        @if(old('cve_ent')=="0".$entidades->cve_ent)selected="selected" @endif
-                                                        @else value="{{$entidades->cve_ent}}" @if(old('d_estado')==($entidades->cve_ent))selected="selected"@endif
-                                                        @endif>{{($entidades->nom_ent)}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4" >
-                                        <select required='true' class="form-control select2"  name="municipio" id="municipio" value="{{old('cve_ent')}}">
-                                            <option value="none" selected="" disabled="">Selecionar municipio..</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <select required='true' class="form-control select2"  name="colonia" id="colonia" value="{{'colonia'}}">
-                                            <option value="none" selected="" disabled="">Seleccionar colonia..</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <br>
-                                        <input name="cp" id="cp" type="text"
-                                               required="true"
-                                               placeholder="Código Postal"
-                                               class="form-control">
-                                    </div>
+
                                     <div class="col-md-4">
                                         <br>
                                         <input name="telefono" id="telefono" type="text"

@@ -1,8 +1,6 @@
 $(document).ready(function () {
     "use strict";
 
-
-
     /* áreas fojal*/
     $("#area").change(function () {
         var id_area = $("#area").val();

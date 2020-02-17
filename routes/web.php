@@ -125,6 +125,7 @@ Route::post('get_cp/{id}', 'registrowebController@get_cp');
 
 
 
+
 Route::post('registro', 'UsuariosController@registro' )->name('registro_post');
 Route::get('mostrar-usuarios', 'UsuariosController@mostrar_usuarios' )->name('mostrar-usuarios');
 Route::get('test', 'HomeController@test' )->name('test');

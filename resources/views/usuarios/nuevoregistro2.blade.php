@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<form action="nuevoregistro" method="POST">
+<form action="nuevoregistro2" method="POST">
     {{ csrf_field() }}
     <div class="container" id="registration-form">
     <div class="frm2">
@@ -27,6 +27,15 @@
                     <div class="review-content-section">
                         <div id="dropzone1" class="pro-ad add-professors">
                             <form>
+                                <h5>Tienes empresa o eres emprendedor</h5>
+                                <div class="form-group " required="true">
+                                    <select name="regimen_fiscal" id="regimen_fiscal" class="form-control" value="{{old('genero')}}">
+                                        <option value="none" selected="" disabled="" style="color: darkgrey;">Seleccionar..</option>
+                                        <option value="Emprendedor" @if(old('regimen_fiscal')=='Emprendedor') selected="selected"@endif>Emprendedor</option>
+                                        <option value="Empresario" @if(old('regimen_fiscal')=='Empresario') selected="selected"@endif>Empresario</option>
+                                    </select>
+                                </div>
+                                <br><br>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group">
@@ -98,7 +107,31 @@
                                             <input name="num_int" id="num_int" type="text"
                                                    class="form-control"
                                                    required="true" placeholder="Numero Int."
-                                                   value="{{old('correo')}}">
+                                                   value="{{old('num_int')}}">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <input name="cp" id="cp" type="text"
+                                                       required="true"
+                                                       placeholder="Código Postal"
+                                                       class="form-control">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select required='true' class="form-control select2"  name="colonia" id="colonia" value="{{'colonia'}}">
+                                                    <option value="none" selected="" disabled="">Seleccionar colonia..</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4" >
+                                                <select required='true' class="form-control select2"  name="estado" id="estado" value="{{old('cve_ent')}}">
+                                                    <option value="none" selected="" disabled="">Selecionar municipio..</option>
+                                                    @foreach($cat_municipios as $municipios)
+                                                        <option @if($municipios->cve_ent <='9') value="{{"0".$municipios->cve_ent}}"
+                                                                @if(old('cve_ent')=="0".$municipios->cve_ent)selected="selected" @endif
+                                                                @else value="{{$municipios->cve_ent}}" @if(old('d_estado')==($municipios->cve_ent))selected="selected"@endif
+                                                                @endif>{{($municipios->D_mnpio)}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <input name="correo" id="correo" type="email"
@@ -133,27 +166,27 @@
                                 <div class="row">
                                     <div class="form-group col-md-4">
                                         <br>
-                                        <input name="calle" id="calle" type="text"
+                                        <input name="domicilio_empresa" id="domicilio_empresa" type="text"
                                                required="true"
                                                class="form-control"
-                                               placeholder="Calle"
-                                               value="{{old('calle')}}">
+                                               placeholder="Domicilio"
+                                               value="{{old('domicilio_empresa')}}">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <br>
-                                        <input name="no_ext" id="no_ext" type="text"
+                                        <input name="num_ext_empresa" id="num_ext_empresa" type="text"
                                                required="true"
                                                class="form-control"
                                                placeholder="Numero Exterior."
-                                               value="{{old('no_ext')}}">
+                                               value="{{old('num_ext_empresa')}}">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <br>
-                                        <input name="no_int" id="no_int" type="text"
+                                        <input name="num_int_empresa" id="num_int_empresa" type="text"
                                                required="true"
                                                class="form-control"
                                                placeholder="Numero interior."
-                                               value="{{old('no_int')}}">
+                                               value="{{old('num_int_empresa')}}">
                                     </div>
                                 </div>
                                 <div class="row">

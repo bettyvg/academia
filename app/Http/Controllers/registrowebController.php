@@ -11,7 +11,9 @@ use App\Models\Cat_entidades;
 use App\Models\Cat_municipios;
 use App\Models\Cat_escolaridad;
 use App\Models\Cat_pais;
+use App\Mail\MensajeEnviado;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use \Illuminate\Support\Facades\Redirect;
 
@@ -76,5 +78,19 @@ class registrowebController extends Controller
         //dd($datos);
         return response()->json($datos, '200');
     }
+
+    public function create()
+    {
+        registrowebModel::create(request()->all());/*Metodo create*/
+
+        Mail::to('betty.vargas.garcia@gmail.com')->send(new MensajeEnviado);
+
+        flash("Tu información se envío exitosamente!")->success()->important();
+
+        return 'Mensaje Enviado';
+
+        ///return redirect('registrowebModel');
+    }
+
 
 }

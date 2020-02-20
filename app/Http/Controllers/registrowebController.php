@@ -58,7 +58,8 @@ class registrowebController extends Controller
             'cat_pais' => $cat_pais
         ));
     }
-    public function get_municipio($estado){
+
+     public function get_municipio($estado){
         //dd($estado);
         $datos = Cat_codigospostales::select('c_estado', 'D_mnpio','c_mnpio')->where('c_estado', $estado)->groupby('D_mnpio','c_estado','c_mnpio')->get();
         //dd($datos);
@@ -73,8 +74,8 @@ class registrowebController extends Controller
     }
 
     public function get_cp($cp){
-        //dd($estado);
-        $datos = Cat_codigospostales::select('d_codigo', 'id_codigocp', 'c_mnpio','d_tipo_asenta','d_asenta')->where('id_codigocp', $cp)->groupby('d_asenta', 'id_codigocp', 'c_mnpio','d_tipo_asenta')->get();
+        //dd($cp);
+        $datos = Cat_codigospostales::select('d_codigo', 'd_asenta','id_codigocp','D_mnpio','c_mnpio')->where('d_codigo', $cp)->groupby('D_mnpio','c_mnpio', 'd_codigo', 'd_asenta','id_codigocp')->get();
         //dd($datos);
         return response()->json($datos, '200');
     }

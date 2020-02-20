@@ -121,7 +121,7 @@ Route::get('nuevoregistro2', 'registrowebController@index' )->name('nuevoregistr
 Route::post('nuevoregistro2', 'registrowebController@create' )->name('nuevoregistro2');
 Route::post('get_colonia/{id}', 'registrowebController@get_colonia');
 Route::post('get_municipio/{id}', 'registrowebController@get_municipio');
-Route::post('get_cp/{id}', 'registrowebController@get_cp');
+Route::GET('get_cp/{id}', 'registrowebController@get_cp');
 
 
 

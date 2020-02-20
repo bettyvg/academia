@@ -295,3 +295,14 @@ Content-Transfer-Encoding: quoted-printable
 
 Contenido del correo
   
+[2020-02-17 23:41:34] local.DEBUG: Message-ID: <23e51f55d656284dd33f6c01d681025e@127.0.0.1>
+Date: Mon, 17 Feb 2020 23:41:34 +0000
+Subject: Mensaje Enviado
+From: Example <hello@example.com>
+To: betty.vargas.garcia@gmail.com
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Contenido del correo
+  

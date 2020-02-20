@@ -1,4 +1,4 @@
-<script src="<?php echo e(asset('js/registroweb.js')); ?>" charset="utf-8"></script>
+
 <!DOCTYPE html>
 <html>
 
@@ -9,7 +9,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/stylesnuevoresgistro.css')); ?>">
-
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+    <script src="<?php echo e(asset('js/registroweb.js')); ?>" charset="utf-8"></script>
 </head>
 
 <body>
@@ -60,6 +62,7 @@
                                                    placeholder="Apellido materno"
                                                    value="<?php echo e(old('apellido_materno')); ?>">
                                         </div>
+
                                         <div class="form-group" >
                                             <span class="spantext" style="color: darkgrey;">Fecha de nacimiento</span>
                                             <input name="fecha_nacimiento" id="fecha_nacimiento" type="date"
@@ -68,14 +71,14 @@
                                                    value="<?php echo e(old('fecha_nacimiento')); ?>">
                                         </div>
                                         <div class="form-group">
+                                            <span class="spantext" style="color: darkgrey;">Edad</span>
                                             <input name="edad" id="edad" type="text"
                                                    required="true"
                                                    class="form-control"
                                                    placeholder="Edad"
                                                    value="<?php echo e(old('edad')); ?>">
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
                                         <div class="form-group " required="true">
                                             <select name="genero" id="genero" class="form-control" value="<?php echo e(old('genero')); ?>">
                                                 <option value="none" selected="" disabled="" style="color: darkgrey;">Genero</option>
@@ -83,6 +86,8 @@
                                                 <option value="Femenino" <?php if(old('genero')=='Femenino'): ?> selected="selected"<?php endif; ?>>Femenino</option>
                                             </select>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
                                         <div class="form-group">
                                             <input name="rfc" id="rfc" type="text"
@@ -98,49 +103,34 @@
                                                    placeholder="Domicilio"
                                                    value="<?php echo e(old('domicilio')); ?>">
                                         </div>
-                                        <div class="form-group col-lg-3">
-                                            <input name="num_ext" id="num_ext" type="text"
-                                                   class="form-control"
-                                                   required="true" placeholder="Numero Ext."
-                                                   value="<?php echo e(old('num_ext')); ?>">
-                                        </div>
-                                        <div class="form-group col-lg-3">
-                                            <input name="num_int" id="num_int" type="text"
-                                                   class="form-control"
-                                                   required="true" placeholder="Numero Int."
-                                                   value="<?php echo e(old('num_int')); ?>">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="form-group">
                                                 <input name="cp" id="cp" type="text"
                                                        required="true"
                                                        placeholder="Código Postal"
                                                        class="form-control">
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="form-group">
                                                 <select required='true' class="form-control select2"  name="colonia" id="colonia" value="<?php echo e('colonia'); ?>">
                                                     <option value="none" selected="" disabled="">Seleccionar colonia..</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-4" >
-                                                <select required='true' class="form-control select2"  name="estado" id="estado" value="<?php echo e(old('cve_ent')); ?>">
-                                                    <option value="none" selected="" disabled="">Selecionar municipio..</option>
-                                                    <?php $__currentLoopData = $cat_municipios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $municipios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <option <?php if($municipios->cve_ent <='9'): ?> value="<?php echo e("0".$municipios->cve_ent); ?>"
-                                                                <?php if(old('cve_ent')=="0".$municipios->cve_ent): ?>selected="selected" <?php endif; ?>
-                                                                <?php else: ?> value="<?php echo e($municipios->cve_ent); ?>" <?php if(old('d_estado')==($municipios->cve_ent)): ?>selected="selected"<?php endif; ?>
-                                                                <?php endif; ?>><?php echo e(($municipios->D_mnpio)); ?></option>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </select>
+                                            <div class="form-group">
+                                            <select required='true' class="form-control select2"  name="estado" id="estado" value="<?php echo e(old('cve_ent')); ?>">
+                                                <option value="none" selected="" disabled="">Selecionar municipio..</option>
+                                                <?php $__currentLoopData = $cat_municipios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $municipios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option <?php if($municipios->cve_ent <='9'): ?> value="<?php echo e("0".$municipios->cve_ent); ?>"
+                                                            <?php if(old('cve_ent')=="0".$municipios->cve_ent): ?>selected="selected" <?php endif; ?>
+                                                            <?php else: ?> value="<?php echo e($municipios->cve_ent); ?>" <?php if(old('d_estado')==($municipios->cve_ent)): ?>selected="selected"<?php endif; ?>
+                                                            <?php endif; ?>><?php echo e(($municipios->D_mnpio)); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
                                             </div>
-                                        </div>
                                         <div class="form-group">
                                             <input name="correo" id="correo" type="email"
                                                    class="form-control"
                                                    required="true" placeholder="Correo"
                                                    value="<?php echo e(old('correo')); ?>">
                                         </div>
-
                                     </div>
                                 </div>
                                 <br>

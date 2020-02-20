@@ -1,7 +1,50 @@
 $(document).ready(function () {
     "use strict";
 
-    /*municipio*/
+/*Codigo Postal*/
+    $("#cp").keyup(function () {
+        var $cp = $("#cp").val();
+//console.log($cp);
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
+            url: "./get_cp/" + $cp,
+            dataType: 'json',
+            type: "GET",
+            data: $cp,
+            contentType: false,
+            processData: false,
+            error: function () {
+
+            },
+            success: function (data) {
+                console.log(data);
+               $("#colonia").empty();
+                $("#estado").empty();
+               $("#colonia").html('<option value="">Seleccionar colonia..</option>');
+                for (var i = 0; i < data.length; i++) {
+                    $("#colonia").append('<option value="' + data[i].id_codigocp + '">' + data[i].d_asenta + '</option>');
+                    $("#estado").html('<option value="' + data[i].D_mnpio + ' selected">' + data[i].D_mnpio + '</option>');
+                }
+           }
+        });
+    });
+
+
+    $("#fecha_nacimiento").change(function () {
+        var fecha = $("#fecha_nacimiento").val();
+        var dat = fecha.split('-');
+        var today_date = new Date();
+        var year_date = today_date.getFullYear();
+        var year_nacimiento = dat[0];
+        var month_nacimiento = dat[1];
+        var day_nacimiento = dat[2];
+        var edad = year_date - year_nacimiento;
+        //console.log(edad);
+            $("#edad").val(edad);
+    });
+
+
+    /*municipio
     $("#estado").change(function () {
         var estado = $("#estado").val();
 
@@ -26,9 +69,9 @@ $(document).ready(function () {
                 }
             }
         });
-    });
+    });*/
 
-    /*colonia*/
+    /*colonia
     $("#municipio").change(function () {
         var colonia = $("#municipio").val();
 
@@ -55,9 +98,9 @@ $(document).ready(function () {
                 }
             }
         });
-    });
+    });*/
 
-    /*Código Postal*/
+    /*Código Postal
     $("#colonia").change(function () {
         var cp = $("#colonia").val();
         //console.log(cp);
@@ -81,9 +124,9 @@ $(document).ready(function () {
             }
         });
     });
+*/
 
-
-    function fr_calculaRFC( RFC, HOMOCLAVE, NOMBRE1, NOMBRE2, APAT, AMAT, FECHA, TIPO_EVENTO ) {
+  function fr_calculaRFC( RFC, HOMOCLAVE, NOMBRE1, NOMBRE2, APAT, AMAT, FECHA, TIPO_EVENTO ) {
 
         var persona_tipo = jQuery('#' + TIPO_EVENTO).val();
 
@@ -129,7 +172,7 @@ $(document).ready(function () {
             }
         }
     }
-
+/*
     function fr_calculaRFC_PM( RFC, HOMOCLAVE, NOMBRE1, FECHA ) {
         if( jQuery('#'+RFC).val() == '' ) {
             var nombre_uno = jQuery('#'+NOMBRE1).val();
@@ -160,9 +203,7 @@ $(document).ready(function () {
 
 
 
-
-
-
+*/
 
 
 

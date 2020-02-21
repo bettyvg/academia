@@ -172,7 +172,7 @@ $(document).ready(function () {
             }
         }
     }
-/*
+
     function fr_calculaRFC_PM( RFC, HOMOCLAVE, NOMBRE1, FECHA ) {
         if( jQuery('#'+RFC).val() == '' ) {
             var nombre_uno = jQuery('#'+NOMBRE1).val();
@@ -203,7 +203,7 @@ $(document).ready(function () {
 
 
 
-*/
+
 
 
 

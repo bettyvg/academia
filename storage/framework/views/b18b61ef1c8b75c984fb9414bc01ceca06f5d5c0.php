@@ -12,6 +12,7 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
     <script src="<?php echo e(asset('js/registroweb.js')); ?>" charset="utf-8"></script>
+    <script src="<?php echo e(asset('js/cal_rfc_curp.js')); ?>" charset="utf-8"></script>
 </head>
 
 <body>
@@ -32,7 +33,7 @@
                             <form>
                                 <h5>Tienes empresa o eres emprendedor</h5>
                                 <div class="form-group " required="true">
-                                    <select name="regimen_fiscal" id="regimen_fiscal" class="form-control" value="<?php echo e(old('genero')); ?>">
+                                    <select name="regimen_fiscal" id="regimen_fiscal" class="form-control" value="<?php echo e(old('regimen_fiscal')); ?>">
                                         <option value="none" selected="" disabled="" style="color: darkgrey;">Seleccionar..</option>
                                         <option value="Emprendedor" <?php if(old('regimen_fiscal')=='Emprendedor'): ?> selected="selected"<?php endif; ?>>Emprendedor</option>
                                         <option value="Empresario" <?php if(old('regimen_fiscal')=='Empresario'): ?> selected="selected"<?php endif; ?>>Empresario</option>
@@ -272,9 +273,11 @@
                                         <div class="payment-adress">
                                             <br>
                                             <button type="submit"
-                                                    class="btn btn-primary waves-effect waves-light" id="guardar">
+                                                             class="btn btn-primary waves-effect waves-light" id="guardar">
                                                 Enviar
                                             </button>
+
+
                                             <input type="hidden" name="_token" id="csrf-token" value="<?php echo e(csrf_token()); ?>">
                                         </div>
                                     </div>
@@ -291,6 +294,9 @@
     </div>
 </form>
 
+<button  class="btn btn-primary waves-effect waves-light" id="btn_rfc">
+    calcula rfc
+</button>
 
     </div>
 </div>

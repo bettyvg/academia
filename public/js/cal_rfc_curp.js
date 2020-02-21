@@ -12,11 +12,12 @@ $("#btn_rfc").click(function () {
         var sexo = "H";  //h =  hombre  m= mujer
         var estado = "BS";  //falta validacion de estados*/
 
-        var ap_paterno = document.getElementById("ap_paterno").value;
-        // var ap_materno = document.getElementById("ap_materno").value;
-        // var nombre = document.getElementById("nombre").value;
-        // var rfc = document.getElementById("datepicker").value;
-        // var sexo = document.getElementById("sexo").value;
+        var ap_paterno = document.getElementById("apellido_paterno").value;
+        var ap_materno = document.getElementById("apellido_materno").value;
+        var nombre = document.getElementById("nombre").value;
+        var rfc = document.getElementById("fecha_nacimiento").value;
+        var sexo = document.getElementById("genero").value;
+        var estado = "BS";
 
         // var estado = document.getElementById("estado").value;
         var dteNacimiento = rfc;

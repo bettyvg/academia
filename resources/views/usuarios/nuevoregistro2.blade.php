@@ -82,8 +82,8 @@
                                         <div class="form-group " required="true">
                                             <select name="genero" id="genero" class="form-control" value="{{old('genero')}}">
                                                 <option value="none" selected="" disabled="" style="color: darkgrey;">Genero</option>
-                                                <option value="Masculino" @if(old('genero')=='Masculino') selected="selected"@endif>Masculino</option>
-                                                <option value="Femenino" @if(old('genero')=='Femenino') selected="selected"@endif>Femenino</option>
+                                                <option value="M" @if(old('genero')=='Masculino') selected="selected"@endif>Masculino</option>
+                                                <option value="F" @if(old('genero')=='Femenino') selected="selected"@endif>Femenino</option>
                                             </select>
                                         </div>
                                     </div>

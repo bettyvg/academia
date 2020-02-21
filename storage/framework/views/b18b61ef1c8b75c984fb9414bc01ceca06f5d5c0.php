@@ -83,8 +83,8 @@
                                         <div class="form-group " required="true">
                                             <select name="genero" id="genero" class="form-control" value="<?php echo e(old('genero')); ?>">
                                                 <option value="none" selected="" disabled="" style="color: darkgrey;">Genero</option>
-                                                <option value="Masculino" <?php if(old('genero')=='Masculino'): ?> selected="selected"<?php endif; ?>>Masculino</option>
-                                                <option value="Femenino" <?php if(old('genero')=='Femenino'): ?> selected="selected"<?php endif; ?>>Femenino</option>
+                                                <option value="M" <?php if(old('genero')=='Masculino'): ?> selected="selected"<?php endif; ?>>Masculino</option>
+                                                <option value="F" <?php if(old('genero')=='Femenino'): ?> selected="selected"<?php endif; ?>>Femenino</option>
                                             </select>
                                         </div>
                                     </div>

@@ -1,5 +1,21 @@
 $(document).ready(function () {
     "use strict";
+$("#regimen_fiscal").change(function () {
+
+    var regimen_fiscal =  $("#regimen_fiscal").val();
+
+
+    if(regimen_fiscal == 'Empresario'){
+        $("#datos_empresa").show();
+    }
+
+    if(regimen_fiscal == 'Emprendedor'){
+        $("#datos_empresa").hide();
+    }
+
+})
+
+
 
 /*Codigo Postal*/
     $("#cp").keyup(function () {
@@ -19,11 +35,11 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                $("#colonia").empty();
-                $("#estado").empty();
+                $("#municipio").empty();
                $("#colonia").html('<option value="">Seleccionar colonia..</option>');
                 for (var i = 0; i < data.length; i++) {
                     $("#colonia").append('<option value="' + data[i].id_codigocp + '">' + data[i].d_asenta + '</option>');
-                    $("#estado").html('<option value="' + data[i].D_mnpio + ' selected">' + data[i].D_mnpio + '</option>');
+                    $("#municipio").html('<option value="' + data[i].D_mnpio + ' selected">' + data[i].D_mnpio + '</option>');
                 }
            }
         });
@@ -42,6 +58,8 @@ $(document).ready(function () {
         //console.log(edad);
             $("#edad").val(edad);
     });
+
+
 
 
     /*municipio

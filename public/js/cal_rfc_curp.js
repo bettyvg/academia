@@ -12,12 +12,17 @@ $("#btn_rfc").click(function () {
         var sexo = "H";  //h =  hombre  m= mujer
         var estado = "BS";  //falta validacion de estados*/
 
+        var fecha1 = $("#fecha_nacimiento").val();
+        var fecha_nacimiento = fecha1.split('-');
+        var ano_nacimiento = fecha_nacimiento[0].substr(2,3)
+        //console.log(fecha_nacimiento);
+
         var ap_paterno = document.getElementById("apellido_paterno").value;
         var ap_materno = document.getElementById("apellido_materno").value;
         var nombre = document.getElementById("nombre").value;
-        var rfc = document.getElementById("fecha_nacimiento").value;
+        var rfc = ano_nacimiento + fecha_nacimiento[1] + fecha_nacimiento[2];
         var sexo = document.getElementById("genero").value;
-        var estado = "BS";
+        var estado = document.getElementById("estado").value;
 
         // var estado = document.getElementById("estado").value;
         var dteNacimiento = rfc;
@@ -57,10 +62,8 @@ $("#btn_rfc").click(function () {
 
         fnCalculaCURP(nombre_f.toUpperCase(), ap_pat_f.toUpperCase(), ap_mat_f.toUpperCase(), dteNacimiento, sexo, estado);
 
-        // document.getElementById("rfc").value = rfc;
+        document.getElementById("rfc").value = rfc;
         console.log('rfc: ', rfc)
-
-
         return false;
     }
 
@@ -1300,7 +1303,7 @@ $("#btn_rfc").click(function () {
 
         pstCURP = pstCURP + pstDigVer;
 
-        // document.getElementById("curp").value = pstCURP;
+        document.getElementById("curp").value = pstCURP;
 
         console.log('curp:', pstCURP)
 

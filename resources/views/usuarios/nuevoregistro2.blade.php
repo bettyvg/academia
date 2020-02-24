@@ -184,14 +184,6 @@
                                             <H3>Datos de la empresa</H3>
                                             <br>
                                             <div class="row">
-                                                <div class="form-group col-md-4">
-                                                    <br>
-                                                    <input name="rfc_empresa" id="rfc_empresa" type="text"
-                                                           required="true"
-                                                           class="form-control"
-                                                           placeholder="RFC"
-                                                           value="{{old('rfc')}}">
-                                                </div>
                                                 <div class="form-group col-md-8">
                                                     <br>
                                                     <input name="nombre_empresa" id="nombre_empresa" type="text"
@@ -200,8 +192,24 @@
                                                            placeholder="Nombre de la empresa"
                                                            value="{{old('nombre_empresa')}}">
                                                 </div>
+                                                <div class="form-group col-md-4">
+                                                    <span class="spantext" style="color: darkgrey;">Fecha de nacimiento</span>
+                                                    <input name="fecha_creacion_empresa" id="fecha_creacion_empresa" type="date"
+                                                           class="form-control"
+                                                           required="true"
+                                                           value="{{old('fecha_nacimiento')}}">
+                                                </div>
+
                                             </div>
                                             <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <br>
+                                                    <input name="rfc_empresa" id="rfc_empresa" type="text"
+                                                           required="true"
+                                                           class="form-control"
+                                                           placeholder="RFC"
+                                                           value="{{old('rfc')}}">
+                                                </div>
                                                 <div class="form-group col-md-4">
                                                     <br>
                                                     <input name="domicilio_empresa" id="domicilio_empresa" type="text"
@@ -363,6 +371,9 @@
 </form>
 
 <button class="btn btn-primary waves-effect waves-light" id="btn_rfc">
+    calcula rfc
+</button>
+<button class="btn btn-primary waves-effect waves-light" id="btn_rfc_emp">
     calcula rfc
 </button>
 

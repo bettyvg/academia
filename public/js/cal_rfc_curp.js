@@ -4,6 +4,10 @@ $("#btn_rfc").click(function () {
     calcula();
 });
 
+    $("#btn_rfc_emp").click(function () {
+        calcula_PM();
+    });
+
     function calcula() {
         /*var ap_paterno = "ESCAMILLA";
         var ap_materno = "HERRERA";
@@ -61,6 +65,60 @@ $("#btn_rfc").click(function () {
         rfc = RFCDigitoVerificador(rfc);
 
         fnCalculaCURP(nombre_f.toUpperCase(), ap_pat_f.toUpperCase(), ap_mat_f.toUpperCase(), dteNacimiento, sexo, estado);
+
+        document.getElementById("rfc").value = rfc;
+        console.log('rfc: ', rfc)
+        return false;
+    }
+    function calcula_PM() {
+        var nombre_empresa = "Fondo Jalisco de Fomento Empresarial";
+        //var rfc = "850618";
+        //var estado = "BS";  //falta validacion de estados*/
+
+        var fecha_creacion1 = $("#fecha_creacion_empresa").val();
+        var fecha_creacion2 = fecha_creacion1.split('-');
+        var ano_creacion = fecha_creacion2[0].substr(2,3)
+        var fecha_creacion = ano_creacion + fecha_creacion2[1] + fecha_creacion2[2];
+        //console.log(fecha_nacimiento);
+
+
+        //var nombre = document.getElementById("nombre_empresa").value;
+        var nombre = nombre_empresa;
+        var rfc = ano_creacion + fecha_creacion[1] + fecha_creacion[2];
+
+
+        // var estado = document.getElementById("estado").value;
+        var dteNacimiento = rfc;
+
+        //FILTRA ACENTOS
+        var nombre_f = RFCFiltraAcentos(nombre.toLowerCase());
+        //GUARDA NOMBRE ORIGINAL PARA GENERAR HOMOCLAVE
+        var nombre_orig = nombre_f;
+        //ELIMINA PALABRAS SOBRANTES DE LOS NOMBRES
+        nombre_f = RFCFiltraNombres(nombre_f);
+
+       /* if (ap_pat_f.length > 0 && ap_mat_f.length > 0) {
+            if (ap_pat_f.length < 3) {
+                rfc = RFCApellidoCorto(ap_pat_f, ap_mat_f, nombre_f);
+            } else {
+                rfc = RFCArmalo(ap_pat_f, ap_mat_f, nombre_f);
+            }
+        }
+
+        if (ap_pat_f.length == 0 && ap_mat_f.length > 0) {
+            rfc = RFCUnApellido(nombre_f, ap_mat_f);
+        }
+        if (ap_pat_f.length > 0 && ap_mat_f.length == 0) {
+            rfc = RFCUnApellido(nombre_f, ap_pat_f);
+        }*/
+
+        rfc = RFCQuitaProhibidas(rfc);
+
+        rfc = rfc.toUpperCase() + dteNacimiento + homonimia(nombre_orig);
+
+        rfc = RFCDigitoVerificador(rfc);
+
+        fnCalculaCURP(nombre_f.toUpperCase(), dteNacimiento);
 
         document.getElementById("rfc").value = rfc;
         console.log('rfc: ', rfc)
@@ -1310,6 +1368,49 @@ $("#btn_rfc").click(function () {
         return pstCURP
     } // End if
 
-    });
+
+
+    //CALCULO RFC PERSONA MORAL
+
+    function fr_calculaRFC_PM() {
+
+          var nombre_empresa = "Fondo Jalisco de Fomento Empresarial";
+          var rfc = "850618";
+        //var estado = "BS";  //falta validacion de estados*/
+
+        var fecha_creacion1 = $("#fecha_creacion_empresa").val();
+        var fecha_creacion2 = fecha_creacion1.split('-');
+        var ano_creacion = fecha_creacion2[0].substr(2,3)
+        var fecha_creacion = ano_creacion + fecha_creacion2[1] + fecha_creacion2[2];
+
+
+        if( jQuery(rfc).val() == '' ) {
+            var nombre_uno = nombre_empresa;
+            var fecha      = fecha_creacion;
+
+            if( nombre_uno == '' ) {
+                alert('El primer nombre es necesario');
+                jQuery(nombre_uno).focus();
+            } else if( fecha == '' ) {
+                alert('La fecha de nacimiento es necesaria');
+                jQuery(fecha).focus();
+            } else {
+
+                jQuery.post(FR_PATH,{
+                    fr_cmd: 'getRFC_PM',
+                    Nombre: nombre_uno,
+                    fecha : fecha,
+                    PM    : 'true'
+                }, function(data) {
+                    var arr = data.split("|");
+                    jQuery('#'+RFC).val(arr[0]);
+                    jQuery('#'+HOMOCLAVE).val(arr[1]);
+                },'text' );
+            }
+        }
+    }
+
+
+});
 
 

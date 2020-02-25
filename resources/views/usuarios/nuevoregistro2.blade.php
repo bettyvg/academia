@@ -349,10 +349,13 @@
                                                             id="guardar">
                                                         Enviar
                                                     </button>
-
-
                                                     <input type="hidden" name="_token" id="csrf-token"
                                                            value="{{csrf_token()}}">
+                                                </div>
+                                                <div align="center">// Agregado por Carlos Villalobos El 25/02/2020
+                                                                    @if(isset($alert))
+                                                                    <img src="{{asset("img/documentos/".$alert->qr)}}">
+                                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

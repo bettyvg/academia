@@ -16,12 +16,17 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use \Illuminate\Support\Facades\Redirect;
+use SimpleSoftwareIO\QrCode\Facades\QrCode; /* Agregado por Carlos Villalobos el 25/02/2020*/
 
 class registrowebController extends Controller
 {
     public function index()
     {
         $cat_entidades = Cat_entidades::all();
+        $name = date("YmdHis") . uniqid("", true) . '.png';//agregado el 25/02/2020 por Carlos Villalobos
+        QrCode::format('png')->size(399)->generate($reg->id_registro,public_path('img/documentos/'.$name));//agregado el 25/02/2020 por Carlos Villalobos
+        $reg->qr=$name;//agregado el 25/02/2020 por Carlos Villalobos
+        $reg->save();//agregado el 25/02/2020 por Carlos Villalobos
         //$cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
         $cat_municipios = Cat_codigospostales::select('d_estado','c_estado','D_mnpio')->where('c_estado', '14')->groupBy('d_estado','c_estado','D_mnpio')->get();
         $cat_codigospostales = Cat_codigospostales::select('d_estado')->groupBy('d_estado')->get();

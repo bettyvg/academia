@@ -39,11 +39,40 @@ $("#regimen_fiscal").change(function () {
                $("#colonia").html('<option value="">Seleccionar colonia..</option>');
                 for (var i = 0; i < data.length; i++) {
                     $("#colonia").append('<option value="' + data[i].id_codigocp + '">' + data[i].d_asenta + '</option>');
-                    $("#municipio").html('<option value="' + data[i].D_mnpio + ' selected">' + data[i].D_mnpio + '</option>');
+                    $("#municipio").html('<option value="' + data[i].D_mnpio + ' " selected>' + data[i].D_mnpio + '</option>');
                 }
            }
         });
     });
+
+    /*Codigo Postal Empresa*/
+    $("#cp_rep_empresa").keyup(function () {
+        var $cp = $("#cp_rep_empresa").val();
+//console.log($cp);
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
+            url: "./get_cp/" + $cp,
+            dataType: 'json',
+            type: "GET",
+            data: $cp,
+            contentType: false,
+            processData: false,
+            error: function () {
+
+            },
+            success: function (data) {
+                console.log(data);
+                $("#colonia_empresa").empty();
+                $("#municipio_empresa").empty();
+                $("#colonia_empresa").html('<option value="">Seleccionar colonia..</option>');
+                for (var i = 0; i < data.length; i++) {
+                    $("#colonia_empresa").append('<option value="' + data[i].id_codigocp + '">' + data[i].d_asenta + '</option>');
+                    $("#municipio_empresa").html('<option value="' + data[i].D_mnpio + ' " selected>' + data[i].D_mnpio + '</option>');
+                }
+            }
+        });
+    });
+
 
 
     $("#fecha_nacimiento").change(function () {

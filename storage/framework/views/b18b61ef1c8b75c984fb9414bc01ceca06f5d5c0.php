@@ -187,14 +187,14 @@
                                             <div class="row">
                                                 <div class="form-group col-md-8">
                                                     <br>
-                                                    <input name="nombre_empresa" id="nombre_empresa" type="text"
+                                                    <input name="razon_social" id="razon_social" type="text"
                                                            required="true"
                                                            class="form-control"
                                                            placeholder="Nombre de la empresa"
-                                                           value="<?php echo e(old('nombre_empresa')); ?>">
+                                                           value="<?php echo e(old('razon_social')); ?>">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <span class="spantext" style="color: darkgrey;">Fecha de nacimiento</span>
+                                                    <span class="spantext" style="color: darkgrey;">Fecha de creación de la empresa</span>
                                                     <input name="fecha_creacion_empresa" id="fecha_creacion_empresa" type="date"
                                                            class="form-control"
                                                            required="true"
@@ -219,54 +219,36 @@
                                                            placeholder="Domicilio"
                                                            value="<?php echo e(old('domicilio_empresa')); ?>">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <br>
-                                                    <input name="num_ext_empresa" id="num_ext_empresa" type="text"
-                                                           required="true"
-                                                           class="form-control"
-                                                           placeholder="Numero Exterior."
-                                                           value="<?php echo e(old('num_ext_empresa')); ?>">
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <br>
-                                                    <input name="num_int_empresa" id="num_int_empresa" type="text"
-                                                           required="true"
-                                                           class="form-control"
-                                                           placeholder="Numero interior."
-                                                           value="<?php echo e(old('num_int_empresa')); ?>">
-                                                </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <input name="cp" id="cp" type="text"
-                                                           required="true"
-                                                           placeholder="Código Postal"
-                                                           class="form-control">
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select required='true' class="form-control select2" name="colonia"
-                                                            id="colonia" value="<?php echo e('colonia'); ?>">
-                                                        <option value="none" selected="" disabled="">Seleccionar
-                                                            colonia..
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select required='true' class="form-control select2" name="estado"
-                                                            id="estado" value="<?php echo e(old('cve_ent')); ?>">
-                                                        <option value="none" selected="" disabled="">Selecionar
-                                                            municipio..
-                                                        </option>
-                                                        <?php $__currentLoopData = $cat_municipios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $municipios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <option <?php if($municipios->cve_ent <='9'): ?> value="<?php echo e("0".$municipios->cve_ent); ?>"
-                                                                    <?php if(old('cve_ent')=="0".$municipios->cve_ent): ?>selected="selected"
-                                                                    <?php endif; ?>
-                                                                    <?php else: ?> value="<?php echo e($municipios->cve_ent); ?>"
-                                                                    <?php if(old('d_estado')==($municipios->cve_ent)): ?>selected="selected"<?php endif; ?>
-                                                                    <?php endif; ?>><?php echo e(($municipios->D_mnpio)); ?></option>
-                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    </select>
-                                                </div>
+                                            <div class="form-group">
+                                                <input name="cp_rep_empresa" id="cp_rep_empresa" type="text"
+                                                       required="true"
+                                                       placeholder="Código Postal"
+                                                       class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <select required='true' class="form-control select2" name="colonia_empresa"
+                                                        id="colonia_empresa" value="<?php echo e('colonia'); ?>">
+                                                    <option value="none" selected="" disabled="">Seleccionar
+                                                        colonia..
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <select required='true' class="form-control select2"
+                                                        name="municipio_empresa" id="municipio_empresa" value="<?php echo e(old('cve_ent')); ?>">
+                                                    <option value="none" selected="" disabled="">Selecionar
+                                                        municipio..
+                                                    </option>
+                                                    <?php $__currentLoopData = $cat_municipios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $municipios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option <?php if($municipios->cve_ent <='9'): ?> value="<?php echo e("0".$municipios->cve_ent); ?>"
+                                                                <?php if(old('cve_ent')=="0".$municipios->cve_ent): ?>selected="selected"
+                                                                <?php endif; ?>
+                                                                <?php else: ?> value="<?php echo e($municipios->cve_ent); ?>"
+                                                                <?php if(old('d_estado')==($municipios->cve_ent)): ?>selected="selected"<?php endif; ?>
+                                                                <?php endif; ?>><?php echo e(($municipios->D_mnpio)); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </select>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4">
@@ -326,8 +308,6 @@
                                                     </select>
                                                 </div>
                                             </div>
-
-
                                             <div class="row">
 
                                                 <div class="col-md-4">
@@ -350,10 +330,13 @@
                                                             id="guardar">
                                                         Enviar
                                                     </button>
-
-
                                                     <input type="hidden" name="_token" id="csrf-token"
                                                            value="<?php echo e(csrf_token()); ?>">
+                                                </div>
+                                                <div align="center"><!-- Agregado por Carlos Villalobos El 25/02/2020-->
+                                                                    <?php if(isset($alert)): ?>
+                                                                    <img src="<?php echo e(asset("img/documentos/".$alert->qr)); ?>">
+                                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>

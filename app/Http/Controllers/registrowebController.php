@@ -23,10 +23,6 @@ class registrowebController extends Controller
     public function index()
     {
         $cat_entidades = Cat_entidades::all();
-        $name = date("YmdHis") . uniqid("", true) . '.png';//agregado el 25/02/2020 por Carlos Villalobos
-        QrCode::format('png')->size(399)->generate($reg->id_registro,public_path('img/documentos/'.$name));//agregado el 25/02/2020 por Carlos Villalobos
-        $reg->qr=$name;//agregado el 25/02/2020 por Carlos Villalobos
-        $reg->save();//agregado el 25/02/2020 por Carlos Villalobos
         //$cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
         $cat_municipios = Cat_codigospostales::select('d_estado','c_estado','D_mnpio')->where('c_estado', '14')->groupBy('d_estado','c_estado','D_mnpio')->get();
         $cat_codigospostales = Cat_codigospostales::select('d_estado')->groupBy('d_estado')->get();
@@ -87,7 +83,15 @@ class registrowebController extends Controller
 
     public function create()
     {
-        registrowebModel::create(request()->all());/*Metodo create*/
+        $reg =  registrowebModel::create(request()->all());//agregado el 25/02/2020 por Carlos Villalobos
+        $name = date("YmdHis") . uniqid("", true) . '.png';//agregado el 25/02/2020 por Carlos Villalobos
+        QrCode::format('png')->size(399)->generate($reg->id_registro,public_path('img/documentos/'.$name));//agregado el 25/02/2020 por Carlos Villalobos
+        $reg->qr=$name;//agregado el 25/02/2020 por Carlos Villalobos
+        $reg->save();//agregado el 25/02/2020 por Carlos Villalobos
+
+
+       //registrowebModel::create(request()->all());/*Metodo create*/
+
 
         Mail::to('betty.vargas.garcia@gmail.com')->send(new MensajeEnviado);
 

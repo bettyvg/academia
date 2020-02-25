@@ -186,14 +186,14 @@
                                             <div class="row">
                                                 <div class="form-group col-md-8">
                                                     <br>
-                                                    <input name="nombre_empresa" id="nombre_empresa" type="text"
+                                                    <input name="razon_social" id="razon_social" type="text"
                                                            required="true"
                                                            class="form-control"
                                                            placeholder="Nombre de la empresa"
-                                                           value="{{old('nombre_empresa')}}">
+                                                           value="{{old('razon_social')}}">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <span class="spantext" style="color: darkgrey;">Fecha de nacimiento</span>
+                                                    <span class="spantext" style="color: darkgrey;">Fecha de creación de la empresa</span>
                                                     <input name="fecha_creacion_empresa" id="fecha_creacion_empresa" type="date"
                                                            class="form-control"
                                                            required="true"
@@ -218,54 +218,36 @@
                                                            placeholder="Domicilio"
                                                            value="{{old('domicilio_empresa')}}">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <br>
-                                                    <input name="num_ext_empresa" id="num_ext_empresa" type="text"
-                                                           required="true"
-                                                           class="form-control"
-                                                           placeholder="Numero Exterior."
-                                                           value="{{old('num_ext_empresa')}}">
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <br>
-                                                    <input name="num_int_empresa" id="num_int_empresa" type="text"
-                                                           required="true"
-                                                           class="form-control"
-                                                           placeholder="Numero interior."
-                                                           value="{{old('num_int_empresa')}}">
-                                                </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <input name="cp" id="cp" type="text"
-                                                           required="true"
-                                                           placeholder="Código Postal"
-                                                           class="form-control">
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select required='true' class="form-control select2" name="colonia"
-                                                            id="colonia" value="{{'colonia'}}">
-                                                        <option value="none" selected="" disabled="">Seleccionar
-                                                            colonia..
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select required='true' class="form-control select2" name="estado"
-                                                            id="estado" value="{{old('cve_ent')}}">
-                                                        <option value="none" selected="" disabled="">Selecionar
-                                                            municipio..
-                                                        </option>
-                                                        @foreach($cat_municipios as $municipios)
-                                                            <option @if($municipios->cve_ent <='9') value="{{"0".$municipios->cve_ent}}"
-                                                                    @if(old('cve_ent')=="0".$municipios->cve_ent)selected="selected"
-                                                                    @endif
-                                                                    @else value="{{$municipios->cve_ent}}"
-                                                                    @if(old('d_estado')==($municipios->cve_ent))selected="selected"@endif
-                                                                    @endif>{{($municipios->D_mnpio)}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                            <div class="form-group">
+                                                <input name="cp_rep_empresa" id="cp_rep_empresa" type="text"
+                                                       required="true"
+                                                       placeholder="Código Postal"
+                                                       class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <select required='true' class="form-control select2" name="colonia_empresa"
+                                                        id="colonia_empresa" value="{{'colonia'}}">
+                                                    <option value="none" selected="" disabled="">Seleccionar
+                                                        colonia..
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <select required='true' class="form-control select2"
+                                                        name="municipio_empresa" id="municipio_empresa" value="{{old('cve_ent')}}">
+                                                    <option value="none" selected="" disabled="">Selecionar
+                                                        municipio..
+                                                    </option>
+                                                    @foreach($cat_municipios as $municipios)
+                                                        <option @if($municipios->cve_ent <='9') value="{{"0".$municipios->cve_ent}}"
+                                                                @if(old('cve_ent')=="0".$municipios->cve_ent)selected="selected"
+                                                                @endif
+                                                                @else value="{{$municipios->cve_ent}}"
+                                                                @if(old('d_estado')==($municipios->cve_ent))selected="selected"@endif
+                                                                @endif>{{($municipios->D_mnpio)}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4">
@@ -325,8 +307,6 @@
                                                     </select>
                                                 </div>
                                             </div>
-
-
                                             <div class="row">
 
                                                 <div class="col-md-4">
@@ -352,7 +332,7 @@
                                                     <input type="hidden" name="_token" id="csrf-token"
                                                            value="{{csrf_token()}}">
                                                 </div>
-                                                <div align="center">// Agregado por Carlos Villalobos El 25/02/2020
+                                                <div align="center"><!-- Agregado por Carlos Villalobos El 25/02/2020-->
                                                                     @if(isset($alert))
                                                                     <img src="{{asset("img/documentos/".$alert->qr)}}">
                                                                     @endif

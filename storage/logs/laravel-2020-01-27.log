@@ -1,8 +1,0 @@
-[2020-01-27 16:32:52] local.ERROR: Allowed memory size of 536870912 bytes exhausted (tried to allocate 29368320 bytes) {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Allowed memory size of 536870912 bytes exhausted (tried to allocate 29368320 bytes) at C:\\laragon\\www\\academia\\storage\\framework\\views\\5177834c574c7fb06832b13b4714704826ba4edc.php:509)
-[stacktrace]
-#0 {main}
-"} 
-[2020-01-27 22:52:02] local.ERROR: Allowed memory size of 536870912 bytes exhausted (tried to allocate 31465472 bytes) {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Allowed memory size of 536870912 bytes exhausted (tried to allocate 31465472 bytes) at C:\\laragon\\www\\academia\\storage\\framework\\views\\5177834c574c7fb06832b13b4714704826ba4edc.php:501)
-[stacktrace]
-#0 {main}
-"} 

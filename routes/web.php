@@ -18,8 +18,15 @@ Route::get('inicio2', 'HomeController@inicio2')->name('inicio2');
 Route::get('alumnos', 'HomeController@alumnos')->name('alumnos');
 //Route::post('usuarios', 'HomeController@usuarios')->name('usuarios');
 //Route::get('usuarios', 'HomeController@usuarios')->name('usuarios');
+
+//Registro Platicas Informativas
 Route::get('registroplatica', 'RegistroController@vinculacion')->name('registroplatica');
 Route::post('registroplatica', 'RegistroController@registro')->name('registroplatica');
+Route::get('edit_registrop/{id}', 'RegistroController@edit')->name('edit_registrop');
+Route::post('edit_registrop/{id}', 'RegistroController@update')->name('edit_registrop.update');
+
+
+
 Route::get('testubica', 'HomeController@testubica')->name('testubica');
 Route::get('calendario', 'HomeController@calendario')->name('calendario');
 Route::get('cursos', 'HomeController@cursos')->name('cursos');

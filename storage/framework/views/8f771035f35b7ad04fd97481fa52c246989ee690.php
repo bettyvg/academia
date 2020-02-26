@@ -1,19 +1,19 @@
-@extends('main')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
     <section>
-        @if(isset($alert))
+        <?php if(isset($alert)): ?>
             <div class="row" style="padding: 10px; margin: 30px 20px 0px 20px">
                 <div class="col-12">
                     <div  class="alert alert-info">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        {{$alert->message}}
+                        <?php echo e($alert->message); ?>
+
                     </div>
                 </div>
-                @endif
-        <form action="{{route('registroplatica')}}" method="post" class="form-horizontal">
+                <?php endif; ?>
+        <form action="<?php echo e(route('registroplatica')); ?>" method="post" class="form-horizontal">
 
              <div class="single-pro-review-area mt-t-30 mg-b-15" style="margin: 40px 0px 0px 0px">
              <div class="container-fluid ">
@@ -41,40 +41,40 @@
                                                                            required="true"
                                                                            class="form-control"
                                                                            placeholder="Nombre"
-                                                                           value="{{old('nombre')}}">
+                                                                           value="<?php echo e(old('nombre')); ?>">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input name="apellido_paterno" id="apellido_paterno" type="text"
                                                                            required="true"
                                                                            class="form-control"
                                                                            placeholder="Apellido paterno"
-                                                                           value="{{old('apellido_paterno')}}">
+                                                                           value="<?php echo e(old('apellido_paterno')); ?>">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input name="apellido_materno" id="apellido_materno" type="text"
                                                                            required="true"
                                                                            class="form-control"
                                                                            placeholder="Apellido materno"
-                                                                           value="{{old('apellido_materno')}}">
+                                                                           value="<?php echo e(old('apellido_materno')); ?>">
                                                                 </div>
                                                                 <div class="form-group " required="true">
-                                                                    <select name="genero" id="genero" class="form-control" value="{{old('genero')}}">
+                                                                    <select name="genero" id="genero" class="form-control" value="<?php echo e(old('genero')); ?>">
                                                                         <option value="none" selected="" disabled="" style="color: darkgrey;">Genero</option>
-                                                                        <option value="Masculino" @if(old('genero')=='Masculino') selected="selected"@endif>Masculino</option>
-                                                                        <option value="Femenino" @if(old('genero')=='Femenino') selected="selected"@endif>Femenino</option>
+                                                                        <option value="Masculino" <?php if(old('genero')=='Masculino'): ?> selected="selected"<?php endif; ?>>Masculino</option>
+                                                                        <option value="Femenino" <?php if(old('genero')=='Femenino'): ?> selected="selected"<?php endif; ?>>Femenino</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <span class="spantext" style="color: darkgrey;">Pais de nacimiento</span>
-                                                                    <select class="form-control select2"  name="id" id="id" value="{{'id_pais'}}">
+                                                                    <select class="form-control select2"  name="id" id="id" value="<?php echo e('id_pais'); ?>">
                                                                         <option value="146" selected="" >México</option>
-                                                                        @foreach($cat_pais as $pais)
-                                                                            <option value="{{($pais->id)}}" @if(old('id')==$pais->id) selected="selected"@endif>{{($pais->nombre)}}</option>
-                                                                        @endforeach
+                                                                        <?php $__currentLoopData = $cat_pais; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pais): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <option value="<?php echo e(($pais->id)); ?>" <?php if(old('id')==$pais->id): ?> selected="selected"<?php endif; ?>><?php echo e(($pais->nombre)); ?></option>
+                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group" >
-                                                                    <select required='true' class="form-control select2"  name="cve_ent" id="cve_ent" value="{{old('cve_ent')}}">
+                                                                    <select required='true' class="form-control select2"  name="cve_ent" id="cve_ent" value="<?php echo e(old('cve_ent')); ?>">
                                                                         <option value="none" selected="" disabled="">Estado de nacimiento</option>
 
                                                                     </select>
@@ -83,11 +83,11 @@
 
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
-                                                                    <select required='true' class="form-control select2"  name="cve_compuesta_ent_mun" id="cve_compuesta_ent_mun" value="{{'cve_compuesta_ent_mun'}}">
+                                                                    <select required='true' class="form-control select2"  name="cve_compuesta_ent_mun" id="cve_compuesta_ent_mun" value="<?php echo e('cve_compuesta_ent_mun'); ?>">
                                                                         <option value="none" selected="" disabled="">Municipio de donde nos visita</option>
-                                                                        @foreach($cat_municipios as $municipios)
-                                                                            <option value="{{($municipios->cve_compuesta_ent_mun)}}" @if(old('cve_compuesta_ent_mun')==$municipios->cve_compuesta_ent_mun) selected="selected"@endif>{{($municipios->nom_mun)}}</option>
-                                                                        @endforeach
+                                                                        <?php $__currentLoopData = $cat_municipios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $municipios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <option value="<?php echo e(($municipios->cve_compuesta_ent_mun)); ?>" <?php if(old('cve_compuesta_ent_mun')==$municipios->cve_compuesta_ent_mun): ?> selected="selected"<?php endif; ?>><?php echo e(($municipios->nom_mun)); ?></option>
+                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group" >
@@ -95,38 +95,38 @@
                                                                     <input name="fecha_nacimiento" id="fecha_nacimiento" type="date"
                                                                            class="form-control"
                                                                            required="true"
-                                                                           value="{{old('fecha_nacimiento')}}">
+                                                                           value="<?php echo e(old('fecha_nacimiento')); ?>">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <input name="correo" id="correo" type="email"
                                                                            class="form-control"
                                                                            required="true" placeholder="Correo"
-                                                                           value="{{old('correo')}}">
+                                                                           value="<?php echo e(old('correo')); ?>">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input name="telefono" id="telefono" type="text"
                                                                            onKeyUp="if(isNaN(this.value)){alert('sólo puede introdicur números');this.value=this.value.substring(0,this.value.lenght-1)}"
-                                                                           @if(isset($registro)) value="{{$registro->telefono}}" @endif
+                                                                           <?php if(isset($registro)): ?> value="<?php echo e($registro->telefono); ?>" <?php endif; ?>
                                                                            class="form-control"
                                                                            placeholder="Teléfono"
-                                                                           value="{{old('telefono')}}">
+                                                                           value="<?php echo e(old('telefono')); ?>">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <select required='true' class="form-control select2"  name="id_escolaridad" id="id_escolaridad">
                                                                         <option value="none" selected="" disabled="">Escolaridad</option>
-                                                                        @foreach($cat_escolaridad as $escolaridad)
-                                                                            <option value="{{$escolaridad->id_escolaridad}}" @if(old('id_escolaridad')==$escolaridad->id_escolaridad)selected="selected"@endif>{{$escolaridad->nivel." ".$escolaridad->estatus}}</option>
-                                                                        @endforeach
+                                                                        <?php $__currentLoopData = $cat_escolaridad; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $escolaridad): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <option value="<?php echo e($escolaridad->id_escolaridad); ?>" <?php if(old('id_escolaridad')==$escolaridad->id_escolaridad): ?>selected="selected"<?php endif; ?>><?php echo e($escolaridad->nivel." ".$escolaridad->estatus); ?></option>
+                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input name="ocupacion" id="ocupacion" type="text"
-                                                                           @if(isset($registro)) required="true" value="{{$registro->ocupacion}}" @endif
+                                                                           <?php if(isset($registro)): ?> required="true" value="<?php echo e($registro->ocupacion); ?>" <?php endif; ?>
                                                                            class="form-control"
                                                                            placeholder="Ocupación"
-                                                                           value="{{old('ocupacion')}}">
+                                                                           value="<?php echo e(old('ocupacion')); ?>">
                                                                 </div>
 
 
@@ -141,7 +141,7 @@
                                                                             class="btn btn-primary waves-effect waves-light" id="guardar">
                                                                         Guardar
                                                                     </button>
-                                                                    <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
+                                                                    <input type="hidden" name="_token" id="csrf-token" value="<?php echo e(csrf_token()); ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -203,24 +203,24 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                @foreach ($detalle_registrop as $Items)
+                                                                <?php $__currentLoopData = $detalle_registrop; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Items): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                     <tr role="row" class="odd">
                                                                         <td class="sorting_1"></td>
-                                                                        <td class="sorting_1">{{$Items->nombre}}</td>
-                                                                        <td class="sorting_1">{{$Items->apellido_paterno}}</td>
-                                                                        <td class="sorting_1">{{$Items->apellido_materno}}</td>
-                                                                        <td class="sorting_1">{{$Items->genero}}</td>
-                                                                        <td class="sorting_1">{{$Items->nom_ent}}</td>
-                                                                        <td class="sorting_1">{{$Items->nom_mun}}</td>
-                                                                        <td class="sorting_1">{{$Items->fecha_nacimiento}}</td>
-                                                                        <td class="sorting_1">{{$Items->correo}}</td>
-                                                                        <td class="sorting_1">{{$Items->telefono}}</td>
-                                                                        <td class="sorting_1">{{$Items->nivel}}</td>
-                                                                        <td class="sorting_1">{{$Items->estatus}}</td>
-                                                                        <td class="sorting_1">{{$Items->ocupacion}}</td>
-                                                                        <td class="sorting_1">{{$Items->created_at}}</td>
+                                                                        <td class="sorting_1"><?php echo e($Items->nombre); ?></td>
+                                                                        <td class="sorting_1"><?php echo e($Items->apellido_paterno); ?></td>
+                                                                        <td class="sorting_1"><?php echo e($Items->apellido_materno); ?></td>
+                                                                        <td class="sorting_1"><?php echo e($Items->genero); ?></td>
+                                                                        <td class="sorting_1"><?php echo e($Items->nom_ent); ?></td>
+                                                                        <td class="sorting_1"><?php echo e($Items->nom_mun); ?></td>
+                                                                        <td class="sorting_1"><?php echo e($Items->fecha_nacimiento); ?></td>
+                                                                        <td class="sorting_1"><?php echo e($Items->correo); ?></td>
+                                                                        <td class="sorting_1"><?php echo e($Items->telefono); ?></td>
+                                                                        <td class="sorting_1"><?php echo e($Items->nivel); ?></td>
+                                                                        <td class="sorting_1"><?php echo e($Items->estatus); ?></td>
+                                                                        <td class="sorting_1"><?php echo e($Items->ocupacion); ?></td>
+                                                                        <td class="sorting_1"><?php echo e($Items->created_at); ?></td>
                                                                     </tr>
-                                                                @endforeach
+                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -243,4 +243,6 @@
         <br>
 
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\academia\resources\views/registroplatica.blade.php ENDPATH**/ ?>

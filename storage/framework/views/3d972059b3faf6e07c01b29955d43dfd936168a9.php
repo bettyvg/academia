@@ -74,16 +74,18 @@
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group" >
-                                                                    <select required='true' class="form-control select2"  name="cve_ent" id="cve_ent" value="<?php echo e(old('cve_ent')); ?>">
+                                                                    <select  class="form-control select2"  name="cve_ent" id="cve_ent" value="<?php echo e(old('cve_ent')); ?>">
                                                                         <option value="none" selected="" disabled="">Estado de nacimiento</option>
-
+                                                                        <?php $__currentLoopData = $cat_entidades; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $entidades): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <option value="<?php echo e(($entidades->cve_ent)); ?>" <?php if(old('cve_compuesta_ent_mun')==$entidades->cve_ent): ?> selected="selected"<?php endif; ?>><?php echo e(($entidades->nom_ent)); ?></option>
+                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                     </select>
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
-                                                                    <select required='true' class="form-control select2"  name="cve_compuesta_ent_mun" id="cve_compuesta_ent_mun" value="<?php echo e('cve_compuesta_ent_mun'); ?>">
+                                                                    <select  class="form-control select2"  name="cve_compuesta_ent_mun" id="cve_compuesta_ent_mun" value="<?php echo e('cve_compuesta_ent_mun'); ?>">
                                                                         <option value="none" selected="" disabled="">Municipio de donde nos visita</option>
                                                                         <?php $__currentLoopData = $cat_municipios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $municipios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                             <option value="<?php echo e(($municipios->cve_compuesta_ent_mun)); ?>" <?php if(old('cve_compuesta_ent_mun')==$municipios->cve_compuesta_ent_mun): ?> selected="selected"<?php endif; ?>><?php echo e(($municipios->nom_mun)); ?></option>
@@ -114,7 +116,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <select required='true' class="form-control select2"  name="id_escolaridad" id="id_escolaridad">
+                                                                    <select  class="form-control select2"  name="id_escolaridad" id="id_escolaridad">
                                                                         <option value="none" selected="" disabled="">Escolaridad</option>
                                                                         <?php $__currentLoopData = $cat_escolaridad; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $escolaridad): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                             <option value="<?php echo e($escolaridad->id_escolaridad); ?>" <?php if(old('id_escolaridad')==$escolaridad->id_escolaridad): ?>selected="selected"<?php endif; ?>><?php echo e($escolaridad->nivel." ".$escolaridad->estatus); ?></option>

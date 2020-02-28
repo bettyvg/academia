@@ -75,7 +75,7 @@
                                                                 </div>
                                                                 <div class="form-group" >
                                                                     <select  class="form-control select2"  name="cve_ent" id="cve_ent" value="{{old('cve_ent')}}">
-                                                                        <option value="none" selected="" disabled="">Estado de nacimiento</option>
+                                                                        <option value="34" selected="">Estado de nacimiento</option>
                                                                         @foreach($cat_entidades as $entidades)
                                                                             <option value="{{($entidades->cve_ent)}}" @if(old('cve_compuesta_ent_mun')==$entidades->cve_ent) selected="selected"@endif>{{($entidades->nom_ent)}}</option>
                                                                         @endforeach
@@ -86,7 +86,7 @@
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
                                                                     <select  class="form-control select2"  name="cve_compuesta_ent_mun" id="cve_compuesta_ent_mun" value="{{'cve_compuesta_ent_mun'}}">
-                                                                        <option value="none" selected="" disabled="">Municipio de donde nos visita</option>
+                                                                        <option value="14000" selected="">Municipio de donde nos visita</option>
                                                                         @foreach($cat_municipios as $municipios)
                                                                             <option value="{{($municipios->cve_compuesta_ent_mun)}}" @if(old('cve_compuesta_ent_mun')==$municipios->cve_compuesta_ent_mun) selected="selected"@endif>{{($municipios->nom_mun)}}</option>
                                                                         @endforeach
@@ -96,14 +96,13 @@
                                                                     <span class="spantext" style="color: darkgrey;">Fecha de nacimiento</span>
                                                                     <input name="fecha_nacimiento" id="fecha_nacimiento" type="date"
                                                                            class="form-control"
-                                                                           required="true"
                                                                            value="{{old('fecha_nacimiento')}}">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <input name="correo" id="correo" type="email"
                                                                            class="form-control"
-                                                                           required="true" placeholder="Correo"
+                                                                            placeholder="Correo"
                                                                            value="{{old('correo')}}">
                                                                 </div>
                                                                 <div class="form-group">
@@ -117,7 +116,7 @@
 
                                                                 <div class="form-group">
                                                                     <select  class="form-control select2"  name="id_escolaridad" id="id_escolaridad">
-                                                                        <option value="none" selected="" disabled="">Escolaridad</option>
+                                                                        <option value="47" selected="" >Escolaridad</option>
                                                                         @foreach($cat_escolaridad as $escolaridad)
                                                                             <option value="{{$escolaridad->id_escolaridad}}" @if(old('id_escolaridad')==$escolaridad->id_escolaridad)selected="selected"@endif>{{$escolaridad->nivel." ".$escolaridad->estatus}}</option>
                                                                         @endforeach
@@ -125,7 +124,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input name="ocupacion" id="ocupacion" type="text"
-                                                                           @if(isset($registro)) required="true" value="{{$registro->ocupacion}}" @endif
+                                                                           @if(isset($registro))  value="{{$registro->ocupacion}}" @endif
                                                                            class="form-control"
                                                                            placeholder="Ocupación"
                                                                            value="{{old('ocupacion')}}">

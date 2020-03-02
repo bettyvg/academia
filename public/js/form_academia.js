@@ -300,6 +300,33 @@ $(document).ready(function () {
         });
     });
 
+    /*region*/
+    $("#region_pf").change(function () {
+        var municipio = $("#municipio").val();
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "./get_region/" + municipio,
+            dataType: 'json',
+            type: "GET",
+            data: municipio,
+            contentType: false,
+            processData: false,
+            error: function () {
+
+            },
+            success: function (data) {
+                $("#region_pf").empty();
+                $("#region_pf").append('<option value="">Seleccionar region..</option>');
+                for (var i = 0; i < data.length; i++) {
+                    $("#region").append('<option value="' + data[i].region + '">' + data[i].region + '</option>');
+                }
+            }
+        });
+    });
+
     /*colonia*/
     $("#municipio").change(function () {
         var colonia = $("#municipio").val();

@@ -15,6 +15,10 @@
 </head>
 
 <body>
+<a href="<?php echo e(route('enviar_correo')); ?>"   class="btn btn-primary waves-effect waves-light"
+        id="guardar">
+    Enviar correo
+</a>
 <form action="nuevoregistro2" method="POST">
     <?php echo e(csrf_field()); ?>
 
@@ -33,7 +37,7 @@
                                     <form>
                                         <h5>Tienes empresa o eres emprendedor</h5>
                                         <div class="form-group " required="true">
-                                            <select name="regimen_fiscal" id="regimen_fiscal" class="form-control"
+                                            <select name="regimen_fiscal" id="regimen_fiscal" class="form-control "
                                                     value="<?php echo e(old('regimen_fiscal')); ?>">
                                                 <option value="none" selected="" disabled="" style="color: darkgrey;">
                                                     Seleccionar..
@@ -50,25 +54,25 @@
                                         </div>
                                         <br><br>
                                         <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                                 <div class="form-group">
                                                     <input name="nombre" id="nombre" type="text"
                                                            required="true"
-                                                           class="form-control"
+                                                           class="form-control calcula_rfc"
                                                            placeholder="Nombre"
                                                            value="<?php echo e(old('nombre')); ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <input name="apellido_paterno" id="apellido_paterno" type="text"
                                                            required="true"
-                                                           class="form-control"
+                                                           class="form-control calcula_rfc"
                                                            placeholder="Apellido paterno"
                                                            value="<?php echo e(old('apellido_paterno')); ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <input name="apellido_materno" id="apellido_materno" type="text"
                                                            required="true"
-                                                           class="form-control"
+                                                           class="form-control calcula_rfc"
                                                            placeholder="Apellido materno"
                                                            value="<?php echo e(old('apellido_materno')); ?>">
                                                 </div>
@@ -77,7 +81,7 @@
                                                     <span class="spantext"
                                                           style="color: darkgrey;">Fecha de nacimiento</span>
                                                     <input name="fecha_nacimiento" id="fecha_nacimiento" type="date"
-                                                           class="form-control"
+                                                           class="form-control calcula_rfc"
                                                            required="true"
                                                            value="<?php echo e(old('fecha_nacimiento')); ?>">
                                                 </div>
@@ -85,12 +89,12 @@
                                                     <span class="spantext" style="color: darkgrey;">Edad</span>
                                                     <input name="edad" id="edad" type="text"
                                                            required="true"
-                                                           class="form-control"
+                                                           class="form-control calcula_rfc"
                                                            placeholder="Edad"
                                                            value="<?php echo e(old('edad')); ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <select required='true' class="form-control select2" name="estado"
+                                                    <select required='true' class="form-control select2 calcula_rfc" name="estado"
                                                             id="estado" value="<?php echo e(old('cve_ent')); ?>">
                                                         <option value="none" selected="" disabled="">Selecionar estado
                                                             de nacimiento..
@@ -101,7 +105,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group " required="true">
-                                                    <select name="genero" id="genero" class="form-control"
+                                                    <select name="genero" id="genero" class="form-control calcula_rfc"
                                                             value="<?php echo e(old('genero')); ?>">
                                                         <option value="none" selected="" disabled=""
                                                                 style="color: darkgrey;">Genero
@@ -161,6 +165,22 @@
                                                             name="municipio" id="municipio" value="<?php echo e(old('cve_ent')); ?>">
                                                         <option value="none" selected="" disabled="">Selecionar
                                                             municipio..
+                                                        </option>
+                                                        <?php $__currentLoopData = $cat_municipios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $municipios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <option <?php if($municipios->cve_ent <='9'): ?> value="<?php echo e("0".$municipios->cve_ent); ?>"
+                                                                    <?php if(old('cve_ent')=="0".$municipios->cve_ent): ?>selected="selected"
+                                                                    <?php endif; ?>
+                                                                    <?php else: ?> value="<?php echo e($municipios->cve_ent); ?>"
+                                                                    <?php if(old('d_estado')==($municipios->cve_ent)): ?>selected="selected"<?php endif; ?>
+                                                                    <?php endif; ?>><?php echo e(($municipios->D_mnpio)); ?></option>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <select required='true' class="form-control select2"
+                                                            name="region_pf" id="region_pf" value="<?php echo e(old('cve_ent')); ?>">
+                                                        <option value="none" selected="" disabled="">Selecionar
+                                                            región..
                                                         </option>
                                                         <?php $__currentLoopData = $cat_municipios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $municipios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <option <?php if($municipios->cve_ent <='9'): ?> value="<?php echo e("0".$municipios->cve_ent); ?>"
@@ -354,12 +374,6 @@
     </div>
 </form>
 
-<button class="btn btn-primary waves-effect waves-light" id="btn_rfc">
-    calcula rfc
-</button>
-<button class="btn btn-primary waves-effect waves-light" id="btn_rfc_emp">
-    calcula rfc
-</button>
 
 </div>
 </div>

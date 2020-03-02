@@ -84,10 +84,50 @@ class registrowebController extends Controller
     public function create()
     {
         $reg =  registrowebModel::create(request()->all());//agregado el 25/02/2020 por Carlos Villalobos
-        $name = date("YmdHis") . uniqid("", true) . '.png';//agregado el 25/02/2020 por Carlos Villalobos
-        QrCode::format('png')->size(399)->generate($reg->id_registro,public_path('img/documentos/'.$name));//agregado el 25/02/2020 por Carlos Villalobos
-        $reg->qr=$name;//agregado el 25/02/2020 por Carlos Villalobos
-        $reg->save();//agregado el 25/02/2020 por Carlos Villalobos
+        $name = date("YmdHis") . uniqid("", true) . '.png';
+        QrCode::format('png')->size(399)->generate($reg->id_beneficiario,public_path('img/documentos/'.$name));
+        $reg->qr=$name;
+       //dd($reg);
+        $reg->save();
+        $alert = new \stdClass();
+        $alert->message = 'Los datos se guardaron correctamente';
+        $alert->type = 'success';
+        $alert->qr=$name;
+
+        $cat_entidades = Cat_entidades::all();
+        //$cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
+        $cat_municipios = Cat_codigospostales::select('d_estado','c_estado','D_mnpio')->where('c_estado', '14')->groupBy('d_estado','c_estado','D_mnpio')->get();
+        $cat_codigospostales = Cat_codigospostales::select('d_estado')->groupBy('d_estado')->get();
+        $cat_codigospostales2 = Cat_codigospostales::all();
+        $cat_escolaridad = Cat_escolaridad::select('id_escolaridad','nivel', 'estatus')->orderBy('id_escolaridad', 'ASC')->get();
+        //$detalle_registrop = Registro::get();
+        $cat_pais = Cat_pais::all();
+        $sectores = cat_scian::select('codigo_sector', 'descripcion_sector')->distinct()->get();
+        $subsectores = cat_scian::select('codigo_subsector', 'descripcion_subsector')->distinct()->get();
+        $ramas = cat_scian::select('codigo_rama', 'descripcion_rama')->distinct()->get();
+        $subramas = cat_scian::select('codigo_subrama', 'descripcion_subrama')->distinct()->get();
+        $clase_actividad = cat_scian::select('codigo_clase', 'descripcion_clase')->distinct()->get();
+        $detalle_registrop = Registro::select('nombre','apellido_paterno','apellido_materno','genero','cat_municipios.nom_mun','fecha_nacimiento',
+            'correo','telefono','cat_escolaridad.nivel','cat_escolaridad.estatus','ocupacion','created_at')
+            ->join('cat_escolaridad', 'cat_escolaridad.id_escolaridad', '=','registroplatica.id_escolaridad')
+            ->join('cat_municipios','cat_municipios.cve_compuesta_ent_mun', '=', 'registroplatica.cve_compuesta_ent_mun')
+            ->orderBy('created_at', 'DESC')->get();
+
+        return View::make('usuarios.nuevoregistro2', array(
+            'alert' => $alert,
+            'cat_entidades' => $cat_entidades,
+            'sectores' => $sectores,
+            'subsectores' => $subsectores,
+            'ramas' => $ramas,
+            'subramas' => $subramas,
+            'clase_actividad' => $clase_actividad,
+            'cat_municipios' => $cat_municipios,
+            'cat_codigospostales' => $cat_codigospostales,
+            'cat_codigospostales2' => $cat_codigospostales2,
+            'cat_escolaridad' => $cat_escolaridad,
+            'detalle_registrop' => $detalle_registrop,
+            'cat_pais' => $cat_pais
+        ));
 
 
        //registrowebModel::create(request()->all());/*Metodo create*/

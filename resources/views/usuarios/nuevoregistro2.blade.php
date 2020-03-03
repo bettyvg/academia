@@ -15,6 +15,17 @@
 </head>
 
 <body>
+@if(isset($alert))
+    <div class="row" style="padding: 10px; margin: 30px 20px 0px 20px">
+        <div class="col-12">
+            <div  class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{$alert->message}}
+            </div>
+        </div>
+        @endif
 <form action="nuevoregistro2" method="POST">
     {{ csrf_field() }}
     <div class="container" id="registration-form">

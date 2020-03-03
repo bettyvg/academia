@@ -11,7 +11,6 @@ use App\Models\Cat_entidades;
 use App\Models\Cat_municipios;
 use App\Models\Cat_escolaridad;
 use App\Models\Cat_pais;
-use App\Models\Cat_regiones;
 use App\Mail\MensajeEnviado;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Mail;
@@ -82,16 +81,6 @@ class registrowebController extends Controller
         return response()->json($datos, '200');
     }
 
-    public function get_region($region){
-        //dd($cp);
-        //dd($region);
-        $cat_regiones = Cat_regiones::select('cat_codigos_postales.d_estado', 'cat_codigos_postales.c_estado' , 'cat_regiones.municipio', 'cat_regiones.region')
-            ->join('cat_codigos_postales', 'cat_regiones.municipio', '=' ,'cat_codigos_postales.D_mnpio')
-            ->where('cat_regiones.municipio', $region)->first();
-
-        return response()->json($cat_regiones, '200');
-    }
-
     public function create()
     {
         $reg =  registrowebModel::create(request()->all());//agregado el 25/02/2020 por Carlos Villalobos
@@ -104,7 +93,7 @@ class registrowebController extends Controller
        //registrowebModel::create(request()->all());/*Metodo create*/
 
 
-        Mail::to('betty.vargas.garcia@gmail.com')->send(new MensajeEnviado());
+        Mail::to('betty.vargas.garcia@gmail.com')->send(new MensajeEnviado);
 
         flash("Tu información se envío exitosamente!")->success()->important();
 
@@ -113,7 +102,5 @@ class registrowebController extends Controller
         ///return redirect('registrowebModel');
     }
 
-    public function pruebacorreo(){
-        Mail::to('bryan.escamilla@jalisco.gob.mx')->send(new MensajeEnviado());
-    }
+
 }

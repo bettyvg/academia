@@ -36,12 +36,11 @@
       19 => 'Illuminate\\Translation\\TranslationServiceProvider',
       20 => 'Illuminate\\Validation\\ValidationServiceProvider',
       21 => 'Illuminate\\View\\ViewServiceProvider',
-      22 => 'SimpleSoftwareIO\\QrCode\\QrCodeServiceProvider',
-      23 => 'App\\Providers\\AppServiceProvider',
-      24 => 'App\\Providers\\AuthServiceProvider',
-      25 => 'App\\Providers\\EventServiceProvider',
-      26 => 'App\\Providers\\RouteServiceProvider',
-      27 => 'Collective\\Html\\HtmlServiceProvider',
+      22 => 'App\\Providers\\AppServiceProvider',
+      23 => 'App\\Providers\\AuthServiceProvider',
+      24 => 'App\\Providers\\EventServiceProvider',
+      25 => 'App\\Providers\\RouteServiceProvider',
+      26 => 'Collective\\Html\\HtmlServiceProvider',
     ),
     'aliases' => 
     array (
@@ -80,7 +79,6 @@
       'URL' => 'Illuminate\\Support\\Facades\\URL',
       'Validator' => 'Illuminate\\Support\\Facades\\Validator',
       'View' => 'Illuminate\\Support\\Facades\\View',
-      'QrCode' => 'SimpleSoftwareIO\\QrCode\\Facades\\QrCode',
       'Form' => 'Collective\\Html\\FormFacade',
     ),
   ),
@@ -416,17 +414,17 @@
   ),
   'mail' => 
   array (
-    'driver' => 'smtp',
-    'host' => 'smtp.alestraune.net.mx',
-    'port' => '587',
+    'driver' => 'log',
+    'host' => 'smtp.mailtrap.io',
+    'port' => '2525',
     'from' => 
     array (
-      'address' => 'beatriz.vargas@fojal.com.mx',
-      'name' => 'Beatriz Vargas',
+      'address' => 'hello@example.com',
+      'name' => 'Example',
     ),
     'encryption' => NULL,
-    'username' => 'bryan.escamilla@fojal.com.mx',
-    'password' => 'insanae12',
+    'username' => NULL,
+    'password' => NULL,
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => 
     array (

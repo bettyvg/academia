@@ -129,7 +129,6 @@ Route::post('nuevoregistro2', 'registrowebController@create' )->name('nuevoregis
 Route::post('get_colonia/{id}', 'registrowebController@get_colonia');
 Route::post('get_municipio/{id}', 'registrowebController@get_municipio');
 Route::GET('get_cp/{id}', 'registrowebController@get_cp');
-Route::GET('get_region/{region}', 'registrowebController@get_region');
 
 
 
@@ -158,7 +157,4 @@ Route::get('get_cursoonline/{id}', 'CursosOnlineController@get_cursoonline' )->n
 Route::get('inicio_examen', 'ExamenController@index')->name('inicio_examen');
 Route::get('examenes', 'ExamenController@preguntas')->name('examenes');
 Route::get('fin_examen', 'ExamenController@fin')->name('fin_examen');
-
-/*Correo prueba*/
-Route::get('enviar_correo', 'registrowebController@pruebacorreo')->name('enviar_correo');
 

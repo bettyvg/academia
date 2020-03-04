@@ -355,6 +355,8 @@ $(document).ready(function () {
     });
 
 
+
+
     function fr_calculaRFC( RFC, HOMOCLAVE, NOMBRE1, NOMBRE2, APAT, AMAT, FECHA, TIPO_EVENTO ) {
 
         var persona_tipo = jQuery('#' + TIPO_EVENTO).val();

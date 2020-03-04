@@ -8,6 +8,7 @@ use App\Models\registrowebModel;
 use App\Models\Registro;
 use App\Models\cat_scian;
 use App\Models\Cat_entidades;
+use App\Models\Cat_regiones;
 use App\Models\Cat_municipios;
 use App\Models\Cat_escolaridad;
 use App\Models\Cat_pais;
@@ -30,6 +31,7 @@ class registrowebController extends Controller
         $cat_escolaridad = Cat_escolaridad::select('id_escolaridad','nivel', 'estatus')->orderBy('id_escolaridad', 'ASC')->get();
         //$detalle_registrop = Registro::get();
         $cat_pais = Cat_pais::all();
+        $cat_regiones = Cat_regiones::select('region')->groupBy('region')->get();
         $sectores = cat_scian::select('codigo_sector', 'descripcion_sector')->distinct()->get();
         $subsectores = cat_scian::select('codigo_subsector', 'descripcion_subsector')->distinct()->get();
         $ramas = cat_scian::select('codigo_rama', 'descripcion_rama')->distinct()->get();
@@ -56,6 +58,7 @@ class registrowebController extends Controller
             'cat_codigospostales2' => $cat_codigospostales2,
             'cat_escolaridad' => $cat_escolaridad,
             'detalle_registrop' => $detalle_registrop,
+            'cat_regiones' => $cat_regiones,
             'cat_pais' => $cat_pais
         ));
     }
@@ -77,9 +80,22 @@ class registrowebController extends Controller
     public function get_cp($cp){
         //dd($cp);
         $datos = Cat_codigospostales::select('d_codigo', 'd_asenta','id_codigocp','D_mnpio','c_mnpio')->where('d_codigo', $cp)->groupby('D_mnpio','c_mnpio', 'd_codigo', 'd_asenta','id_codigocp')->get();
+
         //dd($datos);
         return response()->json($datos, '200');
     }
+
+
+    public function get_region($region){
+        //dd($cp);
+        dd($region);
+        $cat_regiones = Cat_regiones::select('cat_codigos_postales.d_estado', 'cat_codigos_postales.c_estado' , 'cat_regiones.municipio', 'cat_regiones.region')
+            ->join('cat_codigos_postales', 'cat_regiones.municipio', '=' ,'cat_codigos_postales.D_mnpio')
+            ->where('cat_regiones.municipio', $region)->first();
+
+        return response()->json($cat_regiones, '200');
+    }
+
 
     public function create()
     {
@@ -102,6 +118,7 @@ class registrowebController extends Controller
         $cat_escolaridad = Cat_escolaridad::select('id_escolaridad','nivel', 'estatus')->orderBy('id_escolaridad', 'ASC')->get();
         //$detalle_registrop = Registro::get();
         $cat_pais = Cat_pais::all();
+        $cat_regiones = Cat_regiones::select('region')->groupBy('region')->first();
         $sectores = cat_scian::select('codigo_sector', 'descripcion_sector')->distinct()->get();
         $subsectores = cat_scian::select('codigo_subsector', 'descripcion_subsector')->distinct()->get();
         $ramas = cat_scian::select('codigo_rama', 'descripcion_rama')->distinct()->get();
@@ -126,6 +143,7 @@ class registrowebController extends Controller
             'cat_codigospostales2' => $cat_codigospostales2,
             'cat_escolaridad' => $cat_escolaridad,
             'detalle_registrop' => $detalle_registrop,
+            'cat_regiones' => $cat_regiones,
             'cat_pais' => $cat_pais
         ));
 
@@ -133,7 +151,7 @@ class registrowebController extends Controller
        //registrowebModel::create(request()->all());/*Metodo create*/
 
 
-        Mail::to('betty.vargas.garcia@gmail.com')->send(new MensajeEnviado);
+        Mail::to('betty.vargas.garcia@gmail.com')->send(new MensajeEnviado());
 
         flash("Tu información se envío exitosamente!")->success()->important();
 
@@ -142,5 +160,8 @@ class registrowebController extends Controller
         ///return redirect('registrowebModel');
     }
 
+    public function pruebacorreo(){
+        Mail::to('bryan.escamilla@jalisco.gob.mx')->send(new MensajeEnviado());
+    }
 
 }

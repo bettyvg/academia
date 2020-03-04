@@ -158,3 +158,6 @@ Route::get('inicio_examen', 'ExamenController@index')->name('inicio_examen');
 Route::get('examenes', 'ExamenController@preguntas')->name('examenes');
 Route::get('fin_examen', 'ExamenController@fin')->name('fin_examen');
 
+/*Correo prueba*/
+Route::get('enviar_correo', 'registrowebController@pruebacorreo')->name('enviar_correo');
+

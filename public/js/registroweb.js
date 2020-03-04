@@ -35,11 +35,12 @@ $("#regimen_fiscal").change(function () {
             success: function (data) {
                 console.log(data);
                $("#colonia").empty();
-                $("#municipio").empty();
+               $("#municipio").empty();
                $("#colonia").html('<option value="">Seleccionar colonia..</option>');
                 for (var i = 0; i < data.length; i++) {
                     $("#colonia").append('<option value="' + data[i].id_codigocp + '">' + data[i].d_asenta + '</option>');
                     $("#municipio").html('<option value="' + data[i].D_mnpio + ' " selected>' + data[i].D_mnpio + '</option>');
+                    //$("#region_pf").html('<option value="' + data[i].region + ' " selected>' + data[i].region + '</option>');
                 }
            }
         });
@@ -73,7 +74,32 @@ $("#regimen_fiscal").change(function () {
         });
     });
 
+    /*region*/
+    $("#cp").change(function () {
+        var municipio = $("#municipio").val();
+//console.log(municipio);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "./get_region/" + municipio,
+            dataType: 'json',
+            type: "GET",
+            data: municipio,
+            contentType: false,
+            processData: false,
+            error: function () {
 
+            },
+            success: function (data) {
+                $("#region_pf").empty();
+                $("#region_pf").append('<option value="">Seleccionar region..</option>');
+                for (var i = 0; i < data.length; i++) {
+                    $("#region_pf").html('<option value="' + data[i].region + ' " selected>' + data[i].region + '</option>');
+                }
+            }
+        });
+    });
 
     $("#fecha_nacimiento").change(function () {
         var fecha = $("#fecha_nacimiento").val();

@@ -1,0 +1,31 @@
+[2020-03-04 06:39:07] local.ERROR: Allowed memory size of 536870912 bytes exhausted (tried to allocate 20480 bytes) {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Allowed memory size of 536870912 bytes exhausted (tried to allocate 20480 bytes) at C:\\laragon\\www\\academia\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Arr.php:626)
+[stacktrace]
+#0 {main}
+"} 
+[2020-03-04 12:11:16] local.ERROR: Allowed memory size of 536870912 bytes exhausted (tried to allocate 20480 bytes) {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Allowed memory size of 536870912 bytes exhausted (tried to allocate 20480 bytes) at C:\\laragon\\www\\academia\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Arr.php:626)
+[stacktrace]
+#0 {main}
+"} 
+[2020-03-04 12:59:29] local.DEBUG: Message-ID: <b738a39029806d3bb3d2e59831a29793@127.0.0.1>
+Date: Wed, 04 Mar 2020 12:59:29 +0000
+Subject: Mensaje Enviado
+From: Example <hello@example.com>
+To: bryan.escamilla@jalisco.gob.mx
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Academia Fojal | Registro</title>
+<body>
+<p>Prueba</p>
+</body>
+</html>  
+[2020-03-04 13:07:36] local.ERROR: Allowed memory size of 536870912 bytes exhausted (tried to allocate 20480 bytes) {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Allowed memory size of 536870912 bytes exhausted (tried to allocate 20480 bytes) at C:\\laragon\\www\\academia\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:392)
+[stacktrace]
+#0 {main}
+"} 

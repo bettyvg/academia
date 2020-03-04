@@ -7,10 +7,12 @@ $("#regimen_fiscal").change(function () {
 
     if(regimen_fiscal == 'Empresario'){
         $("#datos_empresa").show();
+        $("#altahacienda").show();
     }
 
     if(regimen_fiscal == 'Emprendedor'){
         $("#datos_empresa").hide();
+        $("#altahacienda").hide();
     }
 
 })

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use\App\Models\evaluacionejecutivosv1;
 use App\Models\Cat_municipios;
@@ -65,7 +64,7 @@ class evaluacionejecutivosv1Controller extends Controller
     //dd($participante);
         $evaluacion->fecha= Input::get('fecha');
         $evaluacion->id_registro= Input::get('id_registro');
-        $evaluacion->nombre_participante = $participante->nombre.$participante->apellido_paterno.$participante->apellido_materno;
+        $evaluacion->nombre_participante = $participante->nombre." ".$participante->apellido_paterno." ".$participante->apellido_materno;
         $evaluacion->id_ejecutivo= Input::get('id_ejecutivo');
         $evaluacion->curp= Input::get('curp');
         $evaluacion->inicio_platica= Input::get('inicio_platica');

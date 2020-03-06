@@ -35,7 +35,7 @@
                                                           style="margin-bottom: 15px">
                     </div>
                     <h1>Bienvenido</h1>
-                    @section('formulario_web')
+
                     <div id="myTabContent" class="tab-content custom-product-edit">
                         <div class="product-tab-list tab-pane fade active in" id="registroplatica">
                             <div class="row">
@@ -151,11 +151,11 @@
                                                                 <option value="none" selected="" disabled=""
                                                                         style="color: darkgrey;">Genero
                                                                 </option>
-                                                                <option value="M"
+                                                                <option value="H"
                                                                         @if(old('genero')=='Masculino') selected="selected"@endif>
                                                                     Masculino
                                                                 </option>
-                                                                <option value="F"
+                                                                <option value="M"
                                                                         @if(old('genero')=='Femenino') selected="selected"@endif>
                                                                     Femenino
                                                                 </option>
@@ -510,7 +510,7 @@
                         </div>
 
                     </div>
-                    @endsection
+
                 </div>
             </div>
         </form>

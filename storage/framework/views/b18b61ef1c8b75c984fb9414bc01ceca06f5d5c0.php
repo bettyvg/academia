@@ -37,7 +37,7 @@
                                                           style="margin-bottom: 15px">
                     </div>
                     <h1>Bienvenido</h1>
-                    <?php $__env->startSection('formulario_web'); ?>
+
                     <div id="myTabContent" class="tab-content custom-product-edit">
                         <div class="product-tab-list tab-pane fade active in" id="registroplatica">
                             <div class="row">
@@ -153,11 +153,11 @@
                                                                 <option value="none" selected="" disabled=""
                                                                         style="color: darkgrey;">Genero
                                                                 </option>
-                                                                <option value="M"
+                                                                <option value="H"
                                                                         <?php if(old('genero')=='Masculino'): ?> selected="selected"<?php endif; ?>>
                                                                     Masculino
                                                                 </option>
-                                                                <option value="F"
+                                                                <option value="M"
                                                                         <?php if(old('genero')=='Femenino'): ?> selected="selected"<?php endif; ?>>
                                                                     Femenino
                                                                 </option>
@@ -514,7 +514,7 @@
                         </div>
 
                     </div>
-                    <?php $__env->stopSection(); ?>
+
                 </div>
             </div>
         </form>

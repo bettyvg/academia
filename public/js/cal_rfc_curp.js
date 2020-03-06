@@ -17,6 +17,7 @@ $("#btn_rfc").click(function () {
         var rfc = ano_nacimiento + fecha_nacimiento[1] + fecha_nacimiento[2];
         var sexo = document.getElementById("genero").value;
         var estado = document.getElementById("estado").value;
+        console.log(sexo);
 
         if(ap_paterno !='' && ap_materno !='' && nombre !='' && rfc !='' && sexo!='' && estado!='')
         {

@@ -116,7 +116,7 @@
                                                                                             <button type="button"
                                                                                                     title="Editar registro"
                                                                                                     class="pd-setting-ed">
-                                                                                                <a href='edit_registrop/{{$Items->id_registro}}'>
+                                                                                                <a href='edit_registro_admin/{{$Items->id_beneficiario}}'>
                                                                                                     <i class="fa fa-pencil-square-o"> </i>
                                                                                                 </a></button>
                                                                                         </td>
@@ -267,11 +267,11 @@
                                                 <option value="none" selected="" disabled=""
                                                         style="color: darkgrey;">Genero
                                                 </option>
-                                                <option value="M"
+                                                <option value="H"
                                                         @if(old('genero')=='Masculino') selected="selected"@endif>
                                                     Masculino
                                                 </option>
-                                                <option value="F"
+                                                <option value="M"
                                                         @if(old('genero')=='Femenino') selected="selected"@endif>
                                                     Femenino
                                                 </option>
@@ -567,12 +567,12 @@
                                             <br>
                                             <button type="submit"
                                                     class="btn btn-primary waves-effect waves-light"
-                                                    id="guardar">
+                                                    id="guardar" hidden>
                                                 Enviar
                                             </button>
                                             <a href="{{route('enviar_correo')}}"
                                                class="btn btn-primary waves-effect waves-light"
-                                               id="guardar">
+                                               id="guardar" hidden>
                                                 Enviar correo
                                             </a>
                                             <input type="hidden" name="_token" id="csrf-token"

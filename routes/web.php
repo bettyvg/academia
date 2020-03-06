@@ -126,12 +126,13 @@ Route::post('nuevoregistro', 'NuevoUsuariosController@registro' )->name('nuevore
 /*Registro WEB*/
 Route::get('nuevoregistro2', 'registrowebController@index' )->name('nuevoregistro2');
 Route::post('nuevoregistro2', 'registrowebController@create' )->name('nuevoregistro2');
-Route::get('registro_admin', 'registro_adminController@index' )->name('registro_admin');
-Route::post('registro_admin', 'registro_adminController@create' )->name('registro_admin');
 Route::post('get_colonia/{id}', 'registrowebController@get_colonia');
 Route::post('get_municipio/{id}', 'registrowebController@get_municipio');
 Route::GET('get_cp/{id}', 'registrowebController@get_cp');
-
+Route::get('registro_admin', 'registro_adminController@index' )->name('registro_admin');
+Route::post('registro_admin', 'registro_adminController@create' )->name('registro_admin');
+Route::get('edit_registro_admin/{id}', 'registro_adminController@edit')->name('edit_registro_admin');
+Route::post('edit_registro_admin/{id}', 'registro_adminController@update')->name('edit_registro_admin.update');
 
 
 

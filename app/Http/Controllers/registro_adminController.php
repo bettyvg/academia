@@ -174,4 +174,46 @@ class registro_adminController extends Controller
     public function pruebacorreo(){
         Mail::to('beatriz.vargas@jalisco.gob.mx')->send(new MensajeEnviado());
     }
+
+    public function edit($id){
+
+        $detalle_registrop = registrowebModel::find($id);
+
+        //dd($detalle_registrop);
+        $cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
+        $cat_entidades = Cat_entidades::all();
+        $cat_escolaridad = Cat_escolaridad::select('id_escolaridad','nivel', 'estatus')->orderBy('id_escolaridad', 'ASC')->get();
+        //$detalle_registrop = Registro::get();
+        $cat_pais = Cat_pais::all();
+
+
+        //dd($detalle_registrop);
+
+        return view('usuarios.edit_registro_admin', compact('detalle_registrop','cat_municipios','cat_entidades','cat_pais','cat_escolaridad'));
+    }
+
+    public function update($id)
+    {
+
+        $detalle_registrop = Registro::find($id);
+        //dd($detalle_registrop);
+        $detalle_registrop->nombre =  Input::get('nombre_edit');
+        $detalle_registrop->apellido_paterno = Input::get('apellido_paterno_edit');
+        $detalle_registrop->apellido_materno = Input::get('apellido_materno_edit');
+        $detalle_registrop->genero = Input::get('genero_edit');
+        $detalle_registrop->id = Input::get('id');
+        $detalle_registrop->cve_ent = Input::get('cve_ent');
+        $detalle_registrop->cve_compuesta_ent_mun = Input::get('cve_compuesta_ent_mun');
+        $detalle_registrop->fecha_nacimiento = Input::get('fecha_nacimiento_edit');
+        $detalle_registrop->correo = Input::get('correo_edit');
+        $detalle_registrop->telefono = Input::get('telefono_edit');
+        $detalle_registrop->id_escolaridad = Input::get('id_escolaridad');
+        $detalle_registrop->ocupacion = Input::get('ocupacion_edit');
+//dd($detalle_registrop);
+        $detalle_registrop->save();
+
+        flash("El registro se actualizó de manera exitosa!" )->success()->important();
+        return Redirect::route('registro_admin');
+    }
+
 }

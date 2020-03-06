@@ -116,7 +116,7 @@
                                                                                             <button type="button"
                                                                                                     title="Editar registro"
                                                                                                     class="pd-setting-ed">
-                                                                                                <a href='edit_registrop/<?php echo e($Items->id_registro); ?>'>
+                                                                                                <a href='edit_registro_admin/<?php echo e($Items->id_beneficiario); ?>'>
                                                                                                     <i class="fa fa-pencil-square-o"> </i>
                                                                                                 </a></button>
                                                                                         </td>
@@ -569,12 +569,12 @@
                                             <br>
                                             <button type="submit"
                                                     class="btn btn-primary waves-effect waves-light"
-                                                    id="guardar">
+                                                    id="guardar" hidden>
                                                 Enviar
                                             </button>
                                             <a href="<?php echo e(route('enviar_correo')); ?>"
                                                class="btn btn-primary waves-effect waves-light"
-                                               id="guardar">
+                                               id="guardar" hidden>
                                                 Enviar correo
                                             </a>
                                             <input type="hidden" name="_token" id="csrf-token"

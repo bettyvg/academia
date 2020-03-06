@@ -37,6 +37,7 @@
                                                           style="margin-bottom: 15px">
                     </div>
                     <h1>Bienvenido</h1>
+                    <?php $__env->startSection('formulario_web'); ?>
                     <div id="myTabContent" class="tab-content custom-product-edit">
                         <div class="product-tab-list tab-pane fade active in" id="registroplatica">
                             <div class="row">
@@ -417,8 +418,7 @@
                                                             <span class="spantext"
                                                                   style="color: darkgrey;">Sector</span>
                                                             <select name="sector" id="sector"
-                                                                    class="form-control select2"
-                                                                    required>
+                                                                    class="form-control select2">
                                                                 <option value="">Seleccionar..</option>
                                                                 <?php $__currentLoopData = $sectores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sector): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                     <option value="<?php echo e($sector->codigo_sector); ?>"
@@ -430,8 +430,7 @@
                                                             <span class="spantext"
                                                                   style="color: darkgrey;">Subsector</span>
                                                             <select name="subsector" id="subsector"
-                                                                    class="form-control select2"
-                                                                    required>
+                                                                    class="form-control select2">
                                                                 <option value="">Seleccionar..</option>
                                                                 <?php $__currentLoopData = $subsectores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subsector): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                     <option value="<?php echo e($subsector->codigo_subsector); ?>"
@@ -441,8 +440,7 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <span class="spantext" style="color: darkgrey;">Rama</span>
-                                                            <select name="rama" id="rama" class="form-control select2"
-                                                                    required>
+                                                            <select name="rama" id="rama" class="form-control select2">
                                                                 <option value="">Seleccionar..</option>
                                                                 <?php $__currentLoopData = $ramas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rama): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                     <option value="<?php echo e($rama->codigo_rama); ?>"
@@ -456,8 +454,7 @@
                                                             <span class="spantext"
                                                                   style="color: darkgrey;">Subrama</span>
                                                             <select name="subrama" id="subrama"
-                                                                    class="form-control select2"
-                                                                    required>
+                                                                    class="form-control select2">
                                                                 <option value="">Seleccionar..</option>
                                                                 <?php $__currentLoopData = $subramas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subrama): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                     <option value="<?php echo e($subrama->codigo_subrama); ?>"
@@ -510,7 +507,6 @@
                                                 </div>
 
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
@@ -518,6 +514,7 @@
                         </div>
 
                     </div>
+                    <?php $__env->stopSection(); ?>
                 </div>
             </div>
         </form>

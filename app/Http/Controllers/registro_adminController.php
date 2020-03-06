@@ -17,12 +17,16 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use \Illuminate\Support\Facades\Redirect;
-use SimpleSoftwareIO\QrCode\Facades\QrCode; /* Agregado por Carlos Villalobos el 25/02/2020*/
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
-class registrowebController extends Controller
+class registro_adminController extends Controller
 {
     public function index()
     {
+        $usuario_session = Session::get('usuario');
+        if(!$usuario_session){
+            return Redirect::route('login');
+        }
         $cat_entidades = Cat_entidades::all();
         //$cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
         $cat_municipios = Cat_codigospostales::select('d_estado','c_estado','D_mnpio')->where('c_estado', '14')->groupBy('d_estado','c_estado','D_mnpio')->get();
@@ -37,6 +41,7 @@ class registrowebController extends Controller
         $ramas = cat_scian::select('codigo_rama', 'descripcion_rama')->distinct()->get();
         $subramas = cat_scian::select('codigo_subrama', 'descripcion_subrama')->distinct()->get();
         $clase_actividad = cat_scian::select('codigo_clase', 'descripcion_clase')->distinct()->get();
+        $registroweb = registrowebModel::all();
         $detalle_registrop = Registro::select('nombre','apellido_paterno','apellido_materno','genero','cat_municipios.nom_mun','fecha_nacimiento',
             'correo','telefono','cat_escolaridad.nivel','cat_escolaridad.estatus','ocupacion','created_at')
             ->join('cat_escolaridad', 'cat_escolaridad.id_escolaridad', '=','registroplatica.id_escolaridad')
@@ -46,7 +51,7 @@ class registrowebController extends Controller
         //dd($detalle_registrop);
 
 
-        return View::make('usuarios.nuevoregistro2', array(
+        return View::make('usuarios.registro_admin', array(
             'cat_entidades' => $cat_entidades,
             'sectores' => $sectores,
             'subsectores' => $subsectores,
@@ -59,11 +64,12 @@ class registrowebController extends Controller
             'cat_escolaridad' => $cat_escolaridad,
             'detalle_registrop' => $detalle_registrop,
             'cat_regiones' => $cat_regiones,
-            'cat_pais' => $cat_pais
+            'cat_pais' => $cat_pais,
+            'registroweb' => $registroweb
         ));
     }
 
-     public function get_municipio($estado){
+    public function get_municipio($estado){
         //dd($estado);
         $datos = Cat_codigospostales::select('c_estado', 'D_mnpio','c_mnpio')->where('c_estado', $estado)->groupby('D_mnpio','c_estado','c_mnpio')->get();
         //dd($datos);
@@ -103,7 +109,7 @@ class registrowebController extends Controller
         $name = date("YmdHis") . uniqid("", true) . '.png';
         QrCode::format('png')->size(399)->generate($reg->id_beneficiario,public_path('img/documentos/'.$name));
         $reg->qr=$name;
-       //dd($reg);
+        //dd($reg);
         $reg->save();
 
         $alert = new \stdClass();
@@ -130,12 +136,13 @@ class registrowebController extends Controller
             ->join('cat_escolaridad', 'cat_escolaridad.id_escolaridad', '=','registroplatica.id_escolaridad')
             ->join('cat_municipios','cat_municipios.cve_compuesta_ent_mun', '=', 'registroplatica.cve_compuesta_ent_mun')
             ->orderBy('created_at', 'DESC')->get();
+        $registroweb = registrowebModel::all();
 
         //Mail::to($reg->correo)->send(new MensajeEnviado());
 
         //flash("Tu información se envío exitosamente!")->success()->important();
 
-        return View::make('usuarios.nuevoregistro2', array(
+        return View::make('usuarios.registro_admin', array(
             'alert' => $alert,
             'cat_entidades' => $cat_entidades,
             'sectores' => $sectores,
@@ -149,12 +156,13 @@ class registrowebController extends Controller
             'cat_escolaridad' => $cat_escolaridad,
             'detalle_registrop' => $detalle_registrop,
             'cat_regiones' => $cat_regiones,
-            'cat_pais' => $cat_pais
+            'cat_pais' => $cat_pais,
+            'registroweb' => $registroweb
         ));
 
 
 
-       //registrowebModel::create(request()->all());/*Metodo create*/
+        //registrowebModel::create(request()->all());/*Metodo create*/
 
 
 
@@ -166,5 +174,4 @@ class registrowebController extends Controller
     public function pruebacorreo(){
         Mail::to('beatriz.vargas@jalisco.gob.mx')->send(new MensajeEnviado());
     }
-
 }

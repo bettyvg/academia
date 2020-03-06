@@ -130,6 +130,7 @@ $user = Session::get('usuario');
                         <li>
                             <a class="has-arrow" aria-expanded="false"><span class="educate-icon educate-library "></span> <span class="mini-click-non">Vinculación</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Registro web" href="{{route('registro_admin')}}" class="@if($_SERVER['REQUEST_URI'] == '/registro_admin') active @endif "><span class="mini-sub-pro">Registro web</span></a></li>
                                 <li><a title="Registro plática informativa" href="{{route('registroplatica')}}" class="@if($_SERVER['REQUEST_URI'] == '/registroplatica') active @endif "><span class="mini-sub-pro">Registro plática</span></a></li>
                             <!--<li><a title="Test ubica tu financiamiento" href="{{route('testubica')}}"><span class="mini-sub-pro">Test ubica</span></a></li>-->
                                 <li><a title="Evaluación de la plática informativa" href="{{route('evaluacionejecutivos')}}"><span class="mini-sub-pro">Evaluación ejecutivos</span></a></li>
@@ -287,6 +288,7 @@ $user = Session::get('usuario');
                                         <li>
                                             <a class="has-arrow" aria-expanded="false"><span class="mini-click-non">Vinculación</span></a>
                                             <ul class="submenu-angle" aria-expanded="false">
+                                                <li><a title="Registro web" href="{{route('registro_admin')}}" class="@if($_SERVER['REQUEST_URI'] == '/registro_admin') active @endif "><span class="mini-sub-pro">Registro web</span></a></li>
                                                 <li><a title="Registro plática informativa" href="{{route('registroplatica')}}" class="@if($_SERVER['REQUEST_URI'] == '/registroplatica') active @endif "><span class="mini-sub-pro">Registro plática</span></a></li>
                                                 <li><a title="Test ubica tu financiamiento" href="{{route('testubica')}}"><span class="mini-sub-pro">Test ubica</span></a></li>
                                                 <li><a title="Evaluación de la plática informativa" href="{{route('evaluacionplaticainfo')}}"><span class="mini-sub-pro">Evaluación plática</span></a></li>

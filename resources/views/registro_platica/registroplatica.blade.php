@@ -77,7 +77,10 @@
                                                                     <select  class="form-control select2"  name="cve_ent" id="cve_ent" value="{{old('cve_ent')}}">
                                                                         <option value="34" selected="">Estado de nacimiento</option>
                                                                         @foreach($cat_entidades as $entidades)
-                                                                            <option value="{{($entidades->cve_ent)}}" @if(old('cve_compuesta_ent_mun')==$entidades->cve_ent) selected="selected"@endif>{{($entidades->nom_ent)}}</option>
+                                                                            <option @if($entidades->cve_ent <='9') value="{{"0".$entidades->cve_ent}}"
+                                                                                    @if(old('cve_ent')=="0".$entidades->cve_ent)selected="selected" @endif
+                                                                                    @else value="{{$entidades->cve_ent}}" @if(old('d_estado')==($entidades->cve_ent))selected="selected"@endif
+                                                                                    @endif>{{($entidades->nom_ent)}}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>

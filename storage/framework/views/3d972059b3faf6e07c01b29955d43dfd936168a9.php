@@ -77,7 +77,10 @@
                                                                     <select  class="form-control select2"  name="cve_ent" id="cve_ent" value="<?php echo e(old('cve_ent')); ?>">
                                                                         <option value="34" selected="">Estado de nacimiento</option>
                                                                         <?php $__currentLoopData = $cat_entidades; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $entidades): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                            <option value="<?php echo e(($entidades->cve_ent)); ?>" <?php if(old('cve_compuesta_ent_mun')==$entidades->cve_ent): ?> selected="selected"<?php endif; ?>><?php echo e(($entidades->nom_ent)); ?></option>
+                                                                            <option <?php if($entidades->cve_ent <='9'): ?> value="<?php echo e("0".$entidades->cve_ent); ?>"
+                                                                                    <?php if(old('cve_ent')=="0".$entidades->cve_ent): ?>selected="selected" <?php endif; ?>
+                                                                                    <?php else: ?> value="<?php echo e($entidades->cve_ent); ?>" <?php if(old('d_estado')==($entidades->cve_ent)): ?>selected="selected"<?php endif; ?>
+                                                                                    <?php endif; ?>><?php echo e(($entidades->nom_ent)); ?></option>
                                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                     </select>
                                                                 </div>

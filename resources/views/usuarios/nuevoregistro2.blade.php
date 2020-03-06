@@ -35,6 +35,7 @@
                                                           style="margin-bottom: 15px">
                     </div>
                     <h1>Bienvenido</h1>
+                    @section('formulario_web')
                     <div id="myTabContent" class="tab-content custom-product-edit">
                         <div class="product-tab-list tab-pane fade active in" id="registroplatica">
                             <div class="row">
@@ -413,8 +414,7 @@
                                                             <span class="spantext"
                                                                   style="color: darkgrey;">Sector</span>
                                                             <select name="sector" id="sector"
-                                                                    class="form-control select2"
-                                                                    required>
+                                                                    class="form-control select2">
                                                                 <option value="">Seleccionar..</option>
                                                                 @foreach($sectores as $sector)
                                                                     <option value="{{$sector->codigo_sector}}"
@@ -426,8 +426,7 @@
                                                             <span class="spantext"
                                                                   style="color: darkgrey;">Subsector</span>
                                                             <select name="subsector" id="subsector"
-                                                                    class="form-control select2"
-                                                                    required>
+                                                                    class="form-control select2">
                                                                 <option value="">Seleccionar..</option>
                                                                 @foreach($subsectores as $subsector)
                                                                     <option value="{{$subsector->codigo_subsector}}"
@@ -437,8 +436,7 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <span class="spantext" style="color: darkgrey;">Rama</span>
-                                                            <select name="rama" id="rama" class="form-control select2"
-                                                                    required>
+                                                            <select name="rama" id="rama" class="form-control select2">
                                                                 <option value="">Seleccionar..</option>
                                                                 @foreach($ramas as $rama)
                                                                     <option value="{{$rama->codigo_rama}}"
@@ -452,8 +450,7 @@
                                                             <span class="spantext"
                                                                   style="color: darkgrey;">Subrama</span>
                                                             <select name="subrama" id="subrama"
-                                                                    class="form-control select2"
-                                                                    required>
+                                                                    class="form-control select2">
                                                                 <option value="">Seleccionar..</option>
                                                                 @foreach($subramas as $subrama)
                                                                     <option value="{{$subrama->codigo_subrama}}"
@@ -506,7 +503,6 @@
                                                 </div>
 
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
@@ -514,6 +510,7 @@
                         </div>
 
                     </div>
+                    @endsection
                 </div>
             </div>
         </form>

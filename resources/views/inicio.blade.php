@@ -1,6 +1,5 @@
 @extends('main')
 @section('content')
-
     <section>
         <div class="analytics-sparkle-area">
             <div class="container-fluid">

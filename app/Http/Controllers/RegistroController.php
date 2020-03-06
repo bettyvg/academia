@@ -64,7 +64,7 @@ class RegistroController extends BaseController
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-
+//dd(request()->all());
                 Registro::create(request()->all());
 
                 //$dd(request()->ALL);

@@ -129,10 +129,7 @@ Route::post('nuevoregistro2', 'registrowebController@create' )->name('nuevoregis
 Route::post('get_colonia/{id}', 'registrowebController@get_colonia');
 Route::post('get_municipio/{id}', 'registrowebController@get_municipio');
 Route::GET('get_cp/{id}', 'registrowebController@get_cp');
-Route::get('registro_admin', 'registro_adminController@index' )->name('registro_admin');
-Route::post('registro_admin', 'registro_adminController@create' )->name('registro_admin');
-Route::get('edit_registro_admin/{id}', 'registro_adminController@edit')->name('edit_registro_admin');
-Route::post('edit_registro_admin/{id}', 'registro_adminController@update')->name('edit_registro_admin.update');
+
 
 
 
@@ -160,6 +157,7 @@ Route::get('examenes', 'ExamenController@preguntas')->name('examenes');
 Route::get('fin_examen', 'ExamenController@fin')->name('fin_examen');
 Route::get('/get_examenes/{id}', 'CursosController@get_curso' )->name('get_cursos');
 
-/*Correo prueba*/
-Route::get('enviar_correo', 'registrowebController@pruebacorreo')->name('enviar_correo');
+/*Ruta para imprimir en pdf*/
+Route::name('print')->get('/ejemplo', 'GeneradorController@imprimir');
+Route::get('/ejemplo/{id}', 'GeneradorController@imprimir');
 

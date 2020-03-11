@@ -141,12 +141,10 @@ Route::get('mostrar-usuarios', 'UsuariosController@mostrar_usuarios' )->name('mo
 Route::get('test', 'HomeController@test' )->name('test');
 
 
-/** Cursos **/
+/* Cursos */
 
 Route::post('cursos', 'CursosController@cursos' )->name('cursos');
 Route::get('/get_curso/{id}', 'CursosController@get_curso' )->name('get_cursos');
-
-
 
 Route::get('cursos_online', 'HomeController@cursos_online')->name('cursos_online');
 Route::get('miscursos', 'HomeController@miscursos')->name('miscursos');
@@ -160,6 +158,7 @@ Route::get('get_cursoonline/{id}', 'CursosOnlineController@get_cursoonline' )->n
 Route::get('inicio_examen', 'ExamenController@index')->name('inicio_examen');
 Route::get('examenes', 'ExamenController@preguntas')->name('examenes');
 Route::get('fin_examen', 'ExamenController@fin')->name('fin_examen');
+Route::get('/get_examenes/{id}', 'CursosController@get_curso' )->name('get_cursos');
 
 /*Correo prueba*/
 Route::get('enviar_correo', 'registrowebController@pruebacorreo')->name('enviar_correo');

@@ -267,11 +267,11 @@
                                                 <option value="none" selected="" disabled=""
                                                         style="color: darkgrey;">Genero
                                                 </option>
-                                                <option value="M"
+                                                <option value="H"
                                                         <?php if(old('genero')=='Masculino'): ?> selected="selected"<?php endif; ?>>
                                                     Masculino
                                                 </option>
-                                                <option value="F"
+                                                <option value="M"
                                                         <?php if(old('genero')=='Femenino'): ?> selected="selected"<?php endif; ?>>
                                                     Femenino
                                                 </option>
@@ -526,41 +526,73 @@
                                                    value="<?php echo e(old('telefono')); ?>">
                                         </div>
                                     </div>
+                                    <!-- Tabla de registros evaluación   -->
+                                    <div class="product-tab-list tab-pane fade active in data-table-area mg-b-15"
+                                         id="registroweb">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="sparkline13-list">
+                                                        <div class="sparkline13-hd">
+                                                            <div class="main-sparkline13-hd">
+                                                                <!--<h1>Projects <span class="table-project-n">Data</span> Table</h1>-->
+                                                            </div>
+                                                        </div>
+                                                        <br><br>
+                                                        <span class="spantext" style="color: darkgrey;">Seleccione su actividad empresarial</span>
+                                                        <div class="sparkline13-graph">
+                                                            <div class="datatable-dashv1-list custom-datatable-overright">
 
-                                    <div class="row">
+                                                                <table id="table_scian" data-toggle="table"
+                                                                       data-search="true"
+                                                                       data-pagination="true"
+                                                                       data-search="true"
+                                                                       data-cookie="true"
+                                                                       data-cookie-id-table="saveId">
+
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th data-field="state"></th>
+                                                                        <th class="sorting_asc" tabindex="0"
+                                                                            rowspan="1" colspan="1">Descripción subrama
+                                                                        </th>
+                                                                        <th class="sorting_asc" tabindex="0"
+                                                                            rowspan="1" colspan="1">Clase de Actividad
+                                                                        </th>
+                                                                        <th class="sorting" tabindex="0"
+                                                                            rowspan="1" colspan="1">Sector sedeco
+                                                                        </th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <?php $__currentLoopData = $cat_scian; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Items): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                        <tr role="row" class="items">
+                                                                            <td class=""><input id="actividad_empresarial" name="actividad_empresarial" type="checkbox" value="<?php echo e($Items->id_scian); ?>"></td>
+                                                                            <td class="sorting_1"><?php echo e($Items->descripcion_subrama); ?></td>
+                                                                            <td class="sorting_1"><?php echo e($Items->descripcion_clase); ?></td>
+                                                                            <td class="sorting_1"><?php echo e($Items->descripcion_sedeco); ?></td>
+                                                                        </tr>
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Tabla de registros de platica -->
+
+                                   <!--<div class="row">
                                         <div class="col-md-4">
                                             <span class="spantext" style="color: darkgrey;">Actividad Empresarial</span>
                                             <input name="act_empresarial" id="act_empresarial" type="text"
-                                                   <?php if(isset($registro)): ?> value="<?php echo e($registro->telefono); ?>"
-                                                   <?php endif; ?>
                                                    class="form-control"
                                                    placeholder="Actividad Empresarial"
-                                                   value="<?php echo e(old('act_empresarial')); ?>">
+                                                   value="">
 
-                                        </div>
-                                        <div class="col-md-4">
-                                                            <span class="spantext"
-                                                                  style="color: darkgrey;">Sector SCIAN</span>
-                                            <select name="scian" id="scian"
-                                                    class="form-control select2">
-                                                <option value="">Seleccionar..</option>
-                                                <?php $__currentLoopData = $subsectores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subsector): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option value="<?php echo e($subsector->codigo_subsector); ?>"
-                                                            <?php if(isset($prospecto) && $prospecto->codigo_subsector == $subsector->codigo_subsector): ?> selected <?php endif; ?>><?php echo e($subsector->descripcion_subsector); ?></option>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <span class="spantext" style="color: darkgrey;">Sector SEDECO</span>
-                                            <select name="sedeco" id="sedeco" class="form-control select2">
-                                                <option value="">Seleccionar..</option>
-                                                <?php $__currentLoopData = $ramas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rama): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option value="<?php echo e($rama->codigo_rama); ?>"
-                                                            <?php if(isset($prospecto) && $prospecto->codigo_rama == $rama->codigo_rama): ?> selected <?php endif; ?>><?php echo e($rama->descripcion_rama); ?></option>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                            </select>
-                                        </div>
-                                    </div>
+                                        </div>-->
 
                                 </div>
                                 <div class="row">

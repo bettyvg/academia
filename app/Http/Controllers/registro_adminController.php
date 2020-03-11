@@ -35,6 +35,7 @@ class registro_adminController extends Controller
         $cat_escolaridad = Cat_escolaridad::select('id_escolaridad','nivel', 'estatus')->orderBy('id_escolaridad', 'ASC')->get();
         //$detalle_registrop = Registro::get();
         $cat_pais = Cat_pais::all();
+        $cat_scian = cat_scian::all();
         $cat_regiones = Cat_regiones::select('region')->groupBy('region')->get();
         $sectores = cat_scian::select('codigo_sector', 'descripcion_sector')->distinct()->get();
         $subsectores = cat_scian::select('codigo_subsector', 'descripcion_subsector')->distinct()->get();
@@ -65,6 +66,7 @@ class registro_adminController extends Controller
             'detalle_registrop' => $detalle_registrop,
             'cat_regiones' => $cat_regiones,
             'cat_pais' => $cat_pais,
+            'cat_scian' => $cat_scian,
             'registroweb' => $registroweb
         ));
     }

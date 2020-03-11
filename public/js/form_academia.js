@@ -354,7 +354,31 @@ $(document).ready(function () {
         });
     });
 
+    $("#actividad_empresarial").click(function() {
+        var actividad_emp = $("#actividad_empresarial").val();;
+       //console.log(actividad_emp);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "./get_actividad/" + actividad_emp,
+            dataType: 'json',
+            type: "POST",
+            data: actividad_emp,
+            contentType: false,
+            processData: false,
+            error: function () {
 
+            },
+            success: function (data) {
+                console.log(data);
+                //$("#cp").val(data.d_codigo);
+            }
+        });
+
+
+
+    });
 
 
     function fr_calculaRFC( RFC, HOMOCLAVE, NOMBRE1, NOMBRE2, APAT, AMAT, FECHA, TIPO_EVENTO ) {

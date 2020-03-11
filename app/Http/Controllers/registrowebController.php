@@ -37,6 +37,7 @@ class registrowebController extends Controller
         $ramas = cat_scian::select('codigo_rama', 'descripcion_rama')->distinct()->get();
         $subramas = cat_scian::select('codigo_subrama', 'descripcion_subrama')->distinct()->get();
         $clase_actividad = cat_scian::select('codigo_clase', 'descripcion_clase')->distinct()->get();
+        $cat_scian = cat_scian::all();
         $detalle_registrop = Registro::select('nombre','apellido_paterno','apellido_materno','genero','cat_municipios.nom_mun','fecha_nacimiento',
             'correo','telefono','cat_escolaridad.nivel','cat_escolaridad.estatus','ocupacion','created_at')
             ->join('cat_escolaridad', 'cat_escolaridad.id_escolaridad', '=','registroplatica.id_escolaridad')
@@ -59,7 +60,8 @@ class registrowebController extends Controller
             'cat_escolaridad' => $cat_escolaridad,
             'detalle_registrop' => $detalle_registrop,
             'cat_regiones' => $cat_regiones,
-            'cat_pais' => $cat_pais
+            'cat_pais' => $cat_pais,
+            'cat_scian' => $cat_scian
         ));
     }
 

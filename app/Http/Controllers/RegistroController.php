@@ -10,6 +10,7 @@ use App\Models\Cat_entidades;
 use App\Models\Cat_municipios;
 use App\Models\Cat_escolaridad;
 use App\Models\Cat_pais;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
@@ -103,7 +104,6 @@ class RegistroController extends BaseController
             ->join('cat_municipios','cat_municipios.cve_compuesta_ent_mun', '=', 'registroplatica.cve_compuesta_ent_mun')
             ->orderBy('created_at', 'DESC')->get();*/
         $detalle_registrop = Registro::find($id);
-
         //dd($detalle_registrop);
         $cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
         $cat_entidades = Cat_entidades::all();

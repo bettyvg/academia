@@ -14,14 +14,14 @@ $("#btn_rfc").click(function () {
         var ap_paterno = document.getElementById("apellido_paterno").value;
         var ap_materno = document.getElementById("apellido_materno").value;
         var nombre = document.getElementById("nombre").value;
-        var rfc = ano_nacimiento + fecha_nacimiento[1] + fecha_nacimiento[2];
         var sexo = document.getElementById("genero").value;
         var estado = document.getElementById("estado").value;
-        console.log(sexo);
+        //console.log(sexo);
 
-        if(ap_paterno !='' && ap_materno !='' && nombre !='' && rfc !='' && sexo!='' && estado!='')
+        if(ap_paterno !='' && ap_materno !='' && nombre !='' && fecha1 != '' && sexo!='' && estado!='')
         {
             calcula();
+
         }
 
     });
@@ -88,10 +88,16 @@ $("#btn_rfc").click(function () {
 
         fnCalculaCURP(nombre_f.toUpperCase(), ap_pat_f.toUpperCase(), ap_mat_f.toUpperCase(), dteNacimiento, sexo, estado);
 
-        document.getElementById("rfc").value = rfc;
+        if(ap_paterno !='' && ap_materno !='' && nombre !='' && fecha1 != '' && sexo!='' && estado!='')
+        {
+            document.getElementById("rfc").value = rfc;
+
+        }
         console.log('rfc: ', rfc)
         return false;
     }
+
+
     function calcula_PM() {
         var nombre_empresa = "Fondo Jalisco de Fomento Empresarial";
         //var rfc = "850618";
@@ -142,7 +148,10 @@ $("#btn_rfc").click(function () {
 
         fnCalculaCURP(nombre_f.toUpperCase(), dteNacimiento);
 
+
         document.getElementById("rfc").value = rfc;
+
+
         console.log('rfc: ', rfc)
         return false;
     }
@@ -1383,7 +1392,9 @@ $("#btn_rfc").click(function () {
 
         pstCURP = pstCURP + pstDigVer;
 
-        document.getElementById("curp").value = pstCURP;
+            document.getElementById("curp").value = pstCURP;
+
+
 
         console.log('curp:', pstCURP)
 

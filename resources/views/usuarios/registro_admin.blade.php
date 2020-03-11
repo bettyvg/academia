@@ -524,41 +524,73 @@
                                                    value="{{old('telefono')}}">
                                         </div>
                                     </div>
+                                    <!-- Tabla de registros evaluación   -->
+                                    <div class="product-tab-list tab-pane fade active in data-table-area mg-b-15"
+                                         id="registroweb">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="sparkline13-list">
+                                                        <div class="sparkline13-hd">
+                                                            <div class="main-sparkline13-hd">
+                                                                <!--<h1>Projects <span class="table-project-n">Data</span> Table</h1>-->
+                                                            </div>
+                                                        </div>
+                                                        <br><br>
+                                                        <span class="spantext" style="color: darkgrey;">Seleccione su actividad empresarial</span>
+                                                        <div class="sparkline13-graph">
+                                                            <div class="datatable-dashv1-list custom-datatable-overright">
 
-                                    <div class="row">
+                                                                <table id="table_scian" data-toggle="table"
+                                                                       data-search="true"
+                                                                       data-pagination="true"
+                                                                       data-search="true"
+                                                                       data-cookie="true"
+                                                                       data-cookie-id-table="saveId">
+
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th data-field="state"></th>
+                                                                        <th class="sorting_asc" tabindex="0"
+                                                                            rowspan="1" colspan="1">Descripción subrama
+                                                                        </th>
+                                                                        <th class="sorting_asc" tabindex="0"
+                                                                            rowspan="1" colspan="1">Clase de Actividad
+                                                                        </th>
+                                                                        <th class="sorting" tabindex="0"
+                                                                            rowspan="1" colspan="1">Sector sedeco
+                                                                        </th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    @foreach ($cat_scian as $Items)
+                                                                        <tr role="row" class="items">
+                                                                            <td class=""><input id="actividad_empresarial" name="actividad_empresarial" type="checkbox" value="{{$Items->id_scian}}"></td>
+                                                                            <td class="sorting_1">{{$Items->descripcion_subrama}}</td>
+                                                                            <td class="sorting_1">{{$Items->descripcion_clase}}</td>
+                                                                            <td class="sorting_1">{{$Items->descripcion_sedeco}}</td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Tabla de registros de platica -->
+
+                                   <!--<div class="row">
                                         <div class="col-md-4">
                                             <span class="spantext" style="color: darkgrey;">Actividad Empresarial</span>
                                             <input name="act_empresarial" id="act_empresarial" type="text"
-                                                   @if(isset($registro)) value="{{$registro->telefono}}"
-                                                   @endif
                                                    class="form-control"
                                                    placeholder="Actividad Empresarial"
-                                                   value="{{old('act_empresarial')}}">
+                                                   value="">
 
-                                        </div>
-                                        <div class="col-md-4">
-                                                            <span class="spantext"
-                                                                  style="color: darkgrey;">Sector SCIAN</span>
-                                            <select name="scian" id="scian"
-                                                    class="form-control select2">
-                                                <option value="">Seleccionar..</option>
-                                                @foreach($subsectores as $subsector)
-                                                    <option value="{{$subsector->codigo_subsector}}"
-                                                            @if(isset($prospecto) && $prospecto->codigo_subsector == $subsector->codigo_subsector) selected @endif>{{$subsector->descripcion_subsector}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <span class="spantext" style="color: darkgrey;">Sector SEDECO</span>
-                                            <select name="sedeco" id="sedeco" class="form-control select2">
-                                                <option value="">Seleccionar..</option>
-                                                @foreach($ramas as $rama)
-                                                    <option value="{{$rama->codigo_rama}}"
-                                                            @if(isset($prospecto) && $prospecto->codigo_rama == $rama->codigo_rama) selected @endif>{{$rama->descripcion_rama}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
+                                        </div>-->
 
                                 </div>
                                 <div class="row">

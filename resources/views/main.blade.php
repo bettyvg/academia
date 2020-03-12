@@ -69,6 +69,7 @@
        ============================================ -->
     <link rel="stylesheet" href="css/calendar/fullcalendar.min.css">
     <link rel="stylesheet" href="css/calendar/fullcalendar.print.min.css">
+    <link rel="stylesheet" href="css/examen/style.css">
 
     <!-- formulario JS
        ============================================ -->
@@ -77,10 +78,11 @@
 
 
 
-    <link rel="stylesheet" href="{{asset('./css/editor/select2.css')}}">
+    <link rel="stylesheet" href="{{asset('css/editor/select2.css')}}">
 
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+
 </head>
 
 <?php
@@ -120,7 +122,7 @@ $user = Session::get('usuario');
                                 <li><a title="Catálogo capacitadores" href="{{route('cat_capacitadores.index')}}"><span class="mini-sub-pro">Catálogo capacitador </span></a></li>
                                 <li><a title="Catálogo Ejecutivos" href="{{route('ejecutivos')}}"><span class="mini-sub-pro">Catálogo ejecutivos</span></a></li>
                                 <li><a title="Catálogo perfiles" href="{{route('perfiles')}}"><span class="mini-sub-pro">Catálogo perfiles</span></a></li>
-<li><a title="Catálogo instituciones" href="{{route('instituciones')}}"><span class="mini-sub-pro">Catálogo instituciones</span></a></li>
+                                <li><a title="Catálogo instituciones" href="{{route('instituciones')}}"><span class="mini-sub-pro">Catálogo instituciones</span></a></li>
                                 <!--<li><a title="Catálogo puestos" href="{{route('puestos')}}"><span class="mini-sub-pro">Catálogo puestos</span></a></li>-->
                                 <li><a title="Catálogo de Temas" href="{{route('temas')}}"><span class="mini-sub-pro">Catálogo temas</span></a></li>
                             </ul>

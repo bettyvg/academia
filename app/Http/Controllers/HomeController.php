@@ -46,6 +46,8 @@ class HomeController extends Controller
         $cat_temas = Cat_temas::where('estatus', 'activado')->orderBy('tema')->get();
         $cat_capacitador = Cat_capacitador::orderBy('nom_cap')->get();
 
+        $tema =Cat_temas::where('id_tema','=','50')->get();
+
         $cursos = DB::select('SELECT cursos_online.id_cursosonline,cursos_online.nombre_curso, cursos_online.descripcion, cat_temas.tema, documentos.nombre as nombre_documento, cat_capacitador.nom_cap as nombre_capacitador,
                         cat_capacitador.apellido_paterno as apellido_paterno_capacitador, cat_capacitador.apellido_materno as apellido_materno_capacitador, cursos_online.id_capacitador, cursos_online.id_categoria, documentos.tipo_documento
                         FROM cursos_online
@@ -63,6 +65,7 @@ GROUP BY cat_municipios.nom_mun');
         return View::make('inicio2', array('cat_temas' => $cat_temas,
             'cat_capacitadores' => $cat_capacitador,
             'cursos' => $cursos,
+            'tema' => $tema,
             'inscritos_municipio' => $inscritos_municipio
         ));
 

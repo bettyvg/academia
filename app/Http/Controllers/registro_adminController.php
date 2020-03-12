@@ -104,6 +104,13 @@ class registro_adminController extends Controller
         return response()->json($cat_regiones, '200');
     }
 
+    public function get_actividad($actividad_emp){
+        //dd($cp);
+        $datos = cat_scian::select('id_scian', 'descripcion_sedeco','codigo_sedeco','descripcion_clase','codigo_clase', 'descripcion_subrama', 'codigo_subrama')->where('id_scian', $actividad_emp)->get();
+
+        //dd($datos);
+        return response()->json($datos, '200');
+    }
 
     public function create()
     {

@@ -567,10 +567,10 @@
                                                                     <tbody>
                                                                     <?php $__currentLoopData = $cat_scian; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Items): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                         <tr role="row" class="items">
-                                                                            <td class=""><input id="actividad_empresarial" name="actividad_empresarial" type="checkbox" value="<?php echo e($Items->id_scian); ?>"></td>
-                                                                            <td class="sorting_1"><?php echo e($Items->descripcion_subrama); ?></td>
-                                                                            <td class="sorting_1"><?php echo e($Items->descripcion_clase); ?></td>
-                                                                            <td class="sorting_1"><?php echo e($Items->descripcion_sedeco); ?></td>
+                                                                            <td class=""><input  class="check" name="id_scian" type="checkbox" data-id="<?php echo e($Items->id_scian); ?>"></td>
+                                                                            <td class="sorting_1" id="codigo_subrama" name="codigo_subrama" ><?php echo e($Items->descripcion_subrama); ?></td>
+                                                                            <td class="sorting_1" id="codigo_subrama" name="codigo_subrama" ><?php echo e($Items->descripcion_clase); ?></td>
+                                                                            <td class="sorting_1" id="codigo_subrama" name="codigo_subrama" ><?php echo e($Items->descripcion_sedeco); ?></td>
                                                                         </tr>
                                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                     </tbody>

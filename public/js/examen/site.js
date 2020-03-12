@@ -1,24 +1,27 @@
-/*$("#preguntas").change(function () {
-  var id_pregunta = $("#preguntas").val();
+$("#iniciar_quiz").click(function () {
+  var id_tema = $("#iniciar_quiz").val();
+  //console.log(id_tema);
 
   $.ajax({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
-    url: "./examenes/" + id_pregunta,
+    url: "./examenes/" + id_tema,
     dataType: 'json',
-    type: "POST",
-    data: id_pregunta,
+    type: "GET",
+    data: id_tema,
     contentType: false,
     processData: false,
     error: function () {
-
+      console.log('entrom a error');
     },
     success: function (data) {
-      console.log(data);
+      console.log('entro a la funcion');
+
     }
 
-});*/
+  });
+});
 
 /*let preguntas = [
   {
@@ -71,7 +74,7 @@
   }
 ];*/
 
-let pregunta_count = 0;
+/*let pregunta_count = 0;
 let points = 0;
 
 window.onload = function() {
@@ -129,4 +132,4 @@ function toggleActive() {
       option[i].classList.add("active");
     };
   }
-}
+}*/

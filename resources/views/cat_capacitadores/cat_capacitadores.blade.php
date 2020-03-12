@@ -17,7 +17,7 @@
                                     <div class="col-md-offset-12">
                                         <div class="payment-adress">
                                             <br>
-                                            <button type="button" class="btn btn-info pull-right" data-toggle="modal"
+                                            <button type="button" class="btn btn-info" data-toggle="modal"
                                                     name="agregar_capacitador" id="agregar_capacitador"
                                                     data-target="#modal_capacitador">Agregar capacitador
                                             </button>

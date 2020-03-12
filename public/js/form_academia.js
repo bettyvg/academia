@@ -354,115 +354,41 @@ $(document).ready(function () {
         });
     });
 
-    $("#actividad_empresarial").click(function() {
-        var actividad_emp = $("#actividad_empresarial").val();;
-       //console.log(actividad_emp);
+    $(".check").click(function() {
+        var actividad_emp = $(this).find(':checked').data("id");
+        console.log(actividad_emp);
+        //  console.log($(this).find(':checked').data("id"));
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             url: "./get_actividad/" + actividad_emp,
             dataType: 'json',
-            type: "POST",
+            type: "GET",
             data: actividad_emp,
-            contentType: false,
-            processData: false,
             error: function () {
-
+                console.log('entro a error');
             },
             success: function (data) {
                 console.log(data);
                 //$("#cp").val(data.d_codigo);
             }
         });
-
-
-
     });
 
-
-    function fr_calculaRFC( RFC, HOMOCLAVE, NOMBRE1, NOMBRE2, APAT, AMAT, FECHA, TIPO_EVENTO ) {
-
-        var persona_tipo = jQuery('#' + TIPO_EVENTO).val();
-
-        if(persona_tipo !== 'Persona moral'){
-
-            if( jQuery('#'+RFC).val() == '' ) {
-                var nombre_uno = jQuery('#'+NOMBRE1).val();
-                var nombre_dos = jQuery('#'+NOMBRE2).val();
-                var nombre     =  nombre_uno + ' ' + nombre_dos;
-                var pat        = jQuery('#'+APAT).val();
-                var mat        = jQuery('#'+AMAT).val();
-                var fecha      = jQuery('#'+FECHA).val();
-
-                if( mat == '' ) { mat = 'X'; }
-
-                if( nombre_uno == '' ) {
-                    alert('El primer nombre es necesario');
-                    jQuery('#'+NOMBRE1).focus();
-                } else if( pat == '' ) {
-                    alert('El apellido paterno es necesario');
-                    jQuery('#'+APAT).focus();
-                } else if( mat == '' ) {
-                    alert('El apellido materno es necesario');
-                    jQuery('#'+AMAT).focus();
-                } else if( fecha == '' ) {
-                    alert('La fecha de nacimiento es necesaria');
-                    jQuery('#'+FECHA).focus();
-                } else {
-
-                    var rfc = fr_CoreCalcularRFC(nombre, pat,  mat, fecha);
-                    jQuery('#'+RFC).val(rfc);
-                    jQuery.post(FR_PATH,{
-                        fr_cmd:'getHomoclave',
-                        Nombre: nombre,
-                        Apat  :   pat,
-                        Amat  :   mat,
-                        Rfc   :    rfc,
-                        PM    :     'true'
-                    }, function(data) {
-                        jQuery('#'+HOMOCLAVE).val(data);
-                    },'text' );
-                }
-            }
-        }
-    }
-
-    function fr_calculaRFC_PM( RFC, HOMOCLAVE, NOMBRE1, FECHA ) {
-        if( jQuery('#'+RFC).val() == '' ) {
-            var nombre_uno = jQuery('#'+NOMBRE1).val();
-            var fecha      = jQuery('#'+FECHA).val();
-
-            if( nombre_uno == '' ) {
-                alert('El primer nombre es necesario');
-                jQuery('#'+NOMBRE1).focus();
-            } else if( fecha == '' ) {
-                alert('La fecha de nacimiento es necesaria');
-                jQuery('#'+FECHA).focus();
-            } else {
-
-                jQuery.post(FR_PATH,{
-                    fr_cmd: 'getRFC_PM',
-                    Nombre: nombre_uno,
-                    fecha : fecha,
-                    PM    : 'true'
-                }, function(data) {
-                    var arr = data.split("|");
-                    jQuery('#'+RFC).val(arr[0]);
-                    jQuery('#'+HOMOCLAVE).val(arr[1]);
-                },'text' );
-            }
-        }
-    }
-
-
-
-
-
-
-
-
-
+    /* $("#id_sian").click(function() {
+         // in the handler, 'this' refers to the box clicked on
+         var $actividad = $(this).attr("#data-id");
+         //alert($(this).attr("#data-id"));
+         console.log();
+         if ($actividad.is(":checked")) {
+             var group = "input:checkbox[name='" + $actividad.attr("name") + "']";
+             $(group).prop("checked", false);
+             $actividad.prop("checked", true);
+         } else {
+             $actividad.prop("checked", false);
+         }
+     });*/
 
 
     /*$('#calendar').fullCalendar({

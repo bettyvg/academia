@@ -26,7 +26,6 @@ Route::get('edit_registrop/{id}', 'RegistroController@edit')->name('edit_registr
 Route::post('edit_registrop/{id}', 'RegistroController@update')->name('edit_registrop.update');
 
 
-
 Route::get('testubica', 'HomeController@testubica')->name('testubica');
 Route::get('calendario', 'HomeController@calendario')->name('calendario');
 Route::get('cursos', 'HomeController@cursos')->name('cursos');
@@ -109,8 +108,6 @@ Route::post('edit_user/{id}', 'UsuariosController@edit')->name('edit_user');
 
 Route::post('delete_user/{id}', 'UsuariosController@delete_user')->name('delete_user');
 
-
-
 Route::post('get_puesto/{id}', 'UsuariosController@get_puesto');
 Route::get('signout', 'UsuariosController@signout' )->name('signout');
 Route::get('registro', 'UsuariosController@registro' )->name('registro');
@@ -130,8 +127,12 @@ Route::post('get_colonia/{id}', 'registrowebController@get_colonia');
 Route::post('get_municipio/{id}', 'registrowebController@get_municipio');
 Route::GET('get_cp/{id}', 'registrowebController@get_cp');
 
-
-
+/*Registro admin*/
+Route::get('registro_admin', 'registro_adminController@index' )->name('registro_admin');
+Route::post('registro_admin', 'registro_adminController@create' )->name('registro_admin');
+Route::get('edit_registro_admin/{id}', 'registro_adminController@edit')->name('edit_registro_admin');
+Route::post('edit_registro_admin/{id}', 'registro_adminController@update')->name('edit_registro_admin.update');
+Route::get('get_actividad/{id}', 'registro_adminController@get_actividad')->name('get_actividad');
 
 Route::post('registro', 'UsuariosController@registro' )->name('registro_post');
 Route::get('mostrar-usuarios', 'UsuariosController@mostrar_usuarios' )->name('mostrar-usuarios');
@@ -153,11 +154,13 @@ Route::get('get_cursoonline/{id}', 'CursosOnlineController@get_cursoonline' )->n
 /*Examenes*/
 
 Route::get('inicio_examen', 'ExamenController@index')->name('inicio_examen');
-Route::get('examenes', 'ExamenController@preguntas')->name('examenes');
+Route::get('examenes/{id}', 'ExamenController@preguntas')->name('examenes');
 Route::get('fin_examen', 'ExamenController@fin')->name('fin_examen');
-Route::get('/get_examenes/{id}', 'CursosController@get_curso' )->name('get_cursos');
+Route::get('/get_examenes/{id}', 'ExamenController@get_examenes' )->name('get_examenes');
 
 /*Ruta para imprimir en pdf*/
 Route::name('print')->get('/ejemplo', 'GeneradorController@imprimir');
 Route::get('/ejemplo/{id}', 'GeneradorController@imprimir');
 
+/*Correo prueba*/
+Route::get('enviar_correo', 'registrowebController@pruebacorreo')->name('enviar_correo');

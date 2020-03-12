@@ -565,10 +565,10 @@
                                                                     <tbody>
                                                                     @foreach ($cat_scian as $Items)
                                                                         <tr role="row" class="items">
-                                                                            <td class=""><input id="actividad_empresarial" name="actividad_empresarial" type="checkbox" value="{{$Items->id_scian}}"></td>
-                                                                            <td class="sorting_1">{{$Items->descripcion_subrama}}</td>
-                                                                            <td class="sorting_1">{{$Items->descripcion_clase}}</td>
-                                                                            <td class="sorting_1">{{$Items->descripcion_sedeco}}</td>
+                                                                            <td class=""><input  class="check" name="id_scian" type="checkbox" data-id="{{$Items->id_scian}}"></td>
+                                                                            <td class="sorting_1" id="codigo_subrama" name="codigo_subrama" >{{$Items->descripcion_subrama}}</td>
+                                                                            <td class="sorting_1" id="codigo_subrama" name="codigo_subrama" >{{$Items->descripcion_clase}}</td>
+                                                                            <td class="sorting_1" id="codigo_subrama" name="codigo_subrama" >{{$Items->descripcion_sedeco}}</td>
                                                                         </tr>
                                                                     @endforeach
                                                                     </tbody>

@@ -565,7 +565,7 @@
                                                                     <tbody>
                                                                     @foreach ($cat_scian as $Items)
                                                                         <tr role="row" class="items">
-                                                                            <td class=""><input  class="check" name="id_scian" type="checkbox" data-id="{{$Items->id_scian}}"></td>
+                                                                            <td class=""><input  class="check" name="id_scian" type="radio" data-id="{{$Items->id_scian}}"></td>
                                                                             <td class="sorting_1" id="codigo_subrama" name="codigo_subrama" >{{$Items->descripcion_subrama}}</td>
                                                                             <td class="sorting_1" id="codigo_subrama" name="codigo_subrama" >{{$Items->descripcion_clase}}</td>
                                                                             <td class="sorting_1" id="codigo_subrama" name="codigo_subrama" >{{$Items->descripcion_sedeco}}</td>
@@ -579,6 +579,13 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input name="codigo_clase" id="codigo_clase" type="hidden">
+                                        <input name="descripcion_clase" id="descripcion_clase" type="hidden">
+                                        <input name="codigo_sedeco" id="codigo_sedeco" type="hidden">
+                                        <input name="descripcion_sedeco" id="descripcion_sedeco" type="hidden">
+
                                     </div>
                                     <!-- Tabla de registros de platica -->
 

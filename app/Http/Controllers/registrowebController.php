@@ -113,7 +113,7 @@ class registrowebController extends Controller
         $name = date("YmdHis") . uniqid("", true) . '.png';
         QrCode::format('png')->size(399)->generate($reg->id_beneficiario,public_path('img/documentos/'.$name));
         $reg->qr=$name;
-       //dd($reg);
+        dd($reg);
         $reg->save();
 
         $alert = new \stdClass();

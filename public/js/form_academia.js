@@ -355,7 +355,7 @@ $(document).ready(function () {
     });
 
     $(".check").click(function() {
-        var actividad_emp = $(this).find(':checked').data("id");
+        var actividad_emp = $(this).data("id");
         console.log(actividad_emp);
         //  console.log($(this).find(':checked').data("id"));
         $.ajax({
@@ -371,7 +371,10 @@ $(document).ready(function () {
             },
             success: function (data) {
                 console.log(data);
-                //$("#cp").val(data.d_codigo);
+                $("#codigo_clase").val(data.codigo_clase);
+                $("#descripcion_clase").val(data.descripcion_clase);
+                $("#codigo_sedeco").val(data.codigo_sedeco);
+                $("#descripcion_sedeco").val(data.descripcion_sedeco);
             }
         });
     });

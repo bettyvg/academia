@@ -354,7 +354,33 @@ $(document).ready(function () {
         });
     });
 
+    $("#act_empresarial").keyup(function(){
+        var actividad_emp = $("#act_empresarial").val();
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "./get_act_empresarial/" + actividad_emp,
+            dataType: 'json',
+            type: "GET",
+            data: actividad_emp,
+            error: function () {
+                console.log('entro a error');
+            },
+            success: function (data) {
+                $.each( data, function( key, datito) {
+                    console.log(datito);
+                    $('.rows').append("<div value='"+datito.descripcion_sector+"'>"+datito.descripcion_sector+"</div>");
+                });
+
+            }
+        });
+
+    });
+
+
     $(".check").click(function() {
+        console.log("entro");
         var actividad_emp = $(this).data("id");
         console.log(actividad_emp);
         //  console.log($(this).find(':checked').data("id"));

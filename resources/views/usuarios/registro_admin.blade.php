@@ -24,124 +24,125 @@
                                         <ul id="myTabedu1" class="tab-review-design">
                                             <li class="active"><a href="#registrowe">Registro web</a></li>
                                         </ul>
-                                            <div id="myTabContent" class="tab-content custom-product-edit">
-                                                <div class="col-md-offset-12">
-                                                    <div class="payment-adress">
-                                                        <br>
-                                                        <button type="button" class="btn btn-info pull-right" data-toggle="modal"
-                                                                name="agregar_usuario" id="agregar_usuario"
-                                                                data-target="#modal_usuario">Agregar registro
-                                                        </button>
-                                                        <input type="hidden" name="_token"
-                                                               id="csrf-token" value="{{csrf_token()}}">
-                                                    </div>
+                                        <div id="myTabContent" class="tab-content custom-product-edit">
+                                            <div class="col-md-offset-12">
+                                                <div class="payment-adress">
                                                     <br>
+                                                    <button type="button" class="btn btn-info pull-right"
+                                                            data-toggle="modal"
+                                                            name="agregar_usuario" id="agregar_usuario"
+                                                            data-target="#modal_usuario">Agregar registro
+                                                    </button>
+                                                    <input type="hidden" name="_token"
+                                                           id="csrf-token" value="{{csrf_token()}}">
                                                 </div>
-                                                <!-- Tabla de registros evaluación   -->
-                                                <div class="product-tab-list tab-pane fade active in data-table-area mg-b-15"
-                                                     id="registroweb">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                <div class="sparkline13-list">
-                                                                    <div class="sparkline13-hd">
-                                                                        <div class="main-sparkline13-hd">
-                                                                            <!--<h1>Projects <span class="table-project-n">Data</span> Table</h1>-->
-                                                                        </div>
+                                                <br>
+                                            </div>
+                                            <!-- Tabla de registros evaluación   -->
+                                            <div class="product-tab-list tab-pane fade active in data-table-area mg-b-15"
+                                                 id="registroweb">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="sparkline13-list">
+                                                                <div class="sparkline13-hd">
+                                                                    <div class="main-sparkline13-hd">
+                                                                        <!--<h1>Projects <span class="table-project-n">Data</span> Table</h1>-->
                                                                     </div>
-                                                                    <div class="sparkline13-graph">
-                                                                        <div class="datatable-dashv1-list custom-datatable-overright">
-                                                                            <div id="toolbar">
-                                                                                <select class="form-control dt-tb">
-                                                                                    <option value="all">Exportar todo
-                                                                                    </option>
-                                                                                    <option value="selected">Exportar
-                                                                                        Seleccionados
-                                                                                    </option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <table id="table" data-toggle="table"
-                                                                                   data-pagination="true"
-                                                                                   data-search="true"
-                                                                                   data-show-columns="true"
-                                                                                   data-show-pagination-switch="true"
-                                                                                   data-show-toggle="true"
-                                                                                   data-resizable="true"
-                                                                                   data-cookie="true"
-                                                                                   data-cookie-id-table="saveId"
-                                                                                   data-show-export="true"
-                                                                                   data-click-to-select="true"
-                                                                                   data-toolbar="#toolbar">
-                                                                                <thead>
-                                                                                <tr>
-                                                                                    <th data-field="state"
-                                                                                        data-checkbox="true"></th>
-                                                                                    <th data-field="acciones">Acciones
-                                                                                    </th>
-                                                                                    <th class="sorting_asc" tabindex="0"
-                                                                                        rowspan="1" colspan="1">Nombre
-                                                                                    </th>
-                                                                                    <th class="sorting" tabindex="0"
-                                                                                        rowspan="1" colspan="1">Apellido
-                                                                                        paterno
-                                                                                    </th>
-                                                                                    <th class="sorting" tabindex="0"
-                                                                                        rowspan="1" colspan="1">Apellido
-                                                                                        materno
-                                                                                    </th>
-                                                                                    <th class="sorting" tabindex="0"
-                                                                                        rowspan="1" colspan="1">Fecha
-                                                                                        nacimiento
-                                                                                    </th>
-                                                                                    <th class="sorting" tabindex="0"
-                                                                                        rowspan="1" colspan="1">Edad
-                                                                                    </th>
-                                                                                    <th class="sorting" tabindex="0"
-                                                                                        rowspan="1" colspan="1">rfc
-                                                                                    </th>
-                                                                                    <th class="sorting" tabindex="0"
-                                                                                        rowspan="1" colspan="1">curp
-                                                                                    </th>
-                                                                                    <th class="sorting" tabindex="0"
-                                                                                        rowspan="1" colspan="1">
-                                                                                        domicilio
-                                                                                    </th>
-                                                                                </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                @foreach ($registroweb as $Items)
-                                                                                    <tr role="row" class="odd">
-                                                                                        <td class="sorting_1"></td>
-                                                                                        <td class="sorting_1">
-                                                                                            <button type="button"
-                                                                                                    title="Editar registro"
-                                                                                                    class="pd-setting-ed">
-                                                                                                <a href='edit_registro_admin/{{$Items->id_beneficiario}}'>
-                                                                                                    <i class="fa fa-pencil-square-o"> </i>
-                                                                                                </a></button>
-                                                                                        </td>
-                                                                                        <td class="sorting_1">{{$Items->nombre}}</td>
-                                                                                        <td class="sorting_1">{{$Items->apellido_paterno}}</td>
-                                                                                        <td class="sorting_1">{{$Items->apellido_materno}}</td>
-
-                                                                                        <td class="sorting_1">{{$Items->fecha_nacimiento}}</td>
-                                                                                        <td class="sorting_1">{{$Items->edad}}</td>
-                                                                                        <td class="sorting_1">{{$Items->rfc}}</td>
-                                                                                        <td class="sorting_1">{{$Items->curp}}</td>
-                                                                                        <td class="sorting_1">{{$Items->domicilio}}</td>
-                                                                                    </tr>
-                                                                                @endforeach
-                                                                                </tbody>
-                                                                            </table>
+                                                                </div>
+                                                                <div class="sparkline13-graph">
+                                                                    <div class="datatable-dashv1-list custom-datatable-overright">
+                                                                        <div id="toolbar">
+                                                                            <select class="form-control dt-tb">
+                                                                                <option value="all">Exportar todo
+                                                                                </option>
+                                                                                <option value="selected">Exportar
+                                                                                    Seleccionados
+                                                                                </option>
+                                                                            </select>
                                                                         </div>
+                                                                        <table id="table" data-toggle="table"
+                                                                               data-pagination="true"
+                                                                               data-search="true"
+                                                                               data-show-columns="true"
+                                                                               data-show-pagination-switch="true"
+                                                                               data-show-toggle="true"
+                                                                               data-resizable="true"
+                                                                               data-cookie="true"
+                                                                               data-cookie-id-table="saveId"
+                                                                               data-show-export="true"
+                                                                               data-click-to-select="true"
+                                                                               data-toolbar="#toolbar">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th data-field="state"
+                                                                                    data-checkbox="true"></th>
+                                                                                <th data-field="acciones">Acciones
+                                                                                </th>
+                                                                                <th class="sorting_asc" tabindex="0"
+                                                                                    rowspan="1" colspan="1">Nombre
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">Apellido
+                                                                                    paterno
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">Apellido
+                                                                                    materno
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">Fecha
+                                                                                    nacimiento
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">Edad
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">rfc
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">curp
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    domicilio
+                                                                                </th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            @foreach ($registroweb as $Items)
+                                                                                <tr role="row" class="odd">
+                                                                                    <td class="sorting_1"></td>
+                                                                                    <td class="sorting_1">
+                                                                                        <button type="button"
+                                                                                                title="Editar registro"
+                                                                                                class="pd-setting-ed">
+                                                                                            <a href='edit_registro_admin/{{$Items->id_beneficiario}}'>
+                                                                                                <i class="fa fa-pencil-square-o"> </i>
+                                                                                            </a></button>
+                                                                                    </td>
+                                                                                    <td class="sorting_1">{{$Items->nombre}}</td>
+                                                                                    <td class="sorting_1">{{$Items->apellido_paterno}}</td>
+                                                                                    <td class="sorting_1">{{$Items->apellido_materno}}</td>
+
+                                                                                    <td class="sorting_1">{{$Items->fecha_nacimiento}}</td>
+                                                                                    <td class="sorting_1">{{$Items->edad}}</td>
+                                                                                    <td class="sorting_1">{{$Items->rfc}}</td>
+                                                                                    <td class="sorting_1">{{$Items->curp}}</td>
+                                                                                    <td class="sorting_1">{{$Items->domicilio}}</td>
+                                                                                </tr>
+                                                                            @endforeach
+                                                                            </tbody>
+                                                                        </table>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- Tabla de registros de platica -->
                                             </div>
+                                            <!-- Tabla de registros de platica -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -157,8 +158,8 @@
                         <div class="modal-header" style="background-color: whiteSmoke;">
                             <h2 class="modal-title">Agregar registro</h2>
                         </div>
-                        <form action="registro_admin" method="POST" >
-                        <div class="modal-body">
+                        <form action="registro_admin" method="POST">
+                            <div class="modal-body">
                                 <h5>Tienes empresa o eres emprendedor</h5>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group " required="true">
@@ -524,6 +525,16 @@
                                                    value="{{old('telefono')}}">
                                         </div>
                                     </div>
+                                    <br><br>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <span class="spantext" style="color: darkgrey;">Escribe Actividad Empresarial</span>
+                                            <input name="act_empresarial" id="act_empresarial" type="text"
+                                                   class="form-control"
+                                                   value="">
+
+                                        </div>
+                                    </div>
                                     <!-- Tabla de registros evaluación   -->
                                     <div class="product-tab-list tab-pane fade active in data-table-area mg-b-15"
                                          id="registroweb">
@@ -537,7 +548,6 @@
                                                             </div>
                                                         </div>
                                                         <br><br>
-                                                        <span class="spantext" style="color: darkgrey;">Seleccione su actividad empresarial</span>
                                                         <div class="sparkline13-graph">
                                                             <div class="datatable-dashv1-list custom-datatable-overright">
 
@@ -547,7 +557,6 @@
                                                                        data-search="true"
                                                                        data-cookie="true"
                                                                        data-cookie-id-table="saveId">
-
                                                                     <thead>
                                                                     <tr>
                                                                         <th data-field="state"></th>
@@ -563,14 +572,20 @@
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                    @foreach ($cat_scian as $Items)
-                                                                        <tr role="row" class="items">
-                                                                            <td class=""><input  class="check" name="id_scian" type="radio" data-id="{{$Items->id_scian}}"></td>
-                                                                            <td class="sorting_1" id="codigo_subrama" name="codigo_subrama" >{{$Items->descripcion_subrama}}</td>
-                                                                            <td class="sorting_1" id="codigo_subrama" name="codigo_subrama" >{{$Items->descripcion_clase}}</td>
-                                                                            <td class="sorting_1" id="codigo_subrama" name="codigo_subrama" >{{$Items->descripcion_sedeco}}</td>
+
+                                                                        <tr role="row" class="items check rows">
+                                                                            <td class=""><input class="check rows"
+                                                                                                name="id_scian"
+                                                                                                type="radio">
+                                                                            </td>
+                                                                            <td class="sorting_1" id="descripcion_subrama"
+                                                                                name="descripcion_subrama"></td>
+                                                                            <td class="sorting_1" id="descripcion_clase"
+                                                                                name="descripcion_clase"></td>
+                                                                            <td class="sorting_1" id="descripcion_sedeco"
+                                                                                name="descripcion_sedeco"></td>
                                                                         </tr>
-                                                                    @endforeach
+
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -589,15 +604,6 @@
                                     </div>
                                     <!-- Tabla de registros de platica -->
 
-                                   <!--<div class="row">
-                                        <div class="col-md-4">
-                                            <span class="spantext" style="color: darkgrey;">Actividad Empresarial</span>
-                                            <input name="act_empresarial" id="act_empresarial" type="text"
-                                                   class="form-control"
-                                                   placeholder="Actividad Empresarial"
-                                                   value="">
-
-                                        </div>-->
 
                                 </div>
                                 <div class="row">
@@ -627,21 +633,22 @@
                                 </div>
 
 
-
-                            <div class="row" style="display: none; padding: 10px;" id="alert-modal">
-                                <div class="col-6">
-                                    <div class="alert alert-warning" id="alerta">
-                                        <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                <div class="row" style="display: none; padding: 10px;" id="alert-modal">
+                                    <div class="col-6">
+                                        <div class="alert alert-warning" id="alerta">
+                                            <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="modal-footer" style="background-color: whiteSmoke;">
+                            <div class="modal-footer" style="background-color: whiteSmoke;">
 
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">Agregar</button>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light">Agregar</button>
 
-                            <button type="button" class="btn btn-secondary pull-left" data-dismiss="modal">Cancelar</button>
-                        </div>
+                                <button type="button" class="btn btn-secondary pull-left" data-dismiss="modal">
+                                    Cancelar
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>

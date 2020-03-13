@@ -106,6 +106,19 @@ class registrowebController extends Controller
     }
 
 
+    public function get_actividad_empresarial($actividad_emp){
+        //dd($cp);
+        $datos = cat_scian::where('descripcion_sector', 'LIKE','%'.$actividad_emp.'%')
+            ->orWhere('descripcion_subsector', 'LIKE','%'.$actividad_emp.'%')
+            ->orWhere('descripcion_rama', 'LIKE','%'.$actividad_emp.'%')
+            ->orWhere('descripcion_subrama', 'LIKE','%'.$actividad_emp.'%')
+            ->orWhere('descripcion_sedeco', 'LIKE','%'.$actividad_emp.'%')
+            ->orWhere('descripcion_clase', 'LIKE','%'.$actividad_emp.'%')
+            ->get();
+        //dd($datos);
+        return response()->json($datos, '200');
+    }
+
 
     public function create()
     {

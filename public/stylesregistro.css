@@ -12,11 +12,13 @@ body{
 #registration-form{
 	max-width: 900px;
 	margin: 40px auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #registration-form .image{
 	float:left;
-	background-image: url("public/img/desk.jpg");
 	height: 500px;
 	width: 50%;
 	background-size: cover;
@@ -42,7 +44,7 @@ body{
 }
 
 #registration-form .form-control{
-	width: 90%;
+	width: 100%;
 	padding: 12px 20px;
 	height: 100%;
 }
@@ -56,8 +58,6 @@ body{
 
     #registration-form .image{
         float:left;
-        background-image: url("public/img/desk.jpg");
-                width: 50%;
         background-size: cover;
         background-position: 25%;
 

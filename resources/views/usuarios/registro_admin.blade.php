@@ -160,49 +160,50 @@
                         </div>
                         <form action="registro_admin" method="POST">
                             <div class="modal-body">
-                                <h5>Tienes empresa o eres emprendedor</h5>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group " required="true">
-                                        <select name="regimen_fiscal" id="regimen_fiscal"
-                                                class="form-control"
-                                                value="{{old('regimen_fiscal')}}">
-                                            <option value="none" selected="" disabled=""
-                                                    style="color: darkgrey;">
-                                                Seleccionar..
-                                            </option>
-                                            <option value="Emprendedor"
-                                                    @if(old('regimen_fiscal')=='Emprendedor') selected="selected"@endif>
-                                                Emprendedor
-                                            </option>
-                                            <option value="Empresario"
-                                                    @if(old('regimen_fiscal')=='Empresario') selected="selected"@endif>
-                                                Empresario
-                                            </option>
-                                        </select>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group " required="true">
+                                            <h5>Tienes empresa o eres emprendedor</h5>
+                                            <select name="regimen_fiscal" id="regimen_fiscal"
+                                                    class="form-control"
+                                                    value="{{old('regimen_fiscal')}}">
+                                                <option value="none" selected="" disabled=""
+                                                        style="color: darkgrey;">
+                                                    Seleccionar..
+                                                </option>
+                                                <option value="Emprendedor"
+                                                        @if(old('regimen_fiscal')=='Emprendedor') selected="selected"@endif>
+                                                    Emprendedor
+                                                </option>
+                                                <option value="Empresario"
+                                                        @if(old('regimen_fiscal')=='Empresario') selected="selected"@endif>
+                                                    Empresario
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group " id="altahacienda" hidden>
-                                        <h5>Años alta en hacienda</h5>
-                                        <select name="alta_hacienda" id="alta_hacienda"
-                                                class="form-control"
-                                                value="{{old('alta_hacienda')}}">
-                                            <option value="none" selected="" disabled=""
-                                                    style="color: darkgrey;">
-                                                Seleccionar..
-                                            </option>
-                                            <option value="Menos de 1 año"
-                                                    @if(old('alta_hacienda')=='Menos de 1 año') selected="selected"@endif>
-                                                Menos de 1 año
-                                            </option>
-                                            <option value="Más de 1 año"
-                                                    @if(old('alta_hacienda')=='Más de 1 año') selected="selected"@endif>
-                                                Más de 1 año
-                                            </option>
-                                        </select>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group " id="altahacienda" hidden>
+                                            <h5>Años alta en hacienda</h5>
+                                            <select name="alta_hacienda" id="alta_hacienda"
+                                                    class="form-control"
+                                                    value="{{old('alta_hacienda')}}">
+                                                <option value="none" selected="" disabled=""
+                                                        style="color: darkgrey;">
+                                                    Seleccionar..
+                                                </option>
+                                                <option value="Menos de 1 año"
+                                                        @if(old('alta_hacienda')=='Menos de 1 año') selected="selected"@endif>
+                                                    Menos de 1 año
+                                                </option>
+                                                <option value="Más de 1 año"
+                                                        @if(old('alta_hacienda')=='Más de 1 año') selected="selected"@endif>
+                                                    Más de 1 año
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <br><br><br>
+                                </div><br><br>
 
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -278,9 +279,6 @@
                                                 </option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
                                         <div class="form-group">
                                             <span class="spantext" style="color: darkgrey;">RFC</span>
                                             <input name="rfc" id="rfc" type="text"
@@ -289,6 +287,8 @@
                                                    placeholder="RFC"
                                                    value="{{old('rfc')}}">
                                         </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             <span class="spantext" style="color: darkgrey;">CURP</span>
                                             <input name="curp" id="curp" type="text"
@@ -396,6 +396,17 @@
                                                    placeholder="Monto solicitado"
                                                    value="{{old('monto_solicitado')}}">
                                         </div>
+                                        <div class="col-md-4">
+                                            <br>
+                                            <input name="telefono" id="telefono" type="text"
+                                                   onKeyUp="if(isNaN(this.value)){alert('sólo puede introdicur números');this.value=this.value.substring(0,this.value.lenght-1)}"
+                                                   @if(isset($registro)) value="{{$registro->telefono}}"
+                                                   @endif
+                                                   class="form-control"
+                                                   placeholder="Teléfono"
+                                                   value="{{old('telefono')}}">
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
 
@@ -516,7 +527,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <br>
-                                            <input name="telefono" id="telefono" type="text"
+                                            <input name="telefono_emp" id="telefono_emp" type="text"
                                                    onKeyUp="if(isNaN(this.value)){alert('sólo puede introdicur números');this.value=this.value.substring(0,this.value.lenght-1)}"
                                                    @if(isset($registro)) value="{{$registro->telefono}}"
                                                    @endif
@@ -526,16 +537,8 @@
                                         </div>
                                     </div>
                                     <br><br>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <span class="spantext" style="color: darkgrey;">Escribe Actividad Empresarial</span>
-                                            <input name="act_empresarial" id="act_empresarial" type="text"
-                                                   class="form-control"
-                                                   value="">
 
-                                        </div>
-                                    </div>
-                                    <!-- Tabla de registros evaluación   -->
+                                    <!-- Tabla de registros evaluación
                                     <div class="product-tab-list tab-pane fade active in data-table-area mg-b-15"
                                          id="registroweb">
                                         <div class="container-fluid">
@@ -544,7 +547,7 @@
                                                     <div class="sparkline13-list">
                                                         <div class="sparkline13-hd">
                                                             <div class="main-sparkline13-hd">
-                                                                <!--<h1>Projects <span class="table-project-n">Data</span> Table</h1>-->
+                                                                <h1>Projects <span class="table-project-n">Data</span> Table</h1>
                                                             </div>
                                                         </div>
                                                         <br><br>
@@ -602,9 +605,19 @@
                                         <input name="descripcion_sedeco" id="descripcion_sedeco" type="hidden">
 
                                     </div>
-                                    <!-- Tabla de registros de platica -->
+                                    Tabla de registros de platica -->
 
 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <span class="spantext"
+                                              style="color: darkgrey;">Escribe actividad empresarial</span>
+                                        <input name="act_empresarial" id="act_empresarial" type="text"
+                                               class="form-control"
+                                               value="">
+
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">

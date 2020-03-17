@@ -7,7 +7,7 @@
     <title>Academia Fojal | Registro</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('/styleslogin.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/stylesregistro.css')}}">
 </head>
 
 <body>

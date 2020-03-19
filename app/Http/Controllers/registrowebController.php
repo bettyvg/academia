@@ -12,9 +12,15 @@ use App\Models\Cat_regiones;
 use App\Models\Cat_municipios;
 use App\Models\Cat_escolaridad;
 use App\Models\Cat_pais;
+use App\Models\Usuario;
 use App\Mail\MensajeEnviado;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Cat_perfiles;
+use App\Models\Cat_direcciones;
+use App\Models\Cat_puestos;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use \Illuminate\Support\Facades\Redirect;
 use SimpleSoftwareIO\QrCode\Facades\QrCode; /* Agregado por Carlos Villalobos el 25/02/2020*/
@@ -121,7 +127,7 @@ class registrowebController extends Controller
     }
 
 
-    public function create()
+    public function create(Request $request)
     {
         $reg =  registrowebModel::create(request()->all());//agregado el 25/02/2020 por Carlos Villalobos
         $name = date("YmdHis") . uniqid("", true) . '.png';
@@ -180,13 +186,14 @@ class registrowebController extends Controller
                 if(Input::get('confirma-contrasena') == Input::get('contrasena'))
                 {
                     $pass = Input::get('contrasena');
+                    $usuario->id_beneficiario = $reg->id_beneficiario;
                     $usuario->nombre = Input::get('nombre');
-                    $usuario->apellido_paterno = Input::get('apat');
-                    $usuario->apellido_materno = Input::get('amat');
+                    $usuario->apellido_paterno = Input::get('apellido_paterno');
+                    $usuario->apellido_materno = Input::get('apellido_materno');
                     $usuario->correo_electronico = Input::get('correo');
-                    $usuario->id_direcciones = Input::get('area');
-                    $usuario->id_puesto = Input::get('puesto');
-                    $usuario->id_perfil = Input::get('perfil');
+                    $usuario->id_perfil = '4';
+                    $usuario->id_puesto = '45';
+                    $usuario->id_direcciones = '9';
                     $usuario->estatus = 'activo';
                     $usuario->password = Hash::make($pass);
 
@@ -197,8 +204,8 @@ class registrowebController extends Controller
                     $alert = new \stdClass();
                     $alert->message = 'El usuario se creo correctamente.';
                     $alert->type = 'success';
-                    return Redirect::route('usuarios');
-
+                    return Redirect::route('login');
+                    flash("El usuario se ha creado correctamente")->success()->important();
                 }else{
                     $alert = new \stdClass();
                     $alert->message = 'Las contraseñas no coinciden.';
@@ -215,14 +222,15 @@ class registrowebController extends Controller
             }else{
                 flash("el usuario no se creo correctamente, intente de nuevo")->danger()->important();
 
-                return View::make('usuarios.usuarios');
+                return View::make('usuarios.nuevoregistro2');
+                flash("el usuario no se creo correctamente, intente de nuevo")->danger()->important();
             }
 
         } catch (Exception $e) {
             $alert = new \stdClass();
             $alert->message = 'Ocurrió un error, por favor, contacte al administrador.';
             $alert->type = 'danger';
-            return View::make('usuarios.usuarios', array(
+            return View::make('usuarios.login', array(
                 'title' => $title,
                 'alert' => $alert,
                 'detalle_registrousuarios' => $detalle_registrousuarios,
@@ -232,7 +240,8 @@ class registrowebController extends Controller
             ));
         }
 
-        return View::make('usuarios.nuevoregistro2', array(
+
+        return View::make('login', array(
             'alert' => $alert,
             'cat_entidades' => $cat_entidades,
             'sectores' => $sectores,

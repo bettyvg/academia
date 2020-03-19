@@ -33,17 +33,7 @@
                             <div class="analytics-content">
                                 <h5>Gestiona tu credito</h5>
                                 <br>
-                                @foreach($tema as $temas)
-                                <div class="payment-adress">
-                                    <br>
-                                        <a href='examenes/{{$temas->id_tema}}'><button type="button"
-                                            title="Editar registro"
-                                            class="btn btn-info"  name="iniciar_quiz" id="iniciar_quiz">
-                                       Iniciar quiz</button></a>
-                                    <input type="hidden" name="_token"
-                                           id="csrf-token" value="{{csrf_token()}}">
-                                </div>
-                                @endforeach
+
                             </div>
                         </div>
                     </div>
@@ -54,10 +44,7 @@
                                 <br>
                                 <div class="payment-adress">
                                     <br>
-                                    <a href='examenes/{{$temas->id_tema}}'><button type="button"
-                                                                                   title="Editar registro"
-                                                                                   class="btn btn-info"  name="iniciar_quiz" id="iniciar_quiz">
-                                            Iniciar quiz</button></a>
+
                                     <input type="hidden" name="_token"
                                            id="csrf-token" value="{{csrf_token()}}">
                                 </div>

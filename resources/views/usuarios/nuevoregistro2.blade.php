@@ -310,20 +310,20 @@ PERSONA MORAL: Una persona moral, es la unión de diversos tipos de personas que
                                                         <H3>Datos de la empresa</H3>
                                                         <br>
                                                         <div class="row">
-                                                            <div class="col-md-8">
+                                                            <div class="col-md-12">
                                                                 <br>
                                                                 <input name="razon_social" id="razon_social" type="text"
                                                                        class="form-control"
                                                                        placeholder="Nombre de la empresa"
                                                                        value="{{old('razon_social')}}">
                                                             </div>
-                                                            <div class=" col-md-4">
+                                                           <!-- <div class=" col-md-4">
                                                                 <span class="spantext" style="color: darkgrey;">Fecha de creación de la empresa</span>
                                                                 <input name="fecha_creacion_empresa"
                                                                        id="fecha_creacion_empresa" type="date"
                                                                        class="form-control"
-                                                                       value="{{old('fecha_nacimiento')}}">
-                                                            </div>
+                                                                       value="">
+                                                            </div>!-->
 
                                                         </div>
                                                         <div class="row">
@@ -331,7 +331,7 @@ PERSONA MORAL: Una persona moral, es la unión de diversos tipos de personas que
                                                                 <br>
                                                                 <input name="rfc_empresa" id="rfc_empresa" type="text"
                                                                        class="form-control"
-                                                                       placeholder="RFC"
+                                                                       placeholder="RFC" onkeyup="javascript:this.value=this.value.toUpperCase();"
                                                                        value="{{old('rfc')}}">
                                                             </div>
                                                             <div class="form-group col-md-8">

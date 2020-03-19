@@ -379,7 +379,7 @@ $(document).ready(function () {
     });
 
 
-    $(".check").click(function() {
+   /* $(".check").click(function() {
         console.log("entro");
         var actividad_emp = $(this).data("id");
         console.log(actividad_emp);
@@ -403,7 +403,7 @@ $(document).ready(function () {
                 $("#descripcion_sedeco").val(data.descripcion_sedeco);
             }
         });
-    });
+    });*/
 
     /* $("#id_sian").click(function() {
          // in the handler, 'this' refers to the box clicked on

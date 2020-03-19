@@ -69,6 +69,8 @@
                                                                                     data-checkbox="true"></th>
                                                                                 <th data-field="acciones">Acciones
                                                                                 </th>
+                                                                                <th data-field="id_beneficiario">id beneficiario
+                                                                                </th>
                                                                                 <th class="sorting_asc" tabindex="0"
                                                                                     rowspan="1" colspan="1">Nombre
                                                                                 </th>
@@ -81,21 +83,100 @@
                                                                                     materno
                                                                                 </th>
                                                                                 <th class="sorting" tabindex="0"
-                                                                                    rowspan="1" colspan="1">Fecha
-                                                                                    nacimiento
+                                                                                    rowspan="1" colspan="1">Genero
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">Estado
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">Fecha de nacimiento
                                                                                 </th>
                                                                                 <th class="sorting" tabindex="0"
                                                                                     rowspan="1" colspan="1">Edad
                                                                                 </th>
                                                                                 <th class="sorting" tabindex="0"
-                                                                                    rowspan="1" colspan="1">rfc
-                                                                                </th>
-                                                                                <th class="sorting" tabindex="0"
-                                                                                    rowspan="1" colspan="1">curp
+                                                                                    rowspan="1" colspan="1">
+                                                                                    RFC
                                                                                 </th>
                                                                                 <th class="sorting" tabindex="0"
                                                                                     rowspan="1" colspan="1">
-                                                                                    domicilio
+                                                                                    CURP
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    Domicilio
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    CP
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    Colonia
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    municipio
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    Región
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    correo
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    telefono
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    alta hacienda
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                          rowspan="1" colspan="1">
+                                                                                    regimen fiscal
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    razon social
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    rfc empresa
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    domicilio empresa
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    cp empresa
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    colonia empresa
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    municipio empresa
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    region empresa
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    tamaño empresa
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    telefono empresa
+                                                                                </th>
+                                                                                <th class="sorting" tabindex="0"
+                                                                                    rowspan="1" colspan="1">
+                                                                                    actividad empresarial
                                                                                 </th>
                                                                             </tr>
                                                                             </thead>
@@ -111,15 +192,35 @@
                                                                                                 <i class="fa fa-pencil-square-o"> </i>
                                                                                             </a></button>
                                                                                     </td>
+                                                                                    <td class="sorting_1">{{$Items->id_beneficiario}}</td>
                                                                                     <td class="sorting_1">{{$Items->nombre}}</td>
                                                                                     <td class="sorting_1">{{$Items->apellido_paterno}}</td>
                                                                                     <td class="sorting_1">{{$Items->apellido_materno}}</td>
-
+                                                                                    <td class="sorting_1">{{$Items->genero}}</td>
+                                                                                    <td class="sorting_1">{{$Items->estado}}</td>
                                                                                     <td class="sorting_1">{{$Items->fecha_nacimiento}}</td>
                                                                                     <td class="sorting_1">{{$Items->edad}}</td>
                                                                                     <td class="sorting_1">{{$Items->rfc}}</td>
                                                                                     <td class="sorting_1">{{$Items->curp}}</td>
                                                                                     <td class="sorting_1">{{$Items->domicilio}}</td>
+                                                                                    <td class="sorting_1">{{$Items->cp}}</td>
+                                                                                    <td class="sorting_1">{{$Items->colonia}}</td>
+                                                                                    <td class="sorting_1">{{$Items->municipio}}</td>
+                                                                                    <td class="sorting_1">{{$Items->region_pf}}</td>
+                                                                                    <td class="sorting_1">{{$Items->correo}}</td>
+                                                                                    <td class="sorting_1">{{$Items->telefono}}</td>
+                                                                                    <td class="sorting_1">{{$Items->alta_hacienda}}</td>
+                                                                                    <td class="sorting_1">{{$Items->regimenfiscal}}</td>
+                                                                                    <td class="sorting_1">{{$Items->razon_social}}</td>
+                                                                                    <td class="sorting_1">{{$Items->rfc_empresa}}</td>
+                                                                                    <td class="sorting_1">{{$Items->domicilio_empresa}}</td>
+                                                                                    <td class="sorting_1">{{$Items->cp_rep_empresa}}</td>
+                                                                                    <td class="sorting_1">{{$Items->colonia_empresa}}</td>
+                                                                                    <td class="sorting_1">{{$Items->municipio_empresa}}</td>
+                                                                                    <td class="sorting_1">{{$Items->region_pm}}</td>
+                                                                                    <td class="sorting_1">{{$Items->tam_empresa}}</td>
+                                                                                    <td class="sorting_1">{{$Items->telefono_emp}}</td>
+                                                                                    <td class="sorting_1">{{$Items->act_empresarial}}</td>
                                                                                 </tr>
                                                                             @endforeach
                                                                             </tbody>
@@ -270,11 +371,11 @@ PERSONA MORAL: Una persona moral, es la unión de diversos tipos de personas que
                                                 <option value="none" selected="" disabled=""
                                                         style="color: darkgrey;">Genero
                                                 </option>
-                                                <option value="H"
+                                                <option value="Hombre"
                                                         @if(old('genero')=='Hombre') selected="selected"@endif>
                                                     Hombre
                                                 </option>
-                                                <option value="M"
+                                                <option value="Mujer"
                                                         @if(old('genero')=='Mujer') selected="selected"@endif>
                                                     Mujer
                                                 </option>
@@ -339,8 +440,8 @@ PERSONA MORAL: Una persona moral, es la unión de diversos tipos de personas que
                                         </div>
                                         <div class="form-group">
                                             <select required='true' class="form-control select2"
-                                                    name="region_pm" id="region_pm"
-                                                    value="{{old('cve_ent')}}">
+                                                    name="region_pf" id="region_pf"
+                                                    value="{{old('region_pf')}}">
                                                 <option value="none" selected="" disabled="">Selecionar
                                                     región..
                                                 </option>
@@ -480,8 +581,8 @@ PERSONA MORAL: Una persona moral, es la unión de diversos tipos de personas que
                                             <div class="col-md-4">
                                                 <br>
                                                 <select class="form-control select2"
-                                                        name="region_pf" id="region_pf"
-                                                        value="{{old('region_pf')}}">
+                                                        name="region_pm" id="region_pm"
+                                                        value="{{old('region_pm')}}">
                                                     <option value="none" selected="" disabled="">Selecionar
                                                         región..
                                                     </option>

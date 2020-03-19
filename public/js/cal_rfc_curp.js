@@ -41,13 +41,16 @@ $("#btn_rfc").click(function () {
         var fecha1 = $("#fecha_nacimiento").val();
         var fecha_nacimiento = fecha1.split('-');
         var ano_nacimiento = fecha_nacimiento[0].substr(2,3)
+        var genero1= $("#genero").val();
+        console.log(genero1);
+        var genero = genero1.substr(0,1)
         //console.log(fecha_nacimiento);
 
         var ap_paterno = document.getElementById("apellido_paterno").value;
         var ap_materno = document.getElementById("apellido_materno").value;
         var nombre = document.getElementById("nombre").value;
         var rfc = ano_nacimiento + fecha_nacimiento[1] + fecha_nacimiento[2];
-        var sexo = document.getElementById("genero").value;
+        var sexo = genero;
         var estado = document.getElementById("estado").value;
 
         // var estado = document.getElementById("estado").value;

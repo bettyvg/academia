@@ -127,7 +127,7 @@ class registrowebController extends Controller
         $name = date("YmdHis") . uniqid("", true) . '.png';
         QrCode::format('png')->size(399)->generate($reg->id_beneficiario,public_path('img/documentos/'.$name));
         $reg->qr=$name;
-        dd($reg);
+        //dd($reg);
         $reg->save();
 
         $alert = new \stdClass();
@@ -158,6 +158,79 @@ class registrowebController extends Controller
         //Mail::to($reg->correo)->send(new MensajeEnviado());
 
         //flash("Tu información se envío exitosamente!")->success()->important();
+        try {
+
+            $title = 'Registro de usuarios';
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
+                $usuario = new Usuario();
+
+                $cat_perfiles = Cat_perfiles::all();
+                $cat_direcciones = Cat_direcciones::all();
+                $detalle_registrousuarios = Usuario::select('usuarios.id_usuario','usuarios.nombre','usuarios.apellido_paterno','usuarios.apellido_materno','usuarios.correo_electronico','cat_perfiles.nom_perfil','cat_direcciones.nom_dir','cat_puestos.nom_puesto','usuarios.created_at')
+                    ->join('cat_perfiles', 'cat_perfiles.id_perfil', '=','usuarios.id_perfil')
+                    ->join('cat_direcciones', 'cat_direcciones.id_direccion', '=','usuarios.id_direcciones')
+                    ->join('cat_puestos','cat_puestos.id_puesto', '=', 'usuarios.id_puesto')
+                    ->where('usuarios.estatus', '=', 'activo')
+                    ->get();
+                $cat_puestos = Cat_puestos::select('cat_puestos.nom_puesto','cat_puestos.id_direcciones','cat_direcciones.nom_dir')
+                    ->join('cat_direcciones', 'cat_direcciones.id_direccion', '=','cat_puestos.id_direcciones')
+                    ->get();
+
+                if(Input::get('confirma-contrasena') == Input::get('contrasena'))
+                {
+                    $pass = Input::get('contrasena');
+                    $usuario->nombre = Input::get('nombre');
+                    $usuario->apellido_paterno = Input::get('apat');
+                    $usuario->apellido_materno = Input::get('amat');
+                    $usuario->correo_electronico = Input::get('correo');
+                    $usuario->id_direcciones = Input::get('area');
+                    $usuario->id_puesto = Input::get('puesto');
+                    $usuario->id_perfil = Input::get('perfil');
+                    $usuario->estatus = 'activo';
+                    $usuario->password = Hash::make($pass);
+
+                    $usuario->save();
+
+                    flash("El usuario se ha creado correctamente")->success()->important();
+
+                    $alert = new \stdClass();
+                    $alert->message = 'El usuario se creo correctamente.';
+                    $alert->type = 'success';
+                    return Redirect::route('usuarios');
+
+                }else{
+                    $alert = new \stdClass();
+                    $alert->message = 'Las contraseñas no coinciden.';
+                    $alert->type = 'danger';
+                    return View::make('usuarios', array(
+                        'title' => $title,
+                        'alert' => $alert,
+                        'detalle_registrousuarios' => $detalle_registrousuarios,
+                        'cat_perfiles' => $cat_perfiles,
+                        'cat_direcciones' => $cat_direcciones
+                    ));
+                }
+
+            }else{
+                flash("el usuario no se creo correctamente, intente de nuevo")->danger()->important();
+
+                return View::make('usuarios.usuarios');
+            }
+
+        } catch (Exception $e) {
+            $alert = new \stdClass();
+            $alert->message = 'Ocurrió un error, por favor, contacte al administrador.';
+            $alert->type = 'danger';
+            return View::make('usuarios.usuarios', array(
+                'title' => $title,
+                'alert' => $alert,
+                'detalle_registrousuarios' => $detalle_registrousuarios,
+                'cat_perfiles' => $cat_perfiles,
+                'cat_direcciones' => $cat_direcciones,
+
+            ));
+        }
 
         return View::make('usuarios.nuevoregistro2', array(
             'alert' => $alert,

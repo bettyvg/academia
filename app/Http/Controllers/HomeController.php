@@ -8,6 +8,7 @@ use App\Models\Usuario;
 use App\Models\Cat_municipios;
 use App\Models\Cat_entidades;
 use App\Models\Cat_temas;
+use App\Models\EvaluacionCapacitador;
 use App\Models\Cat_capacitador;
 use App\Models\Cat_instituciones;
 use Illuminate\Support\Facades\DB;
@@ -47,7 +48,7 @@ class HomeController extends Controller
         $cat_capacitador = Cat_capacitador::orderBy('nom_cap')->get();
 
         $tema =Cat_temas::where('id_tema','=','50')->get();
-
+        $busqueda = EvaluacionCapacitador::orderBy('created_at', 'desc')->get();
         $cursos = DB::select('SELECT cursos_online.id_cursosonline,cursos_online.nombre_curso, cursos_online.descripcion, cat_temas.tema, documentos.nombre as nombre_documento, cat_capacitador.nom_cap as nombre_capacitador,
                         cat_capacitador.apellido_paterno as apellido_paterno_capacitador, cat_capacitador.apellido_materno as apellido_materno_capacitador, cursos_online.id_capacitador, cursos_online.id_categoria, documentos.tipo_documento
                         FROM cursos_online
@@ -55,7 +56,8 @@ class HomeController extends Controller
                 INNER JOIN cat_capacitador on cat_capacitador.id_capacitador = cursos_online.id_capacitador
                 LEFT JOIN documentos ON documentos.id = cursos_online.id_cursosonline AND documentos.tabla = "cursos_online"
                 WHERE documentos.tipo_documento = "IMAGEN"');
-    
+        $cat_municipios = Cat_municipios::where('cve_compuesta_ent_mun', 'like', '14%')->orderBy('nom_mun', 'ASC')->get();
+        $cat_instituciones = Cat_instituciones::orderBy('nombre_inst')->get();
      $inscritos_municipio = DB::select('SELECT COUNT(usuarios.id_usuario) as total, cat_municipios.nom_mun
 FROM usuarios
 INNER JOIN cat_municipios ON cat_municipios.cve_compuesta_ent_mun = usuarios.cve_compuesta_ent_mun
@@ -63,9 +65,12 @@ WHERE usuarios.cve_compuesta_ent_mun = "14008"
 GROUP BY cat_municipios.nom_mun');
 
         return View::make('inicio2', array('cat_temas' => $cat_temas,
-            'cat_capacitadores' => $cat_capacitador,
+            'cat_capacitador' => $cat_capacitador,
+            'cat_municipios' => $cat_municipios,
             'cursos' => $cursos,
             'tema' => $tema,
+            'busqueda'=>$busqueda,
+            'cat_instituciones' => $cat_instituciones,
             'inscritos_municipio' => $inscritos_municipio
         ));
 

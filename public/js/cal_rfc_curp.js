@@ -42,7 +42,7 @@ $("#btn_rfc").click(function () {
         var fecha_nacimiento = fecha1.split('-');
         var ano_nacimiento = fecha_nacimiento[0].substr(2,3)
         var genero1= $("#genero").val();
-        console.log(genero1);
+        //console.log(genero1);
         var genero = genero1.substr(0,1)
         //console.log(fecha_nacimiento);
 

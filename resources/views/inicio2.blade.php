@@ -50,15 +50,19 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30">
                             <div class="analytics-content">
-                                <h5>Creditos otrogados en tu municipio</h5>
-                                <h2><span class="counter">10</span> <span class="tuition-fees">....</span>
-                                </h2>
-                                <span class="text-info">10%</span>
-                                <div class="progress m-b-0">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
-                                         aria-valuemin="0" aria-valuemax="100" style="width:10%;"><span class="sr-only">30% Completados</span>
-                                    </div>
+                                <h5>Califica a tu capacitador</h5>
+                                <br>
+                                <div class="payment-adress">
+                                    <br>
+                                    <a href='examenes/{{$temas->id_tema}}'><button type="button"
+                                                                                   title="Editar registro"
+                                                                                   class="btn btn-info"  name="iniciar_quiz" id="iniciar_quiz">
+                                            Iniciar quiz</button></a>
+                                    <input type="hidden" name="_token"
+                                           id="csrf-token" value="{{csrf_token()}}">
                                 </div>
+                                    <br>
+
                             </div>
                         </div>
                     </div>
@@ -188,7 +192,7 @@
                             <input type="hidden" name="_token" id="id_user" value ="{{$user->id_usuario}}" >
                             @foreach($cursos as $curso)
                             <input type="hidden" name="_token" id="id_cursosonline" value="">
-                                @endforeach
+                            @endforeach
                         </div>
                     </div>
 
@@ -202,34 +206,7 @@
 
 
 
-        <!--   <div class="modal fade" id="modal-curso" tabindex="-1" role="dialog">
-               <div class="modal-lg" role="document">
-                   <div class="modal-content">
-                       <div class="modal-header">
-                           <div class="modal-header" style="background-color: whiteSmoke;">
-                               <h2 class="modal-title">Cursos</h2>
-                           </div>
-                       </div>
-                       <div class="modal-body">
-                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><img id="imagen_curso_modal" src="" class="img-fluid" width="60%"></div>
-                           <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 
-                                   <h1 id="tema_modal"></h1>
-                                   <h5 id="nombre_curso_modal"></h5>
-                                   <br>
-                                   <p id="fecha_hora_modal"></p>
-                                   <p id="profesor_modal"></p>
-                                   <p id="ubicacion_modal"></p>
-                                   <p id="descripcion_modal"></p>
-                           </div>
-                       </div>
-                       <div class="modal-footer">
-                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>-->
+
     </section>
 @endsection

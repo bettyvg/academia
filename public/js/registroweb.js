@@ -39,7 +39,7 @@ $("#regimen_fiscal").change(function () {
                $("#region_pf").empty();
                $("#colonia").html('<option value="">Seleccionar colonia..</option>');
                 for (var i = 0; i < data.length; i++) {
-                    $("#colonia").append('<option value="' + data[i].id_codigocp + '">' + data[i].d_asenta + '</option>');
+                    $("#colonia").append('<option value="' + data[i].d_asenta + '">' + data[i].d_asenta + '</option>');
                     $("#municipio").html('<option value="' + data[i].D_mnpio + ' " selected>' + data[i].D_mnpio + '</option>');
                     $("#region_pf").html('<option value="' + data[i].region + ' " selected>' + data[i].region + '</option>');
                 }
@@ -69,7 +69,7 @@ $("#regimen_fiscal").change(function () {
                 $("#region_pm").empty();
                 $("#colonia_empresa").html('<option value="">Seleccionar colonia..</option>');
                 for (var i = 0; i < data.length; i++) {
-                    $("#colonia_empresa").append('<option value="' + data[i].id_codigocp + '">' + data[i].d_asenta + '</option>');
+                    $("#colonia_empresa").append('<option value="' + data[i].d_asenta + '">' + data[i].d_asenta + '</option>');
                     $("#municipio_empresa").html('<option value="' + data[i].D_mnpio + ' " selected>' + data[i].D_mnpio + '</option>');
                     $("#region_pm").html('<option value="' + data[i].region + ' " selected>' + data[i].region + '</option>');
                 }

@@ -262,8 +262,8 @@
                                         <div class="form-group " required="true">
                                             <h5>Tienes empresa o eres emprendedor</h5>
                                             <select name="alta_hacienda" id="alta_hacienda"
-                                                    class="form-control"
-                                                    value="{{old('regimen_fiscal')}}">
+                                                    class="form-control" required="true"
+                                                    value="{{old('alta_hacienda')}}">
                                                 <option value="none" selected="" disabled=""
                                                         style="color: darkgrey;">
                                                     Seleccionar..
@@ -553,7 +553,7 @@ PERSONA MORAL: Una persona moral, es la unión de diversos tipos de personas que
                                             <div class="form-group col-md-4">
                                                 <select class="form-control select2"
                                                         name="colonia_empresa"
-                                                        id="colonia_empresa" value="{{'colonia'}}">
+                                                        id="colonia_empresa" value="{{'colonia_empresa'}}">
                                                     <option value="none" selected="" disabled="">Seleccionar
                                                         colonia..
                                                     </option>
@@ -594,24 +594,24 @@ PERSONA MORAL: Una persona moral, es la unión de diversos tipos de personas que
                                                                   style="color: darkgrey;">Tamaño de la empresa</span>
                                                 <select name="tam_empresa" id="tam_empresa"
                                                         class="form-control"
-                                                        value="{{old('alta_hacienda')}}">
+                                                        value="{{old('tam_empresa')}}">
                                                     <option value="none" selected="" disabled=""
                                                             style="color: darkgrey;">
                                                         Seleccionar..
                                                     </option>
-                                                    <option value="Micro"
+                                                    <option value="Micro (0 a 10 empleados)"
                                                             @if(old('calificacion_buro')=='Micro') selected="selected"@endif>
                                                         Micro (0 a 10 empleados)
                                                     </option>
-                                                    <option value="Pequeña"
+                                                    <option value="Pequeña (11 a 50 empleados)"
                                                             @if(old('calificacion_buro')=='Pequeña') selected="selected"@endif>
                                                         Pequeña (11 a 50 empleados)
                                                     </option>
-                                                    <option value="Mediana"
+                                                    <option value="Mediana (51 a 251 empleados)"
                                                             @if(old('calificacion_buro')=='Mediana') selected="selected"@endif>
                                                         Mediana (51 a 251 empleados)
                                                     </option>
-                                                    <option value="Gran empresa"
+                                                    <option value="Gran empresa (251 y más empleados)"
                                                             @if(old('calificacion_buro')=='Gran empresa') selected="selected"@endif>
                                                         Gran empresa (251 y más empleados)
                                                     </option>

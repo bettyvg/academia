@@ -129,11 +129,12 @@ Route::GET('get_cp/{id}', 'registrowebController@get_cp');
 
 /*Registro admin*/
 Route::get('registro_admin', 'registro_adminController@index' )->name('registro_admin');
-Route::post('registro_admin', 'registro_adminController@create' )->name('registro_admin.create');
+Route::post('registro_admin', 'registro_adminController@create' )->name('registro_admin');
 Route::get('edit_registro_admin/{id}', 'registro_adminController@edit')->name('edit_registro_admin');
 Route::post('edit_registro_admin/{id}', 'registro_adminController@update')->name('edit_registro_admin.update');
 Route::get('get_actividad/{id}', 'registro_adminController@get_actividad')->name('get_actividad');
 Route::get('get_act_empresarial/{id}', 'registro_adminController@get_actividad_empresarial')->name('get_actividad_empresarial');
+Route::get('get_region/{id}', 'registro_adminController@get_region')->name('get_region');
 
 Route::post('registro', 'UsuariosController@registro' )->name('registro_post');
 Route::get('mostrar-usuarios', 'UsuariosController@mostrar_usuarios' )->name('mostrar-usuarios');

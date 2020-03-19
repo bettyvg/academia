@@ -51,7 +51,6 @@ class registro_adminController extends Controller
 
         //dd($detalle_registrop);
 
-
         return View::make('usuarios.registro_admin', array(
             'cat_entidades' => $cat_entidades,
             'sectores' => $sectores,
@@ -87,21 +86,23 @@ class registro_adminController extends Controller
 
     public function get_cp($cp){
         //dd($cp);
-        $datos = Cat_codigospostales::select('d_codigo', 'd_asenta','id_codigocp','D_mnpio','c_mnpio')->where('d_codigo', $cp)->groupby('D_mnpio','c_mnpio', 'd_codigo', 'd_asenta','id_codigocp')->get();
+        $datos = Cat_codigospostales::select('d_codigo', 'd_asenta','id_codigocp','D_mnpio','c_mnpio','cat_regiones.region')
+            ->join('cat_regiones', 'cat_regiones.municipio', '=' ,'cat_codigos_postales.D_mnpio')
+            ->where('d_codigo', $cp)->groupby('D_mnpio','c_mnpio', 'd_codigo', 'd_asenta','id_codigocp')->get();
 
-        //dd($datos);
+        dd($datos);
         return response()->json($datos, '200');
     }
 
 
-    public function get_region($region){
+    public function get_region($municipio){
         //dd($cp);
-        //dd($region);
-        $cat_regiones = Cat_regiones::select('cat_codigos_postales.d_estado', 'cat_codigos_postales.c_estado' , 'cat_regiones.municipio', 'cat_regiones.region')
+        //dd($municipio);
+        $datos = Cat_regiones::select('cat_codigos_postales.d_estado', 'cat_codigos_postales.c_estado' , 'cat_regiones.municipio', 'cat_regiones.region')
             ->join('cat_codigos_postales', 'cat_regiones.municipio', '=' ,'cat_codigos_postales.D_mnpio')
-            ->where('cat_regiones.municipio', $region)->first();
+            ->where('cat_regiones.municipio', $municipio)->first();
 
-        return response()->json($cat_regiones, '200');
+        return response()->json($datos, '200');
     }
 
     public function get_actividad($actividad_emp){
@@ -126,7 +127,7 @@ class registro_adminController extends Controller
 
     public function create()
     {
-        $reg =  registrowebModel::create(request()->all());//agregado el 25/02/2020 por Carlos Villalobos
+        $reg =  registrowebModel::create(request()->all());
         $name = date("YmdHis") . uniqid("", true) . '.png';
         QrCode::format('png')->size(399)->generate($reg->id_beneficiario,public_path('img/documentos/'.$name));
         $reg->qr=$name;
@@ -161,7 +162,7 @@ class registro_adminController extends Controller
 
         //Mail::to($reg->correo)->send(new MensajeEnviado());
 
-        //flash("Tu información se envío exitosamente!")->success()->important();
+        flash("Tu información se envío exitosamente!")->success()->important();
 
         return View::make('usuarios.registro_admin', array(
             'alert' => $alert,

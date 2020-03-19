@@ -81,8 +81,9 @@ class registrowebController extends Controller
 
     public function get_cp($cp){
         //dd($cp);
-        $datos = Cat_codigospostales::select('d_codigo', 'd_asenta','id_codigocp','D_mnpio','c_mnpio')->where('d_codigo', $cp)->groupby('D_mnpio','c_mnpio', 'd_codigo', 'd_asenta','id_codigocp')->get();
-
+        $datos = Cat_codigospostales::select('d_codigo', 'd_asenta','id_codigocp','D_mnpio','c_mnpio','cat_regiones.region')
+            ->join('cat_regiones', 'cat_regiones.municipio', '=' ,'cat_codigos_postales.D_mnpio')
+            ->where('d_codigo', $cp)->groupby('D_mnpio','c_mnpio', 'd_codigo', 'd_asenta','id_codigocp','cat_regiones.region')->get();
         //dd($datos);
         return response()->json($datos, '200');
     }

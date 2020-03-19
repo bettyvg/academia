@@ -5,14 +5,12 @@ $("#regimen_fiscal").change(function () {
     var regimen_fiscal =  $("#regimen_fiscal").val();
 
 
-    if(regimen_fiscal == 'Empresario'){
+    if(regimen_fiscal == 'Persona moral'){
         $("#datos_empresa").show();
-        $("#altahacienda").show();
     }
 
-    if(regimen_fiscal == 'Emprendedor'){
+    if(regimen_fiscal == 'Persona física'){
         $("#datos_empresa").hide();
-        $("#altahacienda").hide();
     }
 
 })
@@ -38,11 +36,12 @@ $("#regimen_fiscal").change(function () {
                 console.log(data);
                $("#colonia").empty();
                $("#municipio").empty();
+               $("#region_pm").empty();
                $("#colonia").html('<option value="">Seleccionar colonia..</option>');
                 for (var i = 0; i < data.length; i++) {
                     $("#colonia").append('<option value="' + data[i].id_codigocp + '">' + data[i].d_asenta + '</option>');
                     $("#municipio").html('<option value="' + data[i].D_mnpio + ' " selected>' + data[i].D_mnpio + '</option>');
-                    //$("#region_pf").html('<option value="' + data[i].region + ' " selected>' + data[i].region + '</option>');
+                    $("#region_pm").html('<option value="' + data[i].region + ' " selected>' + data[i].region + '</option>');
                 }
            }
         });
@@ -51,7 +50,7 @@ $("#regimen_fiscal").change(function () {
     /*Codigo Postal Empresa*/
     $("#cp_rep_empresa").keyup(function () {
         var $cp = $("#cp_rep_empresa").val();
-//console.log($cp);
+        //console.log($cp);
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
             url: "./get_cp/" + $cp,
@@ -67,19 +66,21 @@ $("#regimen_fiscal").change(function () {
                 console.log(data);
                 $("#colonia_empresa").empty();
                 $("#municipio_empresa").empty();
+                $("#region_pf").empty();
                 $("#colonia_empresa").html('<option value="">Seleccionar colonia..</option>');
                 for (var i = 0; i < data.length; i++) {
                     $("#colonia_empresa").append('<option value="' + data[i].id_codigocp + '">' + data[i].d_asenta + '</option>');
                     $("#municipio_empresa").html('<option value="' + data[i].D_mnpio + ' " selected>' + data[i].D_mnpio + '</option>');
+                    $("#region_pf").html('<option value="' + data[i].region + ' " selected>' + data[i].region + '</option>');
                 }
             }
         });
     });
 
-    /*region*/
+    /*region
     $("#cp").change(function () {
         var municipio = $("#municipio").val();
-//console.log(municipio);
+        console.log(municipio);
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -94,14 +95,15 @@ $("#regimen_fiscal").change(function () {
 
             },
             success: function (data) {
-                $("#region_pf").empty();
-                $("#region_pf").append('<option value="">Seleccionar region..</option>');
+                $("#region_pm").empty();
+                console.log(data[0]);
+                $("#region_pm").append('<option value="">Seleccionar region..</option>');
                 for (var i = 0; i < data.length; i++) {
-                    $("#region_pf").html('<option value="' + data[i].region + ' " selected>' + data[i].region + '</option>');
+                    $("#region_pm").html('<option value="' + data[i].region + ' " selected>' + data[i].region + '</option>');
                 }
             }
         });
-    });
+    });*/
 
     $("#fecha_nacimiento").change(function () {
         var fecha = $("#fecha_nacimiento").val();

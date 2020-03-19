@@ -16,8 +16,8 @@ body{
 
 #registration-form .image{
 	float:left;
-	background-image: url("public/img/desk.jpg");
-	height: 500px;
+	background-image: url("/img/desk.jpg");
+	height: 507px;
 	width: 50%;
 	background-size: cover;
 	background-position: 25%;

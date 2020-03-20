@@ -121,8 +121,7 @@ $user = Session::get('usuario');
                                                     <ul class="nav navbar-nav mai-top-nav">
                                                         <li class="nav-item"><a href="{{route('inicio2')}}" class="nav-link">Inicio</a>
                                                         </li>
-                                                        <li class="nav-item"><a href="{{route('miscursos')}}" class="nav-link">Mis cursos</a>
-                                                        </li>
+
                                                     </ul>
 
                                             </div>
@@ -133,38 +132,6 @@ $user = Session::get('usuario');
                                         <div class="header-right-info">
                                             <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                                 <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-bell" aria-hidden="true"></i><span class="indicator-nt"></span></a>
-                                                    <div role="menu" class="notification-author dropdown-menu animated zoomIn">
-                                                        <div class="notification-single-top">
-                                                            <h1>Notificaciones</h1>
-                                                        </div>
-                                                        <ul class="notification-menu">
-                                                            <li>
-                                                                <a href="#">
-                                                                    <div class="notification-icon">
-                                                                        <i class="educate-icon educate-checked edu-checked-pro admin-check-pro" aria-hidden="true"></i>
-                                                                    </div>
-                                                                    <div class="notification-content">
-                                                                       <h2>Curso </h2>
-                                                                        <p>Porfavor cambiar horario curso.</p>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <div class="notification-icon">
-                                                                        <i class="educate-icon educate-checked edu-checked-pro admin-check-pro" aria-hidden="true"></i>
-                                                                    </div>
-                                                                    <div class="notification-content">
-                                                                        <h2>Emprendimiento Social Colaborativo</h2>
-                                                                        <p>Suspención de curso</p>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="notification-view">
-                                                            <a href="#">Ver todas las notificaciones</a>
-                                                        </div>
-                                                    </div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
@@ -172,7 +139,6 @@ $user = Session::get('usuario');
                                                             <a class="dropdown-toggle" data-toggle="dropdown">
                                                                 <span class="hidden-xs">{{$user->nombre.' '.$user->apellido_paterno}}</span>
                                                             </a>
-
 														</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                                                         <li><a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>Mi cuenta</a>
@@ -189,7 +155,19 @@ $user = Session::get('usuario');
                             </div>
                         </div>
                     </div>
-
+                    <!--Start of Tawk.to Script-->
+                    <script type="text/javascript">
+                        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                        (function(){
+                            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                            s1.async=true;
+                            s1.src='https://embed.tawk.to/5e74f3c6eec7650c33217f0f/default';
+                            s1.charset='UTF-8';
+                            s1.setAttribute('crossorigin','*');
+                            s0.parentNode.insertBefore(s1,s0);
+                        })();
+                    </script>
+                    <!--End of Tawk.to Script-->
                 </div>
             </div>
             <!-- Mobile Menu start -->
@@ -203,10 +181,7 @@ $user = Session::get('usuario');
                                     <ul class="mobile-menu-nav">
                                         <li><a data-toggle="collapse" data-target="#Inicio" href="{{route('inicio')}}">Inicio<span class="@if($_SERVER['REQUEST_URI'] == '/') active @endif "></span></a>
                                         </li>
-                                        <li>
-                                            <a href="{{route('miscursos')}}" class="has-arrow" aria-expanded="false"><span class="mini-click-non">Mis cursos</span></a>
 
-                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -217,8 +192,6 @@ $user = Session::get('usuario');
             <!-- Mobile Menu end -->
 
         </div>
-
-
         <div class="content-wrapper">
 
             @yield('content')

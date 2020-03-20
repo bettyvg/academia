@@ -56,8 +56,9 @@ body{
 
     #registration-form .image{
         float:left;
-        background-image: url("public/img/desk.jpg");
-                width: 50%;
+        background-image: url("/img/desk.jpg");
+		width: 50%;
+		height: 515px;
         background-size: cover;
         background-position: 25%;
 
@@ -91,6 +92,7 @@ body{
 	#registration-form .image{
 		width: 30%;
 	    background-position: 60%;
+		background-image: url("/img/desk.jpg");
 	}
 
 	#registration-form .frm{

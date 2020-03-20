@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <br>
-                    <label for="pwd">¿Aún no tienes cuenta?</label><a href="{{route('nuevoregistro')}}">    Registrate</a>
+                    <label for="pwd">¿Aún no tienes cuenta?</label><a href="{{route('nuevoregistro2')}}">    Registrate</a>
                 </div>
               <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
               @if(isset($alert) && $alert != null && isset($alert->type))

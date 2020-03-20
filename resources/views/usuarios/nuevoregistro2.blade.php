@@ -516,11 +516,7 @@ PERSONA MORAL: Una persona moral, es la unión de diversos tipos de personas que
                                                                         id="guardar" hidden>
                                                                     Enviar
                                                                 </button>
-                                                                <a href="{{route('enviar_correo')}}"
-                                                                   class="btn btn-primary waves-effect waves-light"
-                                                                   id="guardar" hidden>
-                                                                    Enviar correo
-                                                                </a>
+
                                                                 <input type="hidden" name="_token" id="csrf-token"
                                                                        value="{{csrf_token()}}">
                                                             </div>

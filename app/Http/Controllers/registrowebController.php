@@ -200,7 +200,6 @@ class registrowebController extends Controller
                     $usuario->save();
 
                     flash("El usuario se ha creado correctamente")->success()->important();
-
                     $alert = new \stdClass();
                     $alert->message = 'El usuario se creo correctamente.';
                     $alert->type = 'success';

@@ -203,7 +203,12 @@ class registrowebController extends Controller
                     $alert = new \stdClass();
                     $alert->message = 'El usuario se creo correctamente.';
                     $alert->type = 'success';
+
+                    $receivers = Input::get('correo') ;
+                    Mail::to($receivers)->send(new MensajeEnviado());
+
                     return Redirect::route('login');
+
                     flash("El usuario se ha creado correctamente")->success()->important();
                 }else{
                     $alert = new \stdClass();
